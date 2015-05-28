@@ -30,9 +30,12 @@ linenumbers: no
 bibliography: components/manuscript.bib
 abstract: no
 ---
+
 <!--
-%\VignetteEngine{knitr::rmarkdown}
+
+%\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Microsystin Chlorophyll Manusript}
+
 -->
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -68,18 +71,16 @@ devtools::install_github("jhollist/microcystinchla",
                          auth_token = getOption("Github_Access"))
 library("microcystinchla")
 library("dplyr")
+library("magrittr")
 
 
 
 ################################################################################
 # Data Prep
 ################################################################################
-data_url<-gsub("\n","","http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/
-                upload/NLA2007_Recreational_ConditionEstimates_20091123.csv")
-nla_dat<-get_nla(data_url)
-nla_dat <- nla_dat %>%
-  mutate(log_chla = log(CHLA),
-         log_micro = log(MCYST_TL_UGL))
+data_url<-"http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Recreational_ConditionEstimates_20091123.csv"
+nla_dat <- get_nla(data_url)
+nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
 ################################################################################
 # Condtional Probability
 ################################################################################
@@ -112,14 +113,22 @@ child_ha_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 
 #Results
 
+
+#Discussion
+
+#Figures
+
+\newpage
+
 ```{r adult_healt_cprob,echo=FALSE}
 cp_plot(adult_ha_cp)
 ```
 
+\newpage
+
 ```{r child_healt_cprob,echo=FALSE}
 cp_plot(child_ha_cp)
 ```
-#Discussion
 
 
 #References
