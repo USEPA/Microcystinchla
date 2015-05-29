@@ -1,5 +1,5 @@
 ---
-title: 'Associations between Chlorophyll *a* and Microcystin-LR Health Advisory Concentrations'
+title: 'Associations between Chlorophyll *a* and various Microcystin-LR Health Advisory Concentrations'
 author:  
 - name: Jeffrey W. Hollister
   affilnum: 1
@@ -39,6 +39,15 @@ abstract: no
 ```{r setup, include=FALSE, echo=FALSE}
 #Put whatever you normally put in a setup chunk.
 #I usually at least include:
+################################################################################
+#Load packages
+################################################################################
+devtools::install_github("jhollist/microcystinchla",
+                         auth_token = getOption("Github_Access"))
+library("microcystinchla")
+library("dplyr")
+library("magrittr")
+library("pander")
 library("knitr")
 opts_chunk$set(dev = 'pdf', fig.width=6, fig.height=5)
 
@@ -63,15 +72,7 @@ knit_hooks$set(output = function(x, options) {
 ```{r analysis , include=FALSE, echo=FALSE, cache=TRUE}
 #All analysis in here, that way all bits of the paper have access to the final objects
 #Place tables and figures and numerical results where they need to go.
-################################################################################
-#Load packages
-################################################################################
-devtools::install_github("jhollist/microcystinchla",
-                         auth_token = getOption("Github_Access"))
-library("microcystinchla")
-library("dplyr")
-library("magrittr")
-library("pander")
+
 
 
 ################################################################################
@@ -85,13 +86,36 @@ nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
 # Condtional Probability
 ################################################################################
 mc_guides <- c(0.04, 0.3, 0.8, 1, 1.6, 4, 6, 10, 14, 20)
-mc_names <- c("")
-epa_adult <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(1.5999), ProbComp = "gt", Exceed = "gte",
+mc_names <- c("MN","EPA_Child","CA","WHO","EPA_Adult","WHO","Multiple","Multiple","Mulitple","Multiple")
+mn_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-
-epa_child <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(0.2999), ProbComp = "gt", Exceed = "gte",
+epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+ca_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+who_rec_low_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+mult_state_rec_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+il_org_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[8]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+ma_ri_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[9]), ProbComp = "gt", Exceed = "gte",
+                     ci = TRUE, R = 100)
+who_rec_med_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+                     xImpair = log(mc_guides[10]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 ```
@@ -172,17 +196,64 @@ Based on the range of microcystin concentrations used in various policy settings
 
 #Figures
 
-\newpage
 
-```{r adult_healt_cprob,echo=FALSE}
-cp_plot(epa_adult)
+```{r mn_cp_plot,echo=FALSE}
+cp_plot(mn_cp)
 ```
 
 \newpage
 
-```{r child_healt_cprob,echo=FALSE}
-cp_plot(epa_child)
+```{r epa_child_cp_plot,echo=FALSE}
+cp_plot(epa_child_cp)
 ```
 
+
+```{r ca_cp_plot,echo=FALSE}
+cp_plot(ca_cp)
+```
+
+\newpage
+
+```{r who_drink_cp_plot,echo=FALSE}
+cp_plot(who_drink_cp)
+```
+
+\newpage
+
+```{r epa_adult_cp ,echo=FALSE}
+cp_plot(epa_adult_cp)
+```
+
+\newpage
+
+```{r who_rec_low_cp, echo=FALSE}
+cp_plot(who_rec_low_cp)
+```
+
+\newpage
+
+```{r mult_state_rec_cp,  echo=FALSE}
+cp_plot(mult_state_rec_cp)
+```
+
+\newpage
+
+```{r il_org_cp, echo=FALSE}
+cp_plot(il_org_cp)
+```
+
+\newpage
+
+```{r ma_ri_cp, echo=FALSE}
+cp_plot(ma_ri_cp)
+```
+
+\newpage
+
+```{r who_rec_med_cp, echo=FALSE}
+cp_plot(who_rec_med_cp)
+```
+
+\newpage
 
 #References
