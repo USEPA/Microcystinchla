@@ -1,5 +1,5 @@
 ---
-title: 'Associations between Chlorophyll *a* and U.S. Environmental Protection Agency Microcystin Health Advisory Concentrations'
+title: 'Associations between Chlorophyll *a* and Microcystin-LR Health Advisory Concentrations'
 author:  
 - name: Jeffrey W. Hollister
   affilnum: 1
@@ -32,10 +32,8 @@ abstract: no
 ---
 
 <!--
-
-%\VignetteEngine{knitr::knitr}
+%\VignetteEngine{knitr::rmarkdown}
 %\VignetteIndexEntry{Microsystin Chlorophyll Manusript}
-
 -->
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -44,8 +42,9 @@ abstract: no
 library("knitr")
 opts_chunk$set(dev = 'pdf', fig.width=6, fig.height=5)
 
-# Table Captions from @DeanK on http://stackoverflow.com/questions/15258233/using-table-caption-on-r-markdown-file-using-knitr-to-use-in-pandoc-to-convert-t
-#Figure captions are handled by LaTeX
+# Table Captions from @DeanK on http://stackoverflow.com/questions/15258233/
+# using-table-caption-on-r-markdown-file-using-knitr-to-use-in-pandoc-to-convert-t
+# Figure captions are handled by LaTeX
 
 knit_hooks$set(tab.cap = function(before, options, envir) {
                   if(!before) { 
@@ -61,7 +60,7 @@ knit_hooks$set(output = function(x, options) {
 })
 ```
 
-```{r analysis , include=FALSE, echo=FALSE, cache=FALSE}
+```{r analysis , include=FALSE, echo=FALSE, cache=TRUE}
 #All analysis in here, that way all bits of the paper have access to the final objects
 #Place tables and figures and numerical results where they need to go.
 ################################################################################
@@ -72,7 +71,7 @@ devtools::install_github("jhollist/microcystinchla",
 library("microcystinchla")
 library("dplyr")
 library("magrittr")
-
+library("pander")
 
 
 ################################################################################
@@ -81,14 +80,17 @@ library("magrittr")
 data_url<-"http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Recreational_ConditionEstimates_20091123.csv"
 nla_dat <- get_nla(data_url)
 nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
+
 ################################################################################
 # Condtional Probability
 ################################################################################
-adult_ha_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+mc_guides <- c(0.04, 0.3, 0.8, 1, 1.6, 4, 6, 10, 14, 20)
+mc_names <- c("")
+epa_adult <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(1.5999), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
-child_ha_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+epa_child <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(0.2999), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
@@ -109,6 +111,58 @@ child_ha_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 
 #Methods
 
+```{r microcystin_levels,echo=FALSE,results='asis'}
+source_of_stnd <- c("WHO, IN",
+                    "WHO, IN, KS",
+                    "WHO, IN, IA, KS, NE, OH",
+                    "WHO",
+                    "WHO, OH, OR",
+                    "MN",
+                    "CA",
+                    "IL, OR",
+                    "MA, RI",
+                    "OH, VT, VA, WA",
+                    "U.S. EPA",
+                    "U.S. EPA")
+type_of_stnd <- c("Recreational",
+                  "Recreational",
+                  "Recreational",
+                  "Recreational",
+                  "Drinking",
+                  "Drinking",
+                  "Recreational",
+                  "Recreational",
+                  "Recreational",
+                  "Recreational",
+                  "Drinking",
+                  "Drinking")
+concentration <- c("2-4 ug/l",
+                   "10-20 ug/l",
+                   "20-2000 ug/l",
+                   ">2000 ug/l",
+                   "1 ug/l",
+                   "0.04 ug/l",
+                   "0.8 ug/l",
+                   "10 ug/l",
+                   "14 ug/l",
+                   "6 ug/l",
+                   "0.3 ug/l",
+                   "1.6 ug/l")
+#note <- c("Low probability of adverse health effects, state advisories",
+#          "Moderate probability of adverse health effects, state advisories",
+#          "High probability of adverse health effects, state advisories, These higher #concentrations typically only seen in visible scums/algal mats",
+#          "Very high probability of adverse health effects, These higher concentrations #typically only seen in visible scums/algal mats",
+#          "","","","","","",
+#          "Children younger than school age",
+#          "Individuals School age and older")
+mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration) %>%
+  arrange(type_of_stnd)
+names(mc_conc_table)<-c("Source","Type","Concentration")
+pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+```
+
+Based on the range of microcystin concentrations used in various policy settings, we evaulated associated chlorohpyll *a* concentrations for an effect at 0.04, 0.3, 0.8, 1, 1.6, 4, 6, 10, 14, and 20 ug/l.   
+
 ##Data and Study Area
 
 #Results
@@ -121,13 +175,13 @@ child_ha_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 \newpage
 
 ```{r adult_healt_cprob,echo=FALSE}
-cp_plot(adult_ha_cp)
+cp_plot(epa_adult)
 ```
 
 \newpage
 
 ```{r child_healt_cprob,echo=FALSE}
-cp_plot(child_ha_cp)
+cp_plot(epa_child)
 ```
 
 
