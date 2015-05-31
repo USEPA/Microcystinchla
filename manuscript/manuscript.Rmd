@@ -133,6 +133,16 @@ who_rec_med_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 
 #Introduction
 
+EPA just released HA for MC
+
+MC requires lab work
+
+MC associated with Chl a
+
+Use association and cpa to id chl a concentration that indicative of exceeding HA
+
+
+
 #Methods
 
 ```{r microcystin_levels,echo=FALSE,results='asis'}
