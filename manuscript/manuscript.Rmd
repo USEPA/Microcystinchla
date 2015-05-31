@@ -85,37 +85,29 @@ nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
 ################################################################################
 # Condtional Probability
 ################################################################################
-mc_guides <- c(0.04, 0.3, 0.8, 1, 1.6, 4, 6, 10, 14, 20)
-mc_names <- c("MN","EPA_Child","CA","WHO","EPA_Adult","WHO","Multiple","Multiple","Mulitple","Multiple")
-mn_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+mc_guides <- c(0.3, 1, 1.6, 2, 4, 10, 20)
+mc_names <- c("EPA_Child","WHO","EPA_Adult","WHO","WHO","WHO","WHO")
+
+epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-ca_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+who_rec_low2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-who_rec_low_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+who_rec_med1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
-mult_state_rec_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
+who_rec_med2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
-                     ci = TRUE, R = 100)
-il_org_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[8]), ProbComp = "gt", Exceed = "gte",
-                     ci = TRUE, R = 100)
-ma_ri_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[9]), ProbComp = "gt", Exceed = "gte",
-                     ci = TRUE, R = 100)
-who_rec_med_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[10]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 ```
@@ -146,16 +138,11 @@ Use association and cpa to id chl a concentration that indicative of exceeding H
 #Methods
 
 ```{r microcystin_levels,echo=FALSE,results='asis'}
-source_of_stnd <- c("WHO, IN",
-                    "WHO, IN, KS",
-                    "WHO, IN, IA, KS, NE, OH",
+source_of_stnd <- c("WHO",
                     "WHO",
-                    "WHO, OH, OR",
-                    "MN",
-                    "CA",
-                    "IL, OR",
-                    "MA, RI",
-                    "OH, VT, VA, WA",
+                    "WHO",
+                    "WHO",
+                    "WHO",
                     "U.S. EPA",
                     "U.S. EPA")
 type_of_stnd <- c("Recreational",
@@ -164,29 +151,19 @@ type_of_stnd <- c("Recreational",
                   "Recreational",
                   "Drinking",
                   "Drinking",
-                  "Recreational",
-                  "Recreational",
-                  "Recreational",
-                  "Recreational",
-                  "Drinking",
                   "Drinking")
 concentration <- c("2-4 ug/l",
                    "10-20 ug/l",
                    "20-2000 ug/l",
                    ">2000 ug/l",
                    "1 ug/l",
-                   "0.04 ug/l",
-                   "0.8 ug/l",
-                   "10 ug/l",
-                   "14 ug/l",
-                   "6 ug/l",
                    "0.3 ug/l",
                    "1.6 ug/l")
-#note <- c("Low probability of adverse health effects, state advisories",
-#          "Moderate probability of adverse health effects, state advisories",
-#          "High probability of adverse health effects, state advisories, These higher #concentrations typically only seen in visible scums/algal mats",
-#          "Very high probability of adverse health effects, These higher concentrations #typically only seen in visible scums/algal mats",
-#          "","","","","","",
+#note <- c("Low probability of adverse health effects",
+#          "Moderate probability of adverse health effects",
+#          "High probability of adverse health effects, These higher #concentrations typically only seen in visible scums/algal mats",
+#          "Very high probability of adverse health effects",
+#          "",
 #          "Children younger than school age",
 #          "Individuals School age and older")
 mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration) %>%
@@ -195,7 +172,7 @@ names(mc_conc_table)<-c("Source","Type","Concentration")
 pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 ```
 
-Based on the range of microcystin concentrations used in various policy settings, we evaulated associated chlorohpyll *a* concentrations for an effect at 0.04, 0.3, 0.8, 1, 1.6, 4, 6, 10, 14, and 20 ug/l.   
+We evaulated associated chlorohpyll *a* concentrations for an effect for each of the WHO and EPA levels.  These were  0.3, 1, 1.6, 2, 4, 10, and 20 ug/l.   
 
 ##Data and Study Area
 
@@ -206,20 +183,8 @@ Based on the range of microcystin concentrations used in various policy settings
 
 #Figures
 
-
-```{r mn_cp_plot,echo=FALSE}
-cp_plot(mn_cp)
-```
-
-\newpage
-
 ```{r epa_child_cp_plot,echo=FALSE}
 cp_plot(epa_child_cp)
-```
-
-
-```{r ca_cp_plot,echo=FALSE}
-cp_plot(ca_cp)
 ```
 
 \newpage
@@ -236,34 +201,25 @@ cp_plot(epa_adult_cp)
 
 \newpage
 
-```{r who_rec_low_cp, echo=FALSE}
-cp_plot(who_rec_low_cp)
+```{r who_rec_low1_cp, echo=FALSE}
+cp_plot(who_rec_low1_cp)
 ```
 
 \newpage
 
-```{r mult_state_rec_cp,  echo=FALSE}
-cp_plot(mult_state_rec_cp)
+```{r who_rec_low2_cp, echo=FALSE}
+cp_plot(who_rec_low2_cp)
 ```
-
 \newpage
 
-```{r il_org_cp, echo=FALSE}
-cp_plot(il_org_cp)
+```{r who_rec_med1_cp, echo=FALSE}
+cp_plot(who_rec_med1_cp)
 ```
-
 \newpage
 
-```{r ma_ri_cp, echo=FALSE}
-cp_plot(ma_ri_cp)
+```{r who_rec_med2_cp, echo=FALSE}
+cp_plot(who_rec_med2_cp)
 ```
-
-\newpage
-
-```{r who_rec_med_cp, echo=FALSE}
-cp_plot(who_rec_med_cp)
-```
-
 \newpage
 
 #References
