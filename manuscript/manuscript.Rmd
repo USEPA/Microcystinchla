@@ -87,29 +87,49 @@ nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
 ################################################################################
 mc_guides <- c(0.3, 1, 1.6, 2, 4, 10, 20)
 mc_names <- c("EPA_Child","WHO","EPA_Adult","WHO","WHO","WHO","WHO")
+mc_chla <- vector("numeric",length(mc_guides))
 
 epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[1] <- get_chla(epa_child_cp,0.5)
+
 who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[2] <- get_chla(who_drink_cp,0.5)
+
 epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[3] <- get_chla(epa_adult_cp,0.5)
+
 who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
+
 who_rec_low2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[5] <- get_chla(who_rec_low2_cp,0.5)
+
 who_rec_med1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
+
+mc_chla[6] <- get_chla(who_rec_med1_cp,0.5)
+
 who_rec_med2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
+mc_chla[7] <- get_chla(who_rec_med2_cp,0.5)
 ```
 
 
@@ -178,6 +198,10 @@ We evaulated associated chlorohpyll *a* concentrations for an effect for each of
 
 #Results
 
+```{r mc_chla_table, echo=FALSE}
+mc_chla_tbl <- data.frame(Source=mc_names,Microcystin=mc_guides,Chlorophyll=mc_chla)
+pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+```
 
 #Discussion
 
