@@ -6,7 +6,7 @@
 #' data, the impaired sites, and the unimpaired sites, and a conditional probability 
 #' plot with the conditional probability on the y-axis the stressor on the x-axis.  
 #' 
-#' @param condprobObj An object of class condprob is required.  Data and parameters
+#' @param cp_obj An object of class condprob is required.  Data and parameters
 #'                    from this object are used to create the plot
 #' @param min_samp minimum sample size to plot probabilities for. Defaults to 10.
 #' @param ... Used primarily to pass other ggplot2 plotting options to control title, 
@@ -21,8 +21,8 @@
 #' @export
 #' @examples
 #' cp_plot(adult_ha)
-cp_plot <- function(condprobObj, min_samp = 10, ...) {
-    dat<-data.frame(condprobObj[1:5])
+cp_plot <- function(cp_obj, min_samp = 10, ...) {
+    dat<-data.frame(cp_obj[1:5])
     dat<-dat[1:(nrow(dat)-min_samp),]
     cplot <- ggplot(dat,aes(x=X, y=Bootstrap.Probability)) +
       geom_point() + 

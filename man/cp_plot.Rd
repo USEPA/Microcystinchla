@@ -4,10 +4,10 @@
 \alias{cp_plot}
 \title{Function to plot condprob object}
 \usage{
-cp_plot(condprobObj, min_samp = 10, ...)
+cp_plot(cp_obj, min_samp = 10, ...)
 }
 \arguments{
-\item{condprobObj}{An object of class condprob is required.  Data and parameters
+\item{cp_obj}{An object of class condprob is required.  Data and parameters
 from this object are used to create the plot}
 
 \item{min_samp}{minimum sample size to plot probabilities for. Defaults to 10.}
