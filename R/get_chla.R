@@ -7,5 +7,6 @@
 #' @param prob Exceedence probability to return chl a 
 #' @export
 get_chla <- function(cp_obj,prob){
-  
+  transf_chla <- min(cp_obj$X[cp_obj$Upper.CI >= prob])
+  return(exp(transf_chla))
 }
