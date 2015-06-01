@@ -198,7 +198,7 @@ We evaulated associated chlorohpyll *a* concentrations for an effect for each of
 
 #Results
 
-```{r mc_chla_table, echo=FALSE}
+```{r mc_chla_table, results='asis', echo=FALSE}
 mc_chla_tbl <- data.frame(Source=mc_names,Microcystin=mc_guides,Chlorophyll=mc_chla)
 pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 ```
