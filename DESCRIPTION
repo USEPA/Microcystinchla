@@ -2,9 +2,9 @@ Package: microcystinchla
 Title: Code, Data, and Manuscript for NLA, microcystin, Chl analysis
 Version: 0.1
 Authors@R: 
-  c(person("Jeffrey","Hollister","W",role=c("aut","cre"),email="hollister.jeff@epa.gov"),
-    person("Betty","Kreakie", "J", role=c("aut"),email="kreakie.betty@epa.gov"),
-    person("Dorothy","Kellogg", "Q",role=c("aut"),email="qkellogg@gmail.com"))
+  c(person(given="Jeffrey",family="Hollister",middle="W",role=c("aut","cre"),email="hollister.jeff@epa.gov"),
+    person(given="Betty",family="Kreakie", middle="J", role=c("aut"),email="kreakie.betty@epa.gov"),
+    person(given="Dorothy",family="Kellogg", middle="Q",role=c("aut"),email="qkellogg@gmail.com"))
 Description: The code, data, and submitted manuscript for \"Chlorophyll and USEPA 
   Microcystin Health Advisory Associations\" are all contained within this package.
 Depends: R (>= 3.1.3)

@@ -42,8 +42,10 @@ abstract: no
 ################################################################################
 #Load packages
 ################################################################################
-devtools::install_github("jhollist/microcystinchla",
-                         auth_token = getOption("Github_Access"))
+if(!require(microcystinchla)){
+  devtools::install_github("jhollist/microcystinchla",
+                           auth_token = getOption("Github_Access"))
+}
 library("microcystinchla")
 library("dplyr")
 library("magrittr")
@@ -80,7 +82,7 @@ knit_hooks$set(output = function(x, options) {
 ################################################################################
 data_url<-"http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Recreational_ConditionEstimates_20091123.csv"
 nla_dat <- get_nla(data_url)
-nla_dat <- mutate(nla_dat,log_chla = log(CHLA),log_micro = log(MCYST_TL_UGL))
+nla_dat <- mutate(nla_dat,log_chla = log10(CHLA),log_micro = log10(MCYST_TL_UGL))
 
 ################################################################################
 # Condtional Probability
@@ -90,43 +92,43 @@ mc_names <- c("EPA_Child","WHO","EPA_Adult","WHO","WHO","WHO","WHO")
 mc_chla <- vector("numeric",length(mc_guides))
 
 epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[1] <- get_chla(epa_child_cp,0.5)
 
 who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[2] <- get_chla(who_drink_cp,0.5)
 
 epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[3] <- get_chla(epa_adult_cp,0.5)
 
 who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
 
 who_rec_low2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[5] <- get_chla(who_rec_low2_cp,0.5)
 
 who_rec_med1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[6] <- get_chla(who_rec_med1_cp,0.5)
 
 who_rec_med2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-                     xImpair = log(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
+                     xImpair = log10(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100)
 
 mc_chla[7] <- get_chla(who_rec_med2_cp,0.5)
@@ -138,15 +140,14 @@ mc_chla[7] <- get_chla(who_rec_med2_cp,0.5)
 \vspace{2mm}\hrule
 
 <!-- Abstract is being wrapped in latex here so that all analysis can be run in the chunk above and the results reproducibly referenced in the abstract. -->
-Cyanobacteria harmful algal blooms (cHABs) are associated with a wide arrange of adverse health effects that stem mostly from the presence of cyanotoxins.  To help protect agains the impacts, several health advisory levels have been set for some of these toxins, in particular, one of the most common toxins, microcystin, has several advisory levels set for drinking water and recreational use and managing water bodies to meet those levels could have far reaching benefits.  However, measuring micorcystin can not currently be done *in situ* and requires samples be processed in a lab.  This time consuming and expensive.  It is possible to find reliable indicators that may be estimated quickly and *in situ* as a first defense agains high level of microcystin.  In particular, chlorophyll *a* has been shown to be postively associated with microcystin.  In this paper we use this assocation to provide estimates of chlorophyll *a* that if exceeded would be indiciative of a higher likelihood of exceeding select concentrations of microcystin.  Using the 2007 National Lakes Assessment and a conditional probability appoach that has been used in other water quality settings, we idenfify chlorophyll *a* concentrations that are more likely than not to be associated with an exceedance of a microcystin health advisory level.  We look at the recent US EPA standards for drinking water as well as the World Health Organization levels for drinking water and recerational use.  For microcystin concentrations of 0.3, 1, 1.6, 2. and 4 we find chlorophyll *a* concentrations of `r mc_chla[1]`, `r mc_chla[2]`, `r mc_chla[3]`, `r mc_chla[4]`, and `r mc_chla[5]`, respectively.  When managing for these various microsystin levels exceed these reproted chlorophyll *a* concentratoins should be a trigger for further testing and possibly managment action.   
+Cyanobacteria harmful algal blooms (cHABs) are associated with a wide range of adverse health effects that stem mostly from the presence of cyanotoxins.  To help protect against these impacts, several health advisory levels have been set for some toxins.  In particular, one of the most common toxins, microcystin, has several advisory levels set for drinking water and recreational use and managing water bodies to meet those levels could have far reaching benefits.  However, compared to other water quality measures, measurements of microcystin are not common and current field measurement techniques have limited precision and accuracy.  Addressing these issues will take time and resourced.  Thus, there is utility in finding indicators of microcystin that are already widely available, can be estimated quickly and *in situ*, and used as a first defense against high levels of microcystin.  In particular, chlorophyll *a* is very commonly measured, can be estimated *in situ*, and has been shown to be postively associated with microcystin.  In this paper we use this assocation to provide estimates of chlorophyll *a* that if exceeded would be indiciative of a higher probability of exceeding select health advisory concentrations for microcystin-LR.  Using the 2007 National Lakes Assessment and a conditional probability appoach that has been used in other water quality settings, we idenfify chlorophyll *a* concentrations that are more likely than not to be associated with an exceedance of a microcystin health advisory level.  We look at the recent US EPA standards for drinking water as well as the World Health Organization levels for drinking water and recerational use.  For microcystin concentrations of 0.3, 1, 1.6, and 2 we find chlorophyll *a* concentrations of `r mc_chla[1]`, `r mc_chla[2]`, `r mc_chla[3]`, and `r mc_chla[4]`, respectively.  When managing for these various microsystin levels exceeding these reproted chlorophyll *a* concentrations should be a trigger for further testing and possible managment action.   
 
 \vspace{3mm}\hrule
 \doublespace
 
 #Introduction
 
-In the summer of 2014, the city of Toledo, OH was forced to shut down their municipal water supply due in part to an excess of Microcystin-LR that resulted from a ongoing cyanobacterial harmful algal bloom (cHAB) in Lake Erie.  Since this event, signficant legislation has been passed in the United States and the US Environmental Protection Agency (USEPA) has released suggested microcystin-LR concentrations that would trigger health advisories.  While these levels and association advisories are likey to help mitigate the impacts from harmful algal blooms, they are not without complications.  
-
+In the summer of 2014, the city of Toledo, OH was forced to shut down their municipal water supply due in part to an excess of Microcystin-LR that resulted from a ongoing cyanobacterial harmful algal bloom (cHAB) in Lake Erie.  Since this event, signficant legislation has been passed in the United States and the US Environmental Protection Agency (USEPA) has released suggested microcystin-LR concentrations that would trigger health advisories.  While these levels and associated advisories are likey to help mitigate the impacts from harmful algal blooms, they are not without complications.  
 One of these complications is that they rely on availble measurments of Microcysin-LR which requires taking regular water samples and having those samples process in a lab to determine the toxin concentration [REFS].  This has the potentially to be costly and time consuming both factors which could limit monitoring efforts.  Fortunately, microcystin-LR has been shown to be associated with several other, more easily measured components of water quality.
 
 Chlorophyll *a* is one of the most commonly measured components of water quality that is also known to be strongly associated with Microsystin-LR concentrations [REFS].  Additionally there are many rapid measurements for assessing chlorophyll *a* levels *in situ*.  For instance, there are small or hand held flourometers that provide reliable measurements [REFS].   Given these facts, it might be possible to identify chlorophyll *a* concentrations that would be associated with the various Microcystin-LR health advisory levels.  Identifying these associations would provide another reliable tool for water resource managers to use to help manage the threat to public health posed by cHABs.
@@ -194,14 +195,14 @@ names(mc_conc_table)<-c("Source","Type","Concentration")
 pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 ```
 
-We evaulated associated chlorohpyll *a* concentrations for an effect for each of the WHO and EPA levels.  These were  0.3, 1, 1.6, 2, 4, 10, and 20 ug/l.   
+We evaulated associated chlorohpyll *a* concentrations for an effect for each of the WHO and EPA levels. Lakes with higher microcystin-LR concentrations were rare. Only `r 100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=10])/nrow(nla_dat))` % of lakes sampled had a concentration greater than 10.  For this analysis we focus on the microcystin concentrations that are better represented in the NLA data. These were  0.3, 1, 1.6, and 2 ug/l.
 
 ##Data and Study Area
 
 #Results
 
 ```{r mc_chla_table, results='asis', echo=FALSE}
-mc_chla_tbl <- data.frame(Source=mc_names,Microcystin=mc_guides,Chlorophyll=mc_chla)
+mc_chla_tbl <- data.frame(Source=mc_names,Microcystin=mc_guides,Chlorophyll=mc_chla)[1:4,]
 pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 ```
 
@@ -210,42 +211,27 @@ pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(2
 #Figures
 
 ```{r epa_child_cp_plot,echo=FALSE}
-cp_plot(epa_child_cp)
+plot_cp(epa_child_cp,x = "Log 10 Chlorophyll", y = "Probability of Exceeding EPA Child HA")
 ```
 
 \newpage
 
 ```{r who_drink_cp_plot,echo=FALSE}
-cp_plot(who_drink_cp)
+plot_cp(who_drink_cp, x = "Log 10 Chlorophyll", y = "Probability of Exceeding WHO Drinking HA")
 ```
 
 \newpage
 
 ```{r epa_adult_cp ,echo=FALSE}
-cp_plot(epa_adult_cp)
+plot_cp(epa_adult_cp, x = "Log 10 Chlorophyll", y = "Probability of Exceeding EPA Adult HA")
 ```
 
 \newpage
 
 ```{r who_rec_low1_cp, echo=FALSE}
-cp_plot(who_rec_low1_cp)
+plot_cp(who_rec_low1_cp, x = "Log 10 Chlorophyll", y = "Probability of Exceeding WHO Low Probability HA")
 ```
 
-\newpage
-
-```{r who_rec_low2_cp, echo=FALSE}
-cp_plot(who_rec_low2_cp)
-```
-\newpage
-
-```{r who_rec_med1_cp, echo=FALSE}
-cp_plot(who_rec_med1_cp)
-```
-\newpage
-
-```{r who_rec_med2_cp, echo=FALSE}
-cp_plot(who_rec_med2_cp)
-```
 \newpage
 
 #References
