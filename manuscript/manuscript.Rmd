@@ -1,18 +1,22 @@
 ---
-title: 'Associations between Chlorophyll *a* and various Microcystin-LR Health Advisory Concentrations'
-author:  
-- name: Jeffrey W. Hollister
-  affilnum: 1
-  email: hollister.jeff@epa.gov
-- name:  Betty J. Kreakie
-  affilnum: 1
-- name: Dorothy Q. Kellog
-  affilnum: 2
-affiliation:
+title: Associations between Chlorophyll *a* and various Microcystin-LR Health Advisory
+  Concentrations
+author:
 - affilnum: 1
-  affil: US Environmental Protection Agency, Office of Research and Development, National Health and Environmental Effects Research Laboratory, Atlantic Ecology Division, 27 Tarzwell Drive  Narragansett, RI, 02882, USA
+  email: hollister.jeff@epa.gov
+  name: Jeffrey W. Hollister
+- affilnum: 1
+  name: Betty J. Kreakie
 - affilnum: 2
-  affil: University of Rhode Island, Department of Natural Resources Science, Kingston, RI, 02882, USA
+  name: Dorothy Q. Kellog
+affiliation:
+- affil: US Environmental Protection Agency, Office of Research and Development, National
+    Health and Environmental Effects Research Laboratory, Atlantic Ecology Division,
+    27 Tarzwell Drive  Narragansett, RI, 02882, USA
+  affilnum: 1
+- affil: University of Rhode Island, Department of Natural Resources Science, Kingston,
+    RI, 02882, USA
+  affilnum: 2
 output:
   pdf_document:
     fig_caption: yes
@@ -21,13 +25,13 @@ output:
     template: components/manuscript.latex
   html_document: null
   word_document: null
-fontsize: 11pt
 capsize: normalsize
 csl: components/ecology.csl
 documentclass: article
-spacing: doublespacing
+fontsize: 11pt
 linenumbers: no
 bibliography: components/manuscript.bib
+spacing: doublespacing
 abstract: no
 ---
 
@@ -150,9 +154,9 @@ Cyanobacteria harmful algal blooms (cHABs) are associated with a wide range of a
 
 #Introduction
 
-In the summer of 2014, the city of Toledo, OH was forced to shut down their municipal water supply due in part to an excess of Microcystin-LR that resulted from a ongoing cyanobacteria harmful algal bloom (cHAB) in Lake Erie.  Since this event, significant legislation has been passed in the United States and the US Environmental Protection Agency (USEPA) has released suggested microcystin-LR concentrations that would trigger health advisories.  While these levels and associated advisories are likely to help mitigate the impacts from harmful algal blooms, they are not without complications.  
+In the summer of 2014, the city of Toledo, OH was forced to shut down their municipal water supply due in part to an excess of microcystin-LR that resulted from a ongoing cyanobacteria harmful algal bloom (cHAB) in Lake Erie [REFS].  Since this event, significant legislation has been passed in the United States and the US Environmental Protection Agency (USEPA) has released suggested microcystin-LR concentrations that would trigger health advisories.  MORE ON THE LEVELS. While these levels and associated advisories are likely to help mitigate the impacts from harmful algal blooms, they are not without complications.  
 
-One of these complications is that they rely on available measurements of microcystin-LR.  This toxin can be measured in the field using test strips but these are a coarse measure at best and currently available test strips focus on 1 and 10 $\mu$g/L [REFS].  Measurements with greater accuracy and precision requires taking regular water samples and having those samples process in a lab to determine the toxin concentration [REFS].  This has the potentially to be costly and time consuming both factors which could limit monitoring efforts.  Fortunately, microcystin-LR has been shown to be associated with several other, more easily measured components of water quality.
+One of these complications is that they rely on available measurements of microcystin-LR.  This toxin can be measured in the field using test strips but these are a coarse measure at best and currently available test strips focus on 1 and 10 $\mu$g/L [REFS].  Measurements with greater accuracy and precision require taking regular water samples and having those samples processed in a lab to determine the toxin concentration [REFS].  This has the potentially to be costly and time consuming both factors which could limit monitoring efforts.  Additionally, microcystin-LR is not currently a routine water quality measurment and thus availability of data will continue to be a problem. Fortunately, microcystin-LR has been shown to be associated with several other, more easily measured components of water quality.
 
 Chlorophyll *a* is a very commonly measured components of water quality that is also known to be associated with Microsystin-LR concentrations [REFS].  Additionally there are many rapid measurements for assessing chlorophyll *a* levels *in situ*.  For instance, there are small or hand held flourometers that provide reliable measurements [REFS].   Given these facts, it might be possible to identify chlorophyll *a* concentrations that would be associated with the various Microcystin-LR health advisory levels.  Identifying these associations would provide another reliable tool for water resource managers to use to help manage the threat to public health posed by cHABs.
 
