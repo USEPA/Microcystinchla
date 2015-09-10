@@ -13,6 +13,6 @@ get_nla<-function(data_url){
     filter(VISIT_NO == 1) %>%
     filter(SITE_TYPE == "PROB_Lake") %>%
     select(SITE_ID,LAT_DD,LON_DD,ST,EPA_REG,WSA_ECO3,WSA_ECO9,LAKE_ORIGIN,CHLA,
-           MCYST_TL_UGL)
+           MCYST_TL_UGL,WGT_NLA)
   return(dat)
 }
