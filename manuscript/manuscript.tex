@@ -191,7 +191,7 @@ microcystin health advisory level. We look at the recent US EPA
 standards for drinking water as well as the World Health Organization
 levels for drinking water and recreational use. For microcystin
 concentrations of 0.3, 1, 1.6, and 2 we find chlorophyll \emph{a}
-concentrations of 25.1, 69.6, 84.96, and 113.14, respectively. When
+concentrations of 20.8, 71.2, 92.16, and 110.16, respectively. When
 managing for these various microcystin levels exceeding these reported
 chlorophyll \emph{a} concentrations should be a trigger for further
 testing and possible management action.
@@ -243,11 +243,69 @@ microcystin-LR concentrations. Thus, the goal of this paper is to utlize
 the National Lakes Assessment data and identify chlorophyll \emph{a}
 concentrations that are associated with higher probabilities of
 exceeding several microcystin-LR health advisory concentrations {[}NLA
-REF{]}. So that others may repeat this analysis, the data, code, and
-this manuscript are freely available via
+REF{]}. So that others may repeat or adjust this analysis, the data,
+code, and this manuscript are freely available via
 \href{https://github.com/USAPE/microcystinchla}{\url{https://github.com/USAPE/microcystinchla}}.
 
 \section{Methods}\label{methods}
+
+We evaluated associated chlorophyll \emph{a} concentrations for an
+effect for each of the WHO and U.S. EPA levels (Table
+\ref{tab:microcystin_levels}). Lakes with higher microcystin-LR
+concentrations were rare. Only 1.16 \% of lakes sampled had a
+concentration greater than 10. For this analysis we focus on the
+microcystin concentrations that are better represented in the NLA data.
+These were 0.3, 1, 1.6, and 2 \(\mu\)g/L.
+
+\section{Results}\label{results}
+
+(Table \ref{tab:mc_chla_table})
+
+(Figure \ref{fig:epa_child_cp_plot})
+
+(Figure \ref{fig:who_drink_cp_plot})
+
+(Figure \ref{fig:epa_adult_cp})
+
+(Figure \ref{fig:who_rec_low1_cp})
+
+\section{Discussion}\label{discussion}
+
+\section{Figures}\label{figures}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{manuscript_files/figure-latex/epa_child_cp_plot-1.pdf}
+\caption{Plot of \label{fig:epa_child_cp_plot}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{manuscript_files/figure-latex/who_drink_cp_plot-1.pdf}
+\caption{Plot of \label{fig:who_drink_cp_plot}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{manuscript_files/figure-latex/epa_adult_cp -1.pdf}
+\caption{Plot of \label{fig:epa_adult_cp}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{manuscript_files/figure-latex/who_rec_low1_cp-1.pdf}
+\caption{Plot of \label{fig:who_rec_low1_cp}}
+\end{figure}
+
+\newpage
+
+\section{Tables}\label{tables}
 
 \begin{longtable}[c]{@{}lll@{}}
 \toprule
@@ -328,102 +386,84 @@ Recreational
 \bottomrule
 \end{longtable}
 
-We evaluated associated chlorophyll \emph{a} concentrations for an
-effect for each of the WHO and EPA levels. Lakes with higher
-microcystin-LR concentrations were rare. Only 1.1616651 \% of lakes
-sampled had a concentration greater than 10. For this analysis we focus
-on the microcystin concentrations that are better represented in the NLA
-data. These were 0.3, 1, 1.6, and 2 \(\mu\)g/L.
+\newpage
 
-\section{Results}\label{results}
+\begin{verbatim}
+## Warning in split.large.cells(t): length of split.cells vector is smaller
+## than data. Default value will be used for other cells
+\end{verbatim}
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{verbatim}
+## Warning in split.large.cells(t.colnames): length of split.cells vector is
+## smaller than data. Default value will be used for other cells
+\end{verbatim}
+
+\begin{longtable}[c]{@{}llll@{}}
 \toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
 Source
 \strut\end{minipage} &
-\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.16\columnwidth}\raggedright\strut
+Type
+\strut\end{minipage} &
+\begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
 Microcystin
 \strut\end{minipage} &
-\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
 Chlorophyll
 \strut\end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-EPA\_Child
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+U.S. EPA
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Drinking
+\strut\end{minipage} &
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
 0.3
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-25.1
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+20.8
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
 WHO
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Drinking
+\strut\end{minipage} &
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-69.6
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+71.2
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-EPA\_Adult
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+U.S. EPA
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Drinking
+\strut\end{minipage} &
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
 1.6
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-84.96
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+92.16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
 WHO
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Recreational
+\strut\end{minipage} &
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
 2
 \strut\end{minipage} &
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
-113.1
+\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+110.2
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
-
-\section{Discussion}\label{discussion}
-
-\section{Figures}\label{figures}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{manuscript_files/figure-latex/epa_child_cp_plot-1.pdf}
-\caption{}
-\end{figure}
-
-\newpage
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{manuscript_files/figure-latex/who_drink_cp_plot-1.pdf}
-\caption{}
-\end{figure}
-
-\newpage
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{manuscript_files/figure-latex/epa_adult_cp -1.pdf}
-\caption{}
-\end{figure}
-
-\newpage
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{manuscript_files/figure-latex/who_rec_low1_cp-1.pdf}
-\caption{}
-\end{figure}
-
-\newpage
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
