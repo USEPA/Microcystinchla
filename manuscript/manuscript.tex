@@ -251,10 +251,20 @@ code, and this manuscript are freely available via
 
 \subsection{Data}\label{data}
 
+We used the 2007 National Lakes Assessment (NLA) water quality and
+microcystin-LR concentration data {[}REF{]}. The NLA is a probability
+based design that, when using the provided sample weights, can be used
+to provide unbiased estimates of lake condition for all lakes in the
+original sample frame (e.g.~lakes greater than 4ha in the conterminous
+US). These data represent a snapshot of water quality from the summer of
+2007 and data on chlorophyll \emph{a} and microcystin-LR concentrations
+are available for lakes. All results are reported using weighted
+estimates.
+
 \subsection{Conditional Probability
 Analysis}\label{conditional-probability-analysis}
 
-We used a conditional probability analysis approach to explore
+We used a conditional probability analysis (CPA) approach to explore
 associations between chlorophyll \emph{a} concentrations and World
 Health Organization (WHO) and U.S. Environmental Protection Agency (U.S.
 EPA) microcystin-LR health advisory levels {[}REFS{]}. Many levels have
@@ -263,6 +273,19 @@ higher microcystin-LR concentrations in the NLA were rare. Only 1.16 \%
 of lakes sampled had a concentration greater than 10. Thus, for this
 analysis we focus on the microcystin concentrations that are better
 represented in the NLA data. These were 0.3, 1, 1.6, and 2 \(\mu\)g/L.
+
+A detailed discussion of CPA is beyond the scope of this paper, but see
+Paul et al. {[}-REF{]} and Hollister et al. {[}-REF{]} for details. For
+this analysis, we used CPA to examine how the conditional probability of
+exceeding one of the health advisory changes as chlorophyll \emph{a}
+increases in a lake. The 95\% confidence intervals were calculated from
+1000 bootstrapped samples. To identify chlorophyll \emph{a}
+concentrations of concern we used a 50\% conditional probability of
+exceeding each health advisory level and extracted the minimum
+chlorophyll \emph{a} concentration that was associated with the upper
+confidence level being 50\% or greater. Details of the specific
+implementation we used are available at
+\url{https://github.com/USEPA/microcystinchla}.
 
 \section{Results}\label{results}
 
@@ -300,10 +323,6 @@ Levels. \label{fig:chla_micro_cdf}}
 \end{figure}
 
 \newpage
-
-\begin{verbatim}
-## Loading required package: grid
-\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
