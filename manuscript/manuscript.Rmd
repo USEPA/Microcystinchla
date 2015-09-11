@@ -187,13 +187,15 @@ We used a conditional probability analysis approach to explore associations betw
 #Figures
 
 ```{r chla_micro_scatter, echo=FALSE, fig.width=8, fig.cap="Scatterplot showing association betweeen chlorophyll \\it{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
-plot_scatter(nla_dat,CHLA,MCYST_TL_UGL,viridis(1))
+plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
+             x=expression(paste('Log10 Chl ', italic("a"),' (',mu,'g/L)')),
+             y=expression(paste('Log10 microcystin-LR',' (',mu,'g/L)')))
 ```
 
 \newpage
 
 ```{r chla_micro_cdf, echo=FALSE, fig.width=8, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:chla_micro_cdf}"}
-plot_cdf()
+plot_cdf(nla_dat[,c("log_chla","log_micro")],"")
 ```
 
 \newpage

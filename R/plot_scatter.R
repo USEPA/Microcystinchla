@@ -7,10 +7,10 @@
 
 plot_scatter<-function(df,xvar,yvar,pt_col=1,...){
   options(scipen=5)
+  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]])
+  xdf<-xdf[complete.cases(xdf),]
   x <- ggplot(xdf,aes(xvar,yvar))+
     geom_point(size=3,colour=pt_col) +
-    scale_x_log10() +
-    scale_y_log10() +
     theme_bw()+
     theme(text = element_text(family="sans"),
           axis.title.x = element_text(family="sans",vjust = -0.5, size = 14),
