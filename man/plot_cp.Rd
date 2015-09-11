@@ -13,6 +13,6 @@ plot_cp(cp, ...)
 }
 \description{
 Create plot of conditional probability object showing association between microcystin-LR
-advisory levels and chlorophyll \italics{a}
+advisory levels and chlorophyll \it{a}
 }
 

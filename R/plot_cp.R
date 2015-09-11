@@ -1,7 +1,7 @@
 #'get_nla
 #'
 #'Create plot of conditional probability object showing association between microcystin-LR
-#'advisory levels and chlorophyll \italics{a} 
+#'advisory levels and chlorophyll \it{a} 
 #'
 #' @param cp A conditional probability object from condprob2
 #' @param ...  arguments for labels
