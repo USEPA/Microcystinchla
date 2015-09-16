@@ -180,9 +180,11 @@ We use this association to identify chlorophyll *a* concentrations that are asso
 
 #Discussion
 
+\newpage
+
 #Figures
 
-```{r chla_micro_scatter, echo=FALSE, fig.width=7, fig.cap="Scatterplot showing association betweeen chlorophyll \\textit{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
+```{r chla_micro_scatter, echo=FALSE, fig.width=6, fig.cap="Scatterplot showing association betweeen chlorophyll \\textit{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
 plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
              x=expression(paste('Log10 Chl ', italic("a"),' (',mu,'g/L)')),
              y=expression(paste('Log10 microcystin-LR',' (',mu,'g/L)')))
@@ -191,27 +193,27 @@ plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
 \newpage
 
 <!--
-```{r chla_micro_cdf, echo=FALSE, fig.width=8, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:chla_micro_cdf}"}
+```{r chla_micro_cdf, echo=FALSE, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:chla_micro_cdf}"}
 plot_cdf(nla_dat[,c("log_chla","log_micro")],"")
 ```
 
 \newpage-->
 
-```{r epa_child_cp_plot, echo=FALSE, fig.width=7, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:multi_cp_plot}"}
+```{r epa_child_cp_plot, echo=FALSE, fig.width=6, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. A.) Plot for U.S. EPA childrens drinking water advisory (0.3 $\\mu$g/L). B.) Plot for WHO drinking water advisory (1 $\\mu$g/L). C.) Plot for U.S. EPA adult drinking water advisory (1.6 $\\mu$g/L). D.) Plot for WHO recreational advisory (2 $\\mu$g/L). \\label{fig:multi_cp_plot}"}
 multiplot(
   plot_cp(epa_child_cp,x = "Log 10 Chlorophyll", 
-          y = "Probability of Exceeding 0.3 ug/L MLR",
-          title="U.S. EPA Children's Drinking Water Advisory Level"),
+          y = "Conditional Probability",
+          title="A."),
   plot_cp(who_drink_cp, x = "Log 10 Chlorophyll", 
-          y = "Probability of Exceeding 1 ug/L MLR", 
-          title="WHO Drinking Water Advisory Level"),
+          y = "Conditional Probability", 
+          title="B."),
   plot_cp(epa_adult_cp, x = "Log 10 Chlorophyll", 
-          y = "Probability of Exceeding 1.6 ug/L MLR", 
-          title="U.S. EPA Adult Drinking Water Advisory Level"),
+          y = "Conditional Probability", 
+          title="C."),
   plot_cp(who_rec_low1_cp, x = "Log 10 Chlorophyll", 
-          y = "Probability of Exceeding 2 ug/L MLR", 
-          title="WHO Recreational Water Advisory Level"),
-  cols=1
+          y = "Conditional Probability", 
+          title="D."),
+  cols=2
 )
 ```
 
@@ -262,5 +264,7 @@ mc_chla_tbl <- data.frame(Source=mc_names,Type=mc_type,Microcystin=mc_guides,Chl
 #pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 knitr::kable(mc_chla_tbl)
 ```
+
+\newpage
 
 #References
