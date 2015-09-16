@@ -251,14 +251,16 @@ concentration <- c("2-4 $\\mu$g/L",
 mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration) %>%
   arrange(type_of_stnd)
 names(mc_conc_table)<-c("Source","Type","Concentration")
-pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+#pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+knitr::kable(mc_conc_table)
 ```
 
 \newpage
 
-```{r mc_chla_table, results='asis', echo=FALSE, tab.cap="Chlorophyll \textit{a} concentrations that are associated with a 50% probability of exceeding a microcystin-LR health advisory concentration. \\label{tab:mc_chla_table}"}
+```{r mc_chla_table, results='asis', echo=FALSE, tab.cap="Chlorophyll \textit{a} concentrations that are associated with a 50 percent probability of exceeding a microcystin-LR health advisory concentration. \\label{tab:mc_chla_table}"}
 mc_chla_tbl <- data.frame(Source=mc_names,Type=mc_type,Microcystin=mc_guides,Chlorophyll=mc_chla)[1:4,]
-pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+#pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
+knitr::kable(mc_chla_tbl)
 ```
 
 #References
