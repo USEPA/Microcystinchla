@@ -7,16 +7,11 @@ author:
   name: Jeffrey W. Hollister
 - affilnum: 1
   name: Betty J. Kreakie
-- affilnum: 2
-  name: Dorothy Q. Kellog
 affiliation:
 - affil: US Environmental Protection Agency, Office of Research and Development, National
     Health and Environmental Effects Research Laboratory, Atlantic Ecology Division,
     27 Tarzwell Drive  Narragansett, RI, 02882, USA
   affilnum: 1
-- affil: University of Rhode Island, Department of Natural Resources Science, Kingston,
-    RI, 02882, USA
-  affilnum: 2
 output:
   pdf_document:
     fig_caption: yes
@@ -98,8 +93,8 @@ mc_guides <- c(0.3, 1, 1.6, 2, 4, 10, 20)
 mc_names <- c("U.S. EPA","WHO","U.S. EPA","WHO","WHO","WHO","WHO")
 mc_type <- c("Drinking","Drinking","Drinking","Recreational","Recreational","Recreational","Recreational")
 mc_chla <- vector("numeric",length(mc_guides))
-wgt <- nla_dat$WGT_NLA
-#wgt<- rep(1,nrow(nla_dat))
+#wgt <- nla_dat$WGT_NLA
+wgt<- rep(1,nrow(nla_dat))
 
 epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log10(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
@@ -166,28 +161,28 @@ Chlorophyll *a* is a very commonly measured components of water quality that is 
 #Methods
 
 ##Data
-We used the 2007 National Lakes Assessment (NLA) water quality and microcystin-LR concentration data [REF].  The NLA is a probability based design that, when using the provided sample weights, can be used to provide unbiased estimates of lake condition for all lakes in the original sample frame (e.g. lakes greater than 4ha in the conterminous US).  These data represent a snapshot of water quality from the summer of 2007 and data on chlorophyll *a* and microcystin-LR concentrations are available for `r nrow(na.omit(nla_dat$CHLA,nla_dat$MCYST_TL_UGL))` lakes.  All results are reported using weighted estimates.    
+We used the 2007 National Lakes Assessment (NLA) water quality and microcystin-LR concentration data [REF]. These data represent a snapshot of water quality from the summer of 2007 and data on chlorophyll *a* and microcystin-LR concentrations are available for `r nrow(na.omit(nla_dat$CHLA,nla_dat$MCYST_TL_UGL))` lakes.  
 
 ##Conditional Probability Analysis
-We used a conditional probability analysis (CPA) approach to explore associations between chlorophyll *a* concentrations  and World Health Organization (WHO) and U.S. Environmental Protection Agency (U.S. EPA) microcystin-LR health advisory levels [REFS].  Many levels have been suggested [Table \ref{tab:microcystin_levels}], but lakes with higher microcystin-LR concentrations in the NLA were rare. Only `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=10])/nrow(nla_dat)),2)` % of lakes sampled had a concentration greater than 10.  Thus, for this analysis we focus on the microcystin concentrations that are better represented in the NLA data. These were  0.3, 1, 1.6, and 2 $\mu$g/L.
+We used a conditional probability analysis (CPA) approach to explore associations between chlorophyll *a* concentrations  and World Health Organization (WHO) and U.S. Environmental Protection Agency (U.S. EPA) microcystin-LR health advisory levels [@paul2011probability].  Many levels have been suggested (Table \ref{tab:microcystin_levels}), but lakes with higher microcystin-LR concentrations in the NLA were rare. Only `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=10])/nrow(nla_dat)),2)` % of lakes sampled had a concentration greater than 10.  Thus, for this analysis we focus on the microcystin concentrations that are better represented in the NLA data. These were  0.3, 1, 1.6, and 2 $\mu$g/L.
 
-A detailed discussion of CPA is beyond the scope of this paper, but see Paul et al. [-REF] and Hollister et al. [-REF] for details.  For this analysis, we used CPA to examine how the conditional probability of exceeding one of the health advisory changes as chlorophyll *a* increases in a lake.  The 95% confidence intervals were calculated from 1000 bootstrapped samples. To identify chlorophyll *a* concentrations of concern we used a 50% conditional probability of exceeding each health advisory level and extracted the minimum chlorophyll *a* concentration that was associated with the upper confidence level being 50% or greater.  Details of the specific implementation we used are available at https://github.com/USEPA/microcystinchla.
+A detailed discussion of CPA is beyond the scope of this paper, but see Paul et al. [-REF] and Hollister et al. [-REF] for details.  For this analysis, we used CPA to examine how the conditional probability of exceeding one of the health advisory changes as chlorophyll *a* increases in a lake.  The 95% confidence intervals were calculated from 1000 bootstrapped samples. To identify chlorophyll *a* concentrations of concern we used a 50% conditional probability of exceeding each health advisory level and extracted the minimum chlorophyll *a* concentration that was associated with the upper confidence level being 50% or greater.  As both microcystin-LR and chlorophyll *a* values were both highely skewed right, a log base 10 transformation was used.  Additional details of the specific implementation are available at https://github.com/USEPA/microcystinchla.
 
 #Results
 
-(Table \ref{tab:mc_chla_table})
+In the 2007 NLA, microcystin-LR concentrations ranged from `r min(nla_dat$MCYST_TL_UGL,na.rm=T)` to `r max(nla_dat$MCYST_TL_UGL, na.rm=T)`.  Microcystin-LR concentrations of 0.05 $\mu$g/L represent the detection limits.  Any value greater than that indicates the presence of microcystin-LR.  Of those lakes with microcystin, the median concentration was `r median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T)` and the mean was `r median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T)`.  Lastly, of all lakes sampled, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=0.3])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the U.S. EPA childrens drinking water standard, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1.6])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the U.S. EPA adult drinking water standard,`r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO drinking water standard,and `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=2])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO recreational standard. For chlorophyll *a*, the range was `r min(nla_dat$CHLA,na.rm=T)` to `r max(nla_dat$CHLA, na.rm=T)`.  All lakes had reported chlorophyll *a* concentrations that exceeded detection limits.  The median concentration was `r median(nla_dat$CHLA,na.rm=T)` and the mean was `r mean(nla_dat$CHLA,na.rm=T)`.
 
-(Figure \ref{fig:chla_micro_scatter})
+The association between Log 10 microcystin-LR and Log 10 chlorophyll *a* show a wedge pattern (Figure \ref{fig:chla_micro_scatter}).  This indicates that higher concentrations of microcystin-LR almost always co-occur with higher concentrations of chlorophyll *a* yet the inverse is not true.  Higher chlorophyll *a* is not necessarily predictive of higher microcystin-LR concentrations; however, chlorophyll *a* may be predictive of the probability of exceeding a certian concentration.  This is the case as the probability of exceeding each of the four tested health adviroy levels shos this patern of probability of exceeding the advisory level increases as a function of chlorophyll *a* concentration (Figure \ref{fig:multi_cp_plot}).
 
-(Figure \ref{fig:chla_micro_cdf})
-
-(Figure \ref{fig:multi_cp_plot})
+We use this association to identify chlorophyll *a* concentrations that are associated with greater than even odds of exceeding a given health advisory level (Table \ref{tab:mc_chla_table}).  These represent `r 100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[1]])/length(nla_dat$CHLA))`%, `100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[2]])/length(nla_dat$CHLA))`%,
+`100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[3]])/length(nla_dat$CHLA))`%, and `100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[4]])/length(nla_dat$CHLA))`% of sample lakes for the U.S EPA childrens drinking water, the WHO drinking water, the U.S. EPA Adult drinking water, and the WHO recreationsl standards, respecitvely.
+<!-- (Figure \ref{fig:chla_micro_cdf}) -->
 
 #Discussion
 
 #Figures
 
-```{r chla_micro_scatter, echo=FALSE, fig.width=8, fig.cap="Scatterplot showing association betweeen chlorophyll \\it{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
+```{r chla_micro_scatter, echo=FALSE, fig.width=8, fig.cap="Scatterplot showing association betweeen chlorophyll \\textit{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
 plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
              x=expression(paste('Log10 Chl ', italic("a"),' (',mu,'g/L)')),
              y=expression(paste('Log10 microcystin-LR',' (',mu,'g/L)')))
@@ -195,11 +190,12 @@ plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
 
 \newpage
 
+<!--
 ```{r chla_micro_cdf, echo=FALSE, fig.width=8, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:chla_micro_cdf}"}
 plot_cdf(nla_dat[,c("log_chla","log_micro")],"")
 ```
 
-\newpage
+\newpage-->
 
 ```{r epa_child_cp_plot, echo=FALSE, fig.width=8, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. \\label{fig:multi_cp_plot}"}
 multiplot(
@@ -223,7 +219,7 @@ multiplot(
 
 #Tables
 
-```{r microcystin_levels,echo=FALSE,results='asis', fig.cap="Various suggested microcystin-LR health advisory concentrations. \\label{tab:microcystin_levels}"}
+```{r microcystin_levels,echo=FALSE,results='asis', tab.cap="Various suggested microcystin-LR health advisory concentrations. \\label{tab:microcystin_levels}"}
 source_of_stnd <- c("WHO",
                     "WHO",
                     "WHO",
@@ -260,7 +256,7 @@ pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c
 
 \newpage
 
-```{r mc_chla_table, results='asis', echo=FALSE, fig.cap="Chlorophyll \textit{a} concentrations that are associated with a 50% probability of exceeding a microcystin-LR health advisory concentration. \\label{tab:mc_chla_table}"}
+```{r mc_chla_table, results='asis', echo=FALSE, tab.cap="Chlorophyll \textit{a} concentrations that are associated with a 50% probability of exceeding a microcystin-LR health advisory concentration. \\label{tab:mc_chla_table}"}
 mc_chla_tbl <- data.frame(Source=mc_names,Type=mc_type,Microcystin=mc_guides,Chlorophyll=mc_chla)[1:4,]
 pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 ```
