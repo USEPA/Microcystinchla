@@ -185,7 +185,7 @@ We use this association to identify chlorophyll *a* concentrations that are asso
 #Figures
 
 ```{r chla_micro_scatter, echo=FALSE, fig.width=6, fig.cap="Scatterplot showing association betweeen chlorophyll \\textit{a} and microcystin-LR. \\label{fig:chla_micro_scatter}"}
-plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",pt_col=viridis(1),
+plot_scatter(nla_dat,xvar="log_chla",yvar = "log_micro",cat="WSA_ECO9",
              x=expression(paste('Log10 Chl ', italic("a"),' (',mu,'g/L)')),
              y=expression(paste('Log10 microcystin-LR',' (',mu,'g/L)')))
 ```

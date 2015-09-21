@@ -5,12 +5,14 @@
 #' @export
 #' @import ggplot2
 
-plot_scatter<-function(df,xvar,yvar,pt_col=1,...){
+plot_scatter<-function(df,xvar,yvar,cat=NULL,pt_col=1,...){
+  browser()
   options(scipen=5)
   xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]])
+  if(!is.null(cat)){xdf<-data.frame(xdf,cat=df[[cat]]);pt_col<-cat}
   xdf<-xdf[complete.cases(xdf),]
   x <- ggplot(xdf,aes(xvar,yvar))+
-    geom_point(size=3,colour=pt_col) +
+    geom_point(size=3,aes(colour=pt_col)) +
     theme_bw()+
     theme(text = element_text(family="sans"),
           axis.title.x = element_text(family="sans",vjust = -0.5, size = 14),

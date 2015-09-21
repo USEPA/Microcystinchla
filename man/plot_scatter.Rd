@@ -4,7 +4,7 @@
 \alias{plot_scatter}
 \title{Scatterplot for microcystin-chla paper}
 \usage{
-plot_scatter(df, xvar, yvar, pt_col = 1, ...)
+plot_scatter(df, xvar, yvar, cat = NULL, pt_col = 1, ...)
 }
 \description{
 Produces a scatterplot via ggplot
