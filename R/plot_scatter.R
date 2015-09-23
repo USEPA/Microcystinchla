@@ -6,10 +6,11 @@
 #' @import ggplot2
 
 plot_scatter<-function(df,xvar,yvar,cat=NULL,pt_col=1,...){
-  browser()
   options(scipen=5)
-  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]])
-  if(!is.null(cat)){xdf<-data.frame(xdf,cat=df[[cat]]);pt_col<-cat}
+  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]],pt_col=1)
+  if(!is.null(cat)){
+    xdf<-data.frame(xdf,pt_col=df[[cat]])
+  }
   xdf<-xdf[complete.cases(xdf),]
   x <- ggplot(xdf,aes(xvar,yvar))+
     geom_point(size=3,aes(colour=pt_col)) +

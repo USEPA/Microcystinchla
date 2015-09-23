@@ -294,7 +294,13 @@ standard,11.7\% of lakes exceeded the WHO drinking water standard,and
 7.3\% of lakes exceeded the WHO recreational standard. For chlorophyll
 \emph{a}, the range was 0.07 to 936. All lakes had reported chlorophyll
 \emph{a} concentrations that exceeded detection limits. The median
-concentration was 7.79 and the mean was 29.6301946.
+concentration was 7.79 and the mean was 29.6301946. The associations
+between chlorophyll \emph{a} and the upper confidence interval with a
+conditional probability of 50\% were 23.68, 63.94, 89.71, and 102.6 for
+0.3, 1.0, 1.6 and 2.0 \(\mu\)g/L, respectively (Table
+\ref{tab:mc_chla_table} \& Figure \ref{fig:multi_cp_plot}).
+
+\section{Discussion}\label{discussion}
 
 The association between Log 10 microcystin-LR and Log 10 chlorophyll
 \emph{a} show a wedge pattern (Figure \ref{fig:chla_micro_scatter}).
@@ -302,20 +308,41 @@ This indicates that higher concentrations of microcystin-LR almost
 always co-occur with higher concentrations of chlorophyll \emph{a} yet
 the inverse is not true. Higher chlorophyll \emph{a} is not necessarily
 predictive of higher microcystin-LR concentrations; however, chlorophyll
-\emph{a} may be predictive of the probability of exceeding a certian
-concentration. This is the case as the probability of exceeding each of
-the four tested health adviroy levels shos this patern of probability of
-exceeding the advisory level increases as a function of chlorophyll
-\emph{a} concentration (Figure \ref{fig:multi_cp_plot}).
+\emph{a} may be predictive of the probability of exceeding a certain
+concentration.
 
-We use this association to identify chlorophyll \emph{a} concentrations
-that are associated with greater than even odds of exceeding a given
-health advisory level (Table \ref{tab:mc_chla_table}). These represent
-27.8\%, 11.9\%, 8.3\%, and 7.4\% of sample lakes for the U.S EPA
-childrens drinking water, the WHO drinking water, the U.S. EPA Adult
-drinking water, and the WHO recreational standards, respecitvely.
+This is the case as the probability of exceeding each of the four tested
+health advisory levels increases as a function of chlorophyll \emph{a}
+concentration (Figure \ref{fig:multi_cp_plot}). We use this association
+to identify chlorophyll \emph{a} concentrations that are associated with
+greater than even odds of exceeding a given health advisory level (Table
+\ref{tab:mc_chla_table}). These represent 27.8\%, 11.9\%, 8.3\%, and
+7.4\% of sample lakes for the U.S EPA childrens drinking water, the WHO
+drinking water, the U.S. EPA Adult drinking water, and the WHO
+recreational standards, respecitvely.
 
-\section{Discussion}\label{discussion}
+There are numerous possible uses for the chlorophyll \emph{a} and
+microcystin-LR advisory cut-off values. First, in the absence of
+microcystin-LR measurements, exceedence of the chlorophyll \emph{a}
+concentrations could be a trigger for further actions. Given that there
+is uncertainity around these chlorophyll \emph{a} cutoffs the best case
+scenario would be to monitor for chlorophyll and in the event of
+exceeding a target concentration take water samples and have those
+samples tested in a lab for microcystin-LR. A second potential use is to
+identify possible bloom events from historical data. Currently, there
+are several suggestions on how to identify a bloom event, but there is
+variation across the definitions and quantitative links to measures of
+cyanobacteria are not always included {[}REFS{]}. Using our chlorophyll
+\emph{a} cutoffs provides a value that is directly associated with
+microcystin-LR and can be used to classify lakes, from past surveys, as
+havin bloomed.
+
+These values are conservative: greater than even odds for the upper CI.
+Most protective.
+
+Not meant as a replacement for testing of microcystin, but provides
+another useful tool to help understand the probable extent of
+microcystin occurence.
 
 \newpage
 
@@ -329,6 +356,10 @@ and microcystin-LR. \label{fig:chla_micro_scatter}}
 \end{figure}
 
 \newpage
+
+\begin{verbatim}
+## Loading required package: grid
+\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
