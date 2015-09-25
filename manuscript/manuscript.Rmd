@@ -53,6 +53,7 @@ library("dplyr")
 library("magrittr")
 library("pander")
 library("knitr")
+library("e1071")
 opts_chunk$set(dev = 'pdf', fig.width=6, fig.height=5)
 
 # Table Captions from @DeanK on http://stackoverflow.com/questions/15258233/
@@ -120,21 +121,12 @@ who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 
 mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
 
-#who_rec_low2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-#                     xImpair = log10(mc_guides[5]), ProbComp = "gt", Exceed = "gte",
-#                     ci = TRUE, R = 100, xW=wgt)
-
-#mc_chla[5] <- get_chla(who_rec_low2_cp,0.5)
-
-#who_rec_med1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-#                     xImpair = log10(mc_guides[6]), ProbComp = "gt", Exceed = "gte",
-#                     ci = TRUE, R = 100, xW=wgt)
-
-#mc_chla[6] <- get_chla(who_rec_med1_cp,0.5)
-
-#who_rec_med2_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
-#                     xImpair = log10(mc_guides[7]), ProbComp = "gt", Exceed = "gte",
-#                     ci = TRUE, R = 100, xW=wgt)
+#Agreement Tables
+child_conmat<-table(chla=nla_dat$CHLA>=mc_chla[1],mcsyt=nla_dat$MCYST_TL_UGL>=0.3)
+who_drink_conmat<-table(nla_dat$CHLA>=mc_chla[2],nla_dat$MCYST_TL_UGL>=1)
+adult_conmat<-table(nla_dat$CHLA>=mc_chla[3],nla_dat$MCYST_TL_UGL>=1.6)
+who_rec_conmat<-table(nla_dat$CHLA>=mc_chla[4],nla_dat$MCYST_TL_UGL>=2)
+#Want to minimize false negatives.  Ratio or FN/FP+TP+TN
 
 #mc_chla[7] <- get_chla(who_rec_med2_cp,0.5)
 ```
