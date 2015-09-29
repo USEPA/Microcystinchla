@@ -185,7 +185,7 @@ microcystin health advisory level. We look at the recent US EPA
 standards for drinking water as well as the World Health Organization
 levels for drinking water and recreational use. For microcystin
 concentrations of 0.3, 1, 1.6, and 2 we find chlorophyll \emph{a}
-concentrations of 21.92, 65.2, 84.24, and 113.14, respectively. When
+concentrations of 22.56, 59.4, 84.24, and 97.49, respectively. When
 managing for these various microcystin levels exceeding these reported
 chlorophyll \emph{a} concentrations should be a trigger for further
 testing and possible management action.
@@ -297,7 +297,7 @@ standard,11.7\% of lakes exceeded the WHO drinking water standard,and
 \emph{a} concentrations that exceeded detection limits. The median
 concentration was 7.79 and the mean was 29.6301946. The associations
 between chlorophyll \emph{a} and the upper confidence interval with a
-conditional probability of 50\% were 21.92, 65.2, 84.24, and 113.14 for
+conditional probability of 50\% were 22.56, 59.4, 84.24, and 97.49 for
 0.3, 1.0, 1.6 and 2.0 \(\mu\)g/L, respectively (Table
 \ref{tab:mc_chla_table} \& Figure \ref{fig:multi_cp_plot}).
 
@@ -317,10 +317,16 @@ health advisory levels increases as a function of chlorophyll \emph{a}
 concentration (Figure \ref{fig:multi_cp_plot}). We use this association
 to identify chlorophyll \emph{a} concentrations that are associated with
 greater than even odds of exceeding a given health advisory level (Table
-\ref{tab:mc_chla_table}). These represent 29.2\%, 11.7\%, 8.8\%, and
-6.3\% of sample lakes for the U.S EPA childrens drinking water, the WHO
+\ref{tab:mc_chla_table}). These represent 28.8\%, 12.7\%, 8.8\%, and
+7.9\% of sample lakes for the U.S EPA childrens drinking water, the WHO
 drinking water, the U.S. EPA Adult drinking water, and the WHO
 recreational standards, respecitvely.
+
+Furthermore, the chlorophyll \emph{a} cutoffs may be used to predict
+whether or not a lake exceeds the microcystin-LR health advisories.
+Doing so allows us to compare the accuracy of the prediction as well as
+evaluate false negatives in this prediction. Stuff of FN plus
+presenation of conf matrix\ldots{}
 
 There are numerous possible uses for the chlorophyll \emph{a} and
 microcystin-LR advisory cut-off values. First, in the absence of
@@ -417,10 +423,10 @@ Source & Type & Microcystin & Chlorophyll\tabularnewline
 Source & Type & Microcystin & Chlorophyll\tabularnewline
 \midrule
 \endhead
-U.S. EPA & Drinking & 0.3 & 21.92\tabularnewline
-WHO & Drinking & 1.0 & 65.20\tabularnewline
+U.S. EPA & Drinking & 0.3 & 22.56\tabularnewline
+WHO & Drinking & 1.0 & 59.40\tabularnewline
 U.S. EPA & Drinking & 1.6 & 84.24\tabularnewline
-WHO & Recreational & 2.0 & 113.14\tabularnewline
+WHO & Recreational & 2.0 & 97.49\tabularnewline
 \bottomrule
 \end{longtable}
 
