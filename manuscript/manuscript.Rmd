@@ -122,11 +122,35 @@ who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
 mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
 
 #Agreement Tables
-child_conmat<-table(chla=nla_dat$CHLA>=mc_chla[1],mcsyt=nla_dat$MCYST_TL_UGL>=0.3)
-who_drink_conmat<-table(nla_dat$CHLA>=mc_chla[2],nla_dat$MCYST_TL_UGL>=1)
-adult_conmat<-table(nla_dat$CHLA>=mc_chla[3],nla_dat$MCYST_TL_UGL>=1.6)
-who_rec_conmat<-table(nla_dat$CHLA>=mc_chla[4],nla_dat$MCYST_TL_UGL>=2)
-#Want to minimize false negatives.  Ratio or FN/FP+TP+TN
+child_conmat<-conmat_to_df(table(chla=nla_dat$CHLA>=mc_chla[1],
+                                 mcsyt=nla_dat$MCYST_TL_UGL>=0.3))
+who_drink_conmat<-conmat_to_df(table(nla_dat$CHLA>=mc_chla[2],
+                        nla_dat$MCYST_TL_UGL>=1))
+adult_conmat<-conmat_to_df(table(nla_dat$CHLA>=mc_chla[3],
+                    nla_dat$MCYST_TL_UGL>=1.6))
+who_rec_conmat<-conmat_to_df(table(nla_dat$CHLA>=mc_chla[4],
+                      nla_dat$MCYST_TL_UGL>=2))
+total_accuracy<-NULL
+total_accuracy$epa_child<-round((child_conmat[1,1]+child_conmat[2,2])/
+  sum(child_conmat),2)
+total_accuracy$who_drink<-round((who_drink_conmat[1,1]+who_drink_conmat[2,2])/
+  sum(who_drink_conmat),2)
+total_accuracy$epa_adult<-round((adult_conmat[1,1]+adult_conmat[2,2])/
+  sum(adult_conmat),2)
+total_accuracy$who_rec<-round((who_rec_conmat[1,1]+who_rec_conmat[2,2])/
+  sum(who_rec_conmat),2)
+
+fn_percent<-NULL
+fn_percent$epa_child<-round((child_conmat[1,2])/
+  sum(child_conmat),2)
+fn_percent$who_drink<-round((who_drink_conmat[1,2])/
+  sum(who_drink_conmat),2)
+fn_percent$epa_adult<-round((adult_conmat[1,2])/
+  sum(adult_conmat),2)
+fn_percent$who_rec<-round((who_rec_conmat[1,2])/
+  sum(who_rec_conmat),2)
+
+#Want to minimize false negatives.  Ratio of FN/FP+TP+TN
 
 #mc_chla[7] <- get_chla(who_rec_med2_cp,0.5)
 ```
