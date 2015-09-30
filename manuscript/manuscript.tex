@@ -185,7 +185,7 @@ microcystin health advisory level. We look at the recent US EPA
 standards for drinking water as well as the World Health Organization
 levels for drinking water and recreational use. For microcystin
 concentrations of 0.3, 1, 1.6, and 2 we find chlorophyll \emph{a}
-concentrations of 22.56, 59.4, 84.24, and 97.49, respectively. When
+concentrations of 22.25, 65.6, 84.96, and 105.84, respectively. When
 managing for these various microcystin levels exceeding these reported
 chlorophyll \emph{a} concentrations should be a trigger for further
 testing and possible management action.
@@ -198,17 +198,17 @@ testing and possible management action.
 
 \section{Introduction}\label{introduction}
 
-In the summer of 2014, the city of Toledo, OH was forced to shut down
-their municipal water supply due in part to an excess of microcystin-LR
-that resulted from a ongoing cyanobacteria harmful algal bloom (cHAB) in
-Lake Erie (Rinta-Kanto et al. 2009, Jetoo et al. 2015). Since this
-event, significant legislation has been passed in the United States and
-the US Environmental Protection Agency (USEPA) has released suggested
+Over the last decade or so numerous events and legislative activities
+have raised the public awareness of harmful algal blooms {[}Jetoo et al.
+(2015); Rinta-Kanto et al. (2009); NEED HABHRCA REFS{]}. Recent, the US
+Environmental Protection Agency (USEPA) has released suggested
 microcystin-LR (one of the more common toxins) concentrations that would
 trigger health advisories (McElhiney and Lawton 2005, Zurawell et al.
-2005). MORE ON THE LEVELS. While these levels and associated advisories
-are likely to help mitigate the impacts from harmful algal blooms, they
-are not without complications.
+2005). Additionally, the World Health Organization (WHO) has had
+proposed advisory levels for drinking water and a range of recreational
+risk levels {[}REF{]}. While these levels and associated advisories are
+likely to help mitigate the impacts from harmful algal blooms, they are
+not without complications.
 
 One of these complications is that they rely on available measurements
 of microcystin-LR. While laboratory testing remains the gold standard
@@ -297,7 +297,7 @@ standard,11.7\% of lakes exceeded the WHO drinking water standard,and
 \emph{a} concentrations that exceeded detection limits. The median
 concentration was 7.79 and the mean was 29.6301946. The associations
 between chlorophyll \emph{a} and the upper confidence interval with a
-conditional probability of 50\% were 22.56, 59.4, 84.24, and 97.49 for
+conditional probability of 50\% were 22.25, 65.6, 84.96, and 105.84 for
 0.3, 1.0, 1.6 and 2.0 \(\mu\)g/L, respectively (Table
 \ref{tab:mc_chla_table} \& Figure \ref{fig:multi_cp_plot}).
 
@@ -317,8 +317,8 @@ health advisory levels increases as a function of chlorophyll \emph{a}
 concentration (Figure \ref{fig:multi_cp_plot}). We use this association
 to identify chlorophyll \emph{a} concentrations that are associated with
 greater than even odds of exceeding a given health advisory level (Table
-\ref{tab:mc_chla_table}). These represent 28.8\%, 12.7\%, 8.8\%, and
-7.9\% of sample lakes for the U.S EPA childrens drinking water, the WHO
+\ref{tab:mc_chla_table}). These represent 29.1\%, 11.5\%, 8.6\%, and
+6.9\% of sample lakes for the U.S EPA childrens drinking water, the WHO
 drinking water, the U.S. EPA Adult drinking water, and the WHO
 recreational advisories, respecitvely.
 
@@ -327,8 +327,8 @@ whether or not a lake exceeds the microcystin-LR health advisories.
 Doing so allows us to compare the accuracy of the prediction as well as
 evaluate false negatives. Total accuracy of the four cutoffs predicting
 microcystin-LR exceedances were 74\% for the USEPA children's advisory,
-85\% for the WHO drinking water advisory, 89\% for the USEPA adult
-advisory and, 90\% for the WHO regreational advisory. But Total Accuracy
+86\% for the WHO drinking water advisory, 90\% for the USEPA adult
+advisory and, 91\% for the WHO regreational advisory. But Total Accuracy
 is one part of the prediction performace with which we are concerned.
 
 When using the chlorophyll \emph{a} cutoffs as an indicator of
@@ -342,8 +342,7 @@ WHO drinking water, the U.S. EPA Adult drinking water, and the WHO
 recreational advisories, respecitvely. In each case we miss less than
 10\% of the lakes that are in fact exceeding the microcystin-LR
 advisory. This is an acceptable rate, especially when no other tests are
-available for a given water body. TEST LOWER VALUES to see where we can
-get it even lower.
+available for a given water body.
 
 There are numerous possible uses for the chlorophyll \emph{a} and
 microcystin-LR advisory cut-off values. First, in the absence of
@@ -365,12 +364,14 @@ chlorophyll \emph{a} cutoffs provides a value that is more directly
 associated with microcystin-LR and can be used to classify lakes, from
 past surveys, as having bloomed.
 
-These values are conservative: greater than even odds for the upper CI.
-Most protective.
-
-Not meant as a replacement for testing of microcystin, but provides
-another useful tool to help understand the probable extent of
-microcystin occurence.
+Lastly, using chlorophyll \emph{a} is not meant as a replacement for
+testing of microcystin-LR. It should be used when other, direct
+measurements of cyanotoxins are not available. In those cases, which are
+likely to be common at least in the near future, using a more ubiquitous
+meausrement, such as chlorophyll \emph{a} will provide a reasonable
+proxy for the probability of exceeding a microcystin-LR health advisory
+level and provide better protection against adverse effects in both
+drinking and recreational use cases.
 
 \newpage
 
@@ -384,6 +385,10 @@ and microcystin-LR. \label{fig:chla_micro_scatter}}
 \end{figure}
 
 \newpage
+
+\begin{verbatim}
+## Loading required package: grid
+\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
@@ -436,10 +441,10 @@ Source & Type & Microcystin & Chlorophyll\tabularnewline
 Source & Type & Microcystin & Chlorophyll\tabularnewline
 \midrule
 \endhead
-U.S. EPA & Drinking & 0.3 & 22.56\tabularnewline
-WHO & Drinking & 1.0 & 59.40\tabularnewline
-U.S. EPA & Drinking & 1.6 & 84.24\tabularnewline
-WHO & Recreational & 2.0 & 97.49\tabularnewline
+U.S. EPA & Drinking & 0.3 & 22.25\tabularnewline
+WHO & Drinking & 1.0 & 65.60\tabularnewline
+U.S. EPA & Drinking & 1.6 & 84.96\tabularnewline
+WHO & Recreational & 2.0 & 105.84\tabularnewline
 \bottomrule
 \end{longtable}
 
