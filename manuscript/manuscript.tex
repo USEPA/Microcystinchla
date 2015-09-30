@@ -320,13 +320,30 @@ greater than even odds of exceeding a given health advisory level (Table
 \ref{tab:mc_chla_table}). These represent 28.8\%, 12.7\%, 8.8\%, and
 7.9\% of sample lakes for the U.S EPA childrens drinking water, the WHO
 drinking water, the U.S. EPA Adult drinking water, and the WHO
-recreational standards, respecitvely.
+recreational advisories, respecitvely.
 
 Furthermore, the chlorophyll \emph{a} cutoffs may be used to predict
 whether or not a lake exceeds the microcystin-LR health advisories.
 Doing so allows us to compare the accuracy of the prediction as well as
-evaluate false negatives in this prediction. Stuff of FN plus
-presenation of conf matrix\ldots{}
+evaluate false negatives. Total accuracy of the four cutoffs predicting
+microcystin-LR exceedances were 74\% for the USEPA children's advisory,
+85\% for the WHO drinking water advisory, 89\% for the USEPA adult
+advisory and, 90\% for the WHO regreational advisory. But Total Accuracy
+is one part of the prediction performace with which we are concerned.
+
+When using the chlorophyll \emph{a} cutoffs as an indicator of
+microcystin-LR exceedances, the error that should be avoided is
+predicting that no exceedance has occurred when in fact it has. In other
+words, we would like to avoid Type II errors and minimize the proportion
+of false negatives {[}REF{]}. For the four chlorophyll \emph{a} cut-offs
+we had a proportion of false negatives of 9, 7, 6 and , `r
+fn\_percent\$who\_rec*100 for the U.S EPA childrens drinking water, the
+WHO drinking water, the U.S. EPA Adult drinking water, and the WHO
+recreational advisories, respecitvely. In each case we miss less than
+10\% of the lakes that are in fact exceeding the microcystin-LR
+advisory. This is an acceptable rate, especially when no other tests are
+available for a given water body. TEST LOWER VALUES to see where we can
+get it even lower.
 
 There are numerous possible uses for the chlorophyll \emph{a} and
 microcystin-LR advisory cut-off values. First, in the absence of
@@ -367,10 +384,6 @@ and microcystin-LR. \label{fig:chla_micro_scatter}}
 \end{figure}
 
 \newpage
-
-\begin{verbatim}
-## Loading required package: grid
-\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
