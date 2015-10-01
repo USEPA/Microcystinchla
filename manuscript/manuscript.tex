@@ -200,32 +200,31 @@ testing and possible management action.
 
 Over the last decade or so numerous events and legislative activities
 have raised the public awareness of harmful algal blooms (Rinta-Kanto et
-al. 2009, HABHRCA 2014, Jetoo et al. 2015). Recently, the US
-Environmental Protection Agency (USEPA) has released suggested
-microcystin-LR (one of the more common toxins) concentrations that would
-trigger health advisories (McElhiney and Lawton 2005, Zurawell et al.
-2005, USEPA 2015). Additionally, the World Health Organization (WHO) has
-had proposed advisory levels for drinking water and a range of
-recreational risk levels (Chorus and Bartram 1999, (WHO) and others
-2003). While these levels and associated advisories are likely to help
-mitigate the impacts from harmful algal blooms, they are not without
-complications.
+al. 2009, HABHRCA 2014, Jetoo et al. 2015), and the US Environmental
+Protection Agency (USEPA) has recently released suggested microcystin-LR
+(one of the more common toxins) concentrations that would trigger health
+advisories (McElhiney and Lawton 2005, Zurawell et al. 2005, USEPA
+2015). Additionally, the World Health Organization (WHO) has had
+proposed advisory levels for drinking water and a range of recreational
+risk levels (Chorus and Bartram 1999, (WHO) and others 2003). While
+these levels and associated advisories are likely to help mitigate the
+impacts from harmful algal blooms, they are not without complications.
 
 One of these complications is that they rely on available measurements
 of microcystin-LR. While laboratory testing remains the gold standard
-for quantifying microcystin-LY concentrations in water samples, several
+for quantifying microcystin-LR concentrations in water samples, several
 field test kits have been developed. Even though field tests provide a
-much needed means for rapid assessment, they are infrequently available
-to lake managers. These kits are moderately expensive (approximately
-\$150-\$200 depending on specific kit) with a limited shelf life
-(typically one year) (James et al. 2011, Aranda-Rodriguez et al. 2015).
-Additionally, each technique requires nuanced understanding of the
-detection method (e.g., limit of detection, specific microcystin
-variants being measured, and sampling protocol). Fortunately,
-microcystin-LR has been shown to be associated with several other, more
-commonly measured and understood components of water quality.
+much needed means for rapid assessment, they are not yet widely used and
+are moderately expensive (approximately \$150-\$200 depending on
+specific kit) with a limited shelf life (typically one year) (James et
+al. 2011, Aranda-Rodriguez et al. 2015). Additionally, each technique
+requires nuanced understanding of the detection method (e.g., limit of
+detection, specific microcystin variants being measured, and sampling
+protocol). Fortunately, microcystin-LR has been shown to be associated
+with several other, more commonly measured and understood components of
+water quality.
 
-Chlorophyll \emph{a} is a very commonly measured components of water
+Chlorophyll \emph{a} is a very commonly measured component of water
 quality that is also known to be associated with Microsystin-LR
 concentrations {[}Lee et al. (2000); Paerl and Otten (2013);
 heisler2008eutrophication{]}. Additionally there are many rapid
@@ -234,15 +233,15 @@ For instance, there are small or hand held flourometers that measure
 chlorohpyll \emph{a}. Given these facts, it might be possible to
 identify chlorophyll \emph{a} concentrations that would be associated
 with the various Microcystin-LR health advisory levels. Identifying
-these associations would provide another reliable tool for water
-resource managers to use to help manage the threat to public health
-posed by cHABs and would be especially useful in the absence of
-microcystin-LR concentrations. Thus, the goal of this paper is to utlize
-the National Lakes Assessment data and identify chlorophyll \emph{a}
-concentrations that are associated with higher probabilities of
-exceeding several microcystin-LR health advisory concentrations (USEPA
-2009). So that others may repeat or adjust this analysis, the data,
-code, and this manuscript are freely available via
+these associations would provide another tool for water resource
+managers to use to help manage the threat to public health posed by
+cHABs and would be especially useful in the absence of microcystin-LR
+concentrations. Thus, the goal of this paper is to utilize the National
+Lakes Assessment data and identify chlorophyll \emph{a} concentrations
+that are associated with higher probabilities of exceeding several
+microcystin-LR health advisory concentrations (USEPA 2009). So that
+others may repeat or adjust this analysis, the data, code, and this
+manuscript are freely available via
 \href{https://github.com/USAPE/microcystinchla}{\url{https://github.com/USAPE/microcystinchla}}.
 
 \section{Methods}\label{methods}
@@ -277,10 +276,10 @@ increases in a lake. The 95\% confidence intervals were calculated from
 1000 bootstrapped samples. To identify chlorophyll \emph{a}
 concentrations of concern we used a 50\% conditional probability of
 exceeding each health advisory level and extracted the minimum
-chlorophyll \emph{a} concentration that was associated with the upper
-confidence level being 50\% or greater. As both microcystin-LR and
-chlorophyll \emph{a} values were both highely skewed right, a log base
-10 transformation was used. Additional details of the specific
+chlorophyll \emph{a} concentration that was associated with an upper
+confidence level of 50\% or greater. As both microcystin-LR and
+chlorophyll \emph{a} values were highely skewed right, a log base 10
+transformation was used. Additional details of the specific
 implementation are available at
 \url{https://github.com/USEPA/microcystinchla}.
 
@@ -290,14 +289,14 @@ In the 2007 NLA, microcystin-LR concentrations ranged from 0.05 to 225.
 Microcystin-LR concentrations of 0.05 \(\mu\)g/L represent the detection
 limits. Any value greater than that indicates the presence of
 microcystin-LR. Of those lakes with microcystin, the median
-concentration was 0.51 and the mean was 0.51. Lastly, of all lakes
+concentration was 0.51 and the mean was 3.1661047. Lastly, of all lakes
 sampled, 21\% of lakes exceeded the U.S. EPA childrens drinking water
 standard, 8.8\% of lakes exceeded the U.S. EPA adult drinking water
 standard,11.7\% of lakes exceeded the WHO drinking water standard,and
 7.3\% of lakes exceeded the WHO recreational standard. For chlorophyll
-\emph{a}, the range was 0.07 to 936. All lakes had reported chlorophyll
-\emph{a} concentrations that exceeded detection limits. The median
-concentration was 7.79 and the mean was 29.6301946. The associations
+\emph{a}, the range was 0.07 to 936 \(\mu\)g/L. All lakes had reported
+chlorophyll \emph{a} concentrations that exceeded detection limits. The
+median concentration was 7.79 and the mean was 29.63. The associations
 between chlorophyll \emph{a} and the upper confidence interval with a
 conditional probability of 50\% were 22.25, 65.6, 84.96, and 105.84 for
 0.3, 1.0, 1.6 and 2.0 \(\mu\)g/L, respectively (Table
@@ -355,18 +354,19 @@ concentrations could be a trigger for further actions. Given that there
 is uncertainity around these chlorophyll \emph{a} cutoffs the best case
 scenario would be to monitor for chlorophyll and in the event of
 exceeding a target concentration take water samples and have those
-samples tested in a lab for microcystin-LR. A second potential use is to
-identify possible bloom events from historical data. As harmful algal
-blooms are made up of many species and have various mechanism
-responsible for adverse impacts (e.g.~toxins, hypoxia, odors), there is
-no single definition of a bloom. For cHABs one approach has been to
-identify an increase over a baseline concentration of phycocyanin
-(Miller et al. 2013). This is a useful approach for targeted studies,
-but phycocyanin is also not always available and measures the
-predominance of cyanobacterial pigments and not toxins. Using our
-chlorophyll \emph{a} cutoffs provides a value that is more directly
-associated with microcystin-LR and can be used to classify lakes, from
-past surveys, as having bloomed.
+samples tested in a lab for microcystin-LR.
+
+A second potential use is to identify possible bloom events from
+historical data. As harmful algal blooms are made up of many species and
+have various mechanisms responsible for adverse impacts (e.g.~toxins,
+hypoxia, odors), there is no single definition of a bloom. For cHABs one
+approach has been to identify an increase over a baseline concentration
+of phycocyanin (Miller et al. 2013). This is a useful approach for
+targeted studies, but phycocyanin is also not always available and
+measures the predominance of cyanobacterial pigments and not toxins.
+Using our chlorophyll \emph{a} cutoffs provides a value that is more
+directly associated with microcystin-LR and can be used to classify
+lakes, from past surveys, as having bloomed.
 
 Lastly, using chlorophyll \emph{a} is not meant as a replacement for
 testing of microcystin-LR. It should be used when other, direct
