@@ -24,7 +24,7 @@ capsize: normalsize
 csl: components/ecology.csl
 documentclass: article
 fontsize: 11pt
-linenumbers: no
+linenumbers: yes
 bibliography: components/manuscript.bib
 spacing: doublespacing
 abstract: no
@@ -91,8 +91,14 @@ nla_dat <- mutate(nla_dat,log_chla = log10(CHLA),log_micro = log10(MCYST_TL_UGL)
 # Condtional Probability
 ################################################################################
 mc_guides <- c(0.3, 1, 1.6, 2, 4, 10, 20)
-mc_names <- c("U.S. EPA","WHO","U.S. EPA","WHO","WHO","WHO","WHO")
-mc_type <- c("Drinking","Drinking","Drinking","Recreational","Recreational","Recreational","Recreational")
+mc_names <- c("USEPA","WHO","USEPA","WHO","WHO","WHO","WHO")
+mc_type <- c("Child Drinking Water Advisory",
+             "Drinking Water Advisory",
+             "Adult Drinking Water",
+             "Recreational: Low Prob. of Effect",
+             "Recreational: Moderate Prob. of Effect",
+             "Recreational: High Prob. of Effect",
+             "Recreational: Very High Prob. of Effect")
 mc_chla <- vector("numeric",length(mc_guides))
 #wgt <- nla_dat$WGT_NLA
 wgt<- rep(1,nrow(nla_dat))
@@ -183,18 +189,18 @@ A detailed discussion of CPA is beyond the scope of this paper; see Paul et al. 
 
 #Results
 
-In the 2007 NLA, microcystin-LR concentrations ranged from `r min(nla_dat$MCYST_TL_UGL,na.rm=T)` to `r max(nla_dat$MCYST_TL_UGL, na.rm=T)`.  Microcystin-LR concentrations of 0.05 $\mu$g/L represent the detection limits.  Any value greater than that indicates the presence of microcystin-LR.  Of those lakes with microcystin, the median concentration was `r median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T)` and the mean was `r mean(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T)`.  Of all lakes sampled, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=0.3])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the U.S. EPA childrens drinking water standard, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1.6])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the U.S. EPA adult drinking water standard,`r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO drinking water standard,and `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=2])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO recreational standard. For chlorophyll *a*, the range was `r min(nla_dat$CHLA,na.rm=T)` to `r max(nla_dat$CHLA, na.rm=T)` $\mu$g/L.  All lakes had reported chlorophyll *a* concentrations that exceeded detection limits.  The median concentration was `r median(nla_dat$CHLA,na.rm=T)` and the mean was `r round(mean(nla_dat$CHLA,na.rm=T),2)`.  The associations between chlorophyll *a* and the upper confidence interval with a conditional probability of 50% were `r mc_chla[1]`, `r mc_chla[2]`, `r mc_chla[3]`, and `r mc_chla[4]` for 0.3, 1.0, 1.6 and 2.0 $\mu$g/L advisory levels, respectively (Table \ref{tab:mc_chla_table} & Figure \ref{fig:multi_cp_plot}).   
+In the 2007 NLA, microcystin-LR concentrations ranged from `r min(nla_dat$MCYST_TL_UGL,na.rm=T)` to `r max(nla_dat$MCYST_TL_UGL, na.rm=T)`.  Microcystin-LR concentrations of 0.05 $\mu$g/L represent the detection limits.  Any value greater than that indicates the presence of microcystin-LR.  Of those lakes with microcystin, the median concentration was `r round(median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)` and the mean was `r round(mean(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)`.  Of all lakes sampled, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=0.3])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA childrens drinking water standard, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1.6])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA adult drinking water standard,`r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO drinking water standard,and `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=2])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO recreational standard. For chlorophyll *a*, the range was `r min(nla_dat$CHLA,na.rm=T)` to `r max(nla_dat$CHLA, na.rm=T)` $\mu$g/L.  All lakes had reported chlorophyll *a* concentrations that exceeded detection limits.  The median concentration was `r median(nla_dat$CHLA,na.rm=T)` and the mean was `r round(mean(nla_dat$CHLA,na.rm=T),2)`.  The associations between chlorophyll *a* and the upper confidence interval with a conditional probability of 50% were `r mc_chla[1]`, `r mc_chla[2]`, `r mc_chla[3]`, and `r mc_chla[4]` for 0.3, 1.0, 1.6 and 2.0 $\mu$g/L advisory levels, respectively (Table \ref{tab:mc_chla_table} & Figure \ref{fig:multi_cp_plot}).   
 
 
 #Discussion
 The association between Log10 microcystin-LR and Log10 chlorophyll *a* shows a wedge pattern (Figure \ref{fig:chla_micro_scatter}).  This indicates that higher concentrations of microcystin-LR almost always co-occur with higher concentrations of chlorophyll *a* yet the inverse is not true.  Higher chlorophyll *a* is not necessarily predictive of higher microcystin-LR concentrations; however, chlorophyll *a* may be predictive of the probability of exceeding a certain concentration.  
 
 This is the case as the probability of exceeding each of the four tested health advisory levels increases as a function of chlorophyll *a* concentration (Figure \ref{fig:multi_cp_plot}).  We use this association to identify chlorophyll *a* concentrations that are associated with greater than even odds of exceeding a given health advisory level (Table \ref{tab:mc_chla_table}).  These represent `r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[1]])/length(nla_dat$CHLA)),1)`%, `r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[2]])/length(nla_dat$CHLA)),1)`%,
-`r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[3]])/length(nla_dat$CHLA)),1)`%, and `r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[4]])/length(nla_dat$CHLA)),1)`% of sample lakes for the U.S EPA childrens drinking water, the WHO drinking water, the U.S. EPA Adult drinking water, and the WHO recreational advisories, respecitvely.  
+`r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[3]])/length(nla_dat$CHLA)),1)`%, and `r round(100*(length(nla_dat$CHLA[nla_dat$CHLA>=mc_chla[4]])/length(nla_dat$CHLA)),1)`% of sample lakes for the U.S EPA childrens drinking water, the WHO drinking water, the USEPA Adult drinking water, and the WHO recreational advisories, respecitvely.  
 
 Furthermore, the chlorophyll *a* cutoffs may be used to predict whether or not a lake exceeds the microcystin-LR health advisories.  Doing so allows us to compare the accuracy of the prediction as well as evaluate false negatives.  Total accuracy of the four cutoffs predicting microcystin-LR exceedances were `r total_accuracy$epa_child*100`% for the USEPA children's advisory, `r total_accuracy$who_drink*100`% for the WHO drinking water advisory,  `r total_accuracy$epa_adult*100`% for the USEPA adult advisory and, `r total_accuracy$who_rec*100`% for the WHO regreational advisory (Tables \ref{tab:child_conmat_table}, \ref{tab:who_drink_conmat_table}, \ref{tab:adult_conmat_table}, & \ref{tab:who_rec_conmat_table}).  However, total accuracy is only one part of the prediction performace with which we are concerned.  
 
-When using the chlorophyll *a* cutoffs as an indicator of microcystin-LR exceedances, the error that should be avoided is predicting that no exceedance has occurred when in fact it has.  In other words, we would like to avoid Type II errors and minimize the proportion of false negatives.  For the four chlorophyll *a* cut-offs we had a proportion of false negatives of `r fn_percent$epa_child*100`%, `r fn_percent$who_drink*100`%, `r fn_percent$epa_adult*100`% and , `r fn_percent$who_rec*100`% for the U.S EPA childrens drinking water, the WHO drinking water, the U.S. EPA adult drinking water, and the WHO recreational advisories, respecitvely.  In each case we miss less than 10% of the lakes that are in fact exceeding the microcystin-LR advisory.  This is an acceptable rate, especially when no other tests are available for a given water body. 
+When using the chlorophyll *a* cutoffs as an indicator of microcystin-LR exceedances, the error that should be avoided is predicting that no exceedance has occurred when in fact it has.  In other words, we would like to avoid Type II errors and minimize the proportion of false negatives.  For the four chlorophyll *a* cut-offs we had a proportion of false negatives of `r fn_percent$epa_child*100`%, `r fn_percent$who_drink*100`%, `r fn_percent$epa_adult*100`% and , `r fn_percent$who_rec*100`% for the U.S EPA childrens drinking water, the WHO drinking water, the USEPA adult drinking water, and the WHO recreational advisories, respecitvely.  In each case we miss less than 10% of the lakes that are in fact exceeding the microcystin-LR advisory.
 
 There are numerous possible uses for the chlorophyll *a* and microcystin-LR advisory cut-off values.  First, in the absence of microcystin-LR measurements, exceedence of the chlorophyll *a* concentrations could be a trigger for further actions.  Given that there is uncertainity around these chlorophyll *a* cutoffs the best case scenario would be to monitor for chlorophyll and in the event of exceeding a target concentration take water samples and have those samples tested in a lab for microcystin-LR.  
 
@@ -221,7 +227,7 @@ plot_cdf(nla_dat[,c("log_chla","log_micro")],"")
 
 \newpage-->
 
-```{r epa_child_cp_plot, echo=FALSE, fig.width=6, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. A.) Plot for U.S. EPA childrens drinking water advisory (0.3 $\\mu$g/L). B.) Plot for WHO drinking water advisory (1 $\\mu$g/L). C.) Plot for U.S. EPA adult drinking water advisory (1.6 $\\mu$g/L). D.) Plot for WHO recreational advisory (2 $\\mu$g/L). \\label{fig:multi_cp_plot}"}
+```{r epa_child_cp_plot, echo=FALSE, fig.width=6, fig.cap="Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. A.) Plot for USEPA childrens drinking water advisory (0.3 $\\mu$g/L). B.) Plot for WHO drinking water advisory (1 $\\mu$g/L). C.) Plot for USEPA adult drinking water advisory (1.6 $\\mu$g/L). D.) Plot for WHO recreational advisory (2 $\\mu$g/L). \\label{fig:multi_cp_plot}"}
 multiplot(
   plot_cp(epa_child_cp,x = "Log 10 Chlorophyll", 
           y = "Conditional Probability",
@@ -249,15 +255,15 @@ source_of_stnd <- c("WHO",
                     "WHO",
                     "WHO",
                     "WHO",
-                    "U.S. EPA",
-                    "U.S. EPA")
-type_of_stnd <- c("Recreational",
-                  "Recreational",
-                  "Recreational",
-                  "Recreational",
-                  "Drinking",
-                  "Drinking",
-                  "Drinking")
+                    "USEPA",
+                    "USEPA")
+type_of_stnd <- c("Recreational: Low Prob. of Effect",
+                  "Recreational: Moderate Prob. of Effect",
+                  "Recreational: High Prob. of Effect",
+                  "Recreational: Very High Prob. of Effect",
+                  "Drinking Water",
+                  "Child Drinking Water Advisory",
+                  "Adult Drinking Water Advisory")
 concentration <- c("2-4 $\\mu$g/L",
                    "10-20 $\\mu$g/L",
                    "20-2000 $\\mu$g/L",
@@ -289,7 +295,7 @@ knitr::kable(mc_chla_tbl)
 
 \newpage
 
-```{r child_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the U.S. EPA childrens drinking water advisory. \\label{tab:child_conmat_table}"}
+```{r child_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the USEPA childrens drinking water advisory. \\label{tab:child_conmat_table}"}
 knitr::kable(child_conmat)
 ```
 
@@ -301,7 +307,7 @@ knitr::kable(who_drink_conmat)
 
 \newpage
 
-```{r adult_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the U.S. EPA adult drinking water advisory. \\label{tab:adult_conmat_table}"}
+```{r adult_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the USEPA adult drinking water advisory. \\label{tab:adult_conmat_table}"}
 knitr::kable(adult_conmat)
 ```
 
