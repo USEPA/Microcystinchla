@@ -46,7 +46,7 @@ if(!require(microcystinchla)){
                            auth_token = getOption("Github_Access"))
 }
 if(!require(viridis)){
-  install.pacakges("viridis") 
+  install.packages("viridis") 
 }
 library("microcystinchla")
 library("dplyr")
@@ -207,6 +207,8 @@ There are numerous possible uses for the chlorophyll *a* and microcystin-LR advi
 A second potential use is to identify possible bloom events from historical data.  As harmful algal blooms are made up of many species and have various mechanisms responsible for adverse impacts (e.g. toxins, hypoxia, odors), there is no single definition of a bloom.  For cHABs one approach has been to identify an increase over a baseline concentration of phycocyanin [@miller2013spatiotemporal].  This is a useful approach for targeted studies, but phycocyanin is also not always available and measures the predominance of cyanobacterial pigments and not toxins. Using our chlorophyll *a* cutoffs provides a value that is more directly associated with microcystin-LR and can be used to classify lakes, from past surveys, as having bloomed.  
 
 Lastly, using chlorophyll *a* is not meant as a replacement for testing of microcystin-LR.  It should be used when other, direct measurements of cyanotoxins are not available.  In those cases, which are likely to be common at least in the near future, using a more ubiquitous meausrement, such as chlorophyll *a* will provide a reasonable proxy for the probability of exceeding a microcystin-LR health advisory level and provide better protection against adverse effects in both drinking and recreational use cases. 
+
+#Acknowledgements
 
 \newpage
 
