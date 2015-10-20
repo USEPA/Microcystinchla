@@ -42,7 +42,7 @@ abstract: no
 #Load packages
 ################################################################################
 if(!require(microcystinchla)){
-  devtools::install_github("jhollist/microcystinchla",
+  devtools::install_github("usepa/microcystinchla",
                            auth_token = getOption("Github_Access"))
 }
 if(!require(viridis)){
