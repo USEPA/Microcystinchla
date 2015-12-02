@@ -99,6 +99,7 @@ mc_type <- c("Child Drinking Water Advisory",
              "Recreational: Moderate Prob. of Effect",
              "Recreational: High Prob. of Effect",
              "Recreational: Very High Prob. of Effect")
+#REDO THIS TO GRAB UPDATED INFO FOR TABLE
 mc_chla <- vector("numeric",length(mc_guides))
 #wgt <- nla_dat$WGT_NLA
 wgt<- rep(1,nrow(nla_dat))
