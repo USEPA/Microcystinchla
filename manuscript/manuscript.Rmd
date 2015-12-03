@@ -99,8 +99,7 @@ mc_type <- c("Child Drinking Water Advisory",
              "Recreational: Moderate Prob. of Effect",
              "Recreational: High Prob. of Effect",
              "Recreational: Very High Prob. of Effect")
-#REDO THIS TO GRAB UPDATED INFO FOR TABLE
-mc_chla <- vector("numeric",length(mc_guides))
+
 #wgt <- nla_dat$WGT_NLA
 wgt<- rep(1,nrow(nla_dat))
 
@@ -108,25 +107,37 @@ epa_child_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro,
                      xImpair = log10(mc_guides[1]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100, xW=wgt)
 
-mc_chla[1] <- get_chla(epa_child_cp,0.5)
+#mc_chla[1] <- get_chla(epa_child_cp,0.5)
 
 who_drink_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log10(mc_guides[2]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100, xW=wgt)
 
-mc_chla[2] <- get_chla(who_drink_cp,0.5)
+#mc_chla[2] <- get_chla(who_drink_cp,0.5)
 
 epa_adult_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log10(mc_guides[3]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100, xW=wgt)
 
-mc_chla[3] <- get_chla(epa_adult_cp,0.5)
+#mc_chla[3] <- get_chla(epa_adult_cp,0.5)
 
 who_rec_low1_cp <- condprob(xX = nla_dat$log_chla,xY = nla_dat$log_micro, 
                      xImpair = log10(mc_guides[4]), ProbComp = "gt", Exceed = "gte",
                      ci = TRUE, R = 100, xW=wgt)
 
-mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
+#mc_chla[4] <- get_chla(who_rec_low1_cp,0.5)
+epa_child <- NULL
+who_drink <- NULL
+epa_adult <- NULL
+who_rec <- NULL
+cps<- seq(0.1,0.9,0.1)
+for(i in 1:9){
+  epa_child[i] <- get_chla(epa_child_cp,cps[i])[1]
+  who_drink[i] <- get_chla(who_drink_cp,cps[i])[1]
+  epa_adult[i] <- get_chla(epa_adult_cp,cps[i])[1]
+  who_rec[i] <- get_chla(who_rec_low1_cp,cps[i])[1]
+}
+mc_chla<-cbind(epa_child,who_drink,epa_adult,who_rec)
 
 #Agreement Tables
 child_conmat<-conmat_to_df(table(chla=nla_dat$CHLA>=mc_chla[1],
@@ -293,10 +304,11 @@ knitr::kable(mc_conc_table)
 \newpage
 
 ```{r mc_chla_table, results='asis', echo=FALSE, tab.cap="Chlorophyll \\textit{a} concentrations that are associated with a 50% probability of exceeding a microcystin-LR health advisory concentration. \\label{tab:mc_chla_table}"}
-mc_chla_tbl <- data.frame(Source=mc_names,Type=mc_type,Microcystin=mc_guides,Chlorophyll=mc_chla)[1:4,]
+mc_chla_tbl <- data.frame(seq(0.1,0.9,0.1),mc_chla)
+names(mc_chla_tbl)<-c("Cond. Probability","USEPA Child", "WHO Drink", 
+                      "USEPA Adult", "WHO Recreational")
 #pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 knitr::kable(mc_chla_tbl)
-####AS OF 12/2/15 - REDO THIS WITH MULTIPLE COND PROBS!
 ```
 
 \newpage

@@ -185,8 +185,8 @@ associated with an exceedance of a microcystin health advisory level. We
 look at the recent US EPA standards for drinking water as well as the
 World Health Organization levels for drinking water and recreational
 use. For the specific advisory microcystin concentrations of 0.3, 1,
-1.6, and 2, we find chlorophyll \emph{a} concentrations of 23.68, 63.94,
-84.96, and 97.49, respectively. When managing for these various
+1.6, and 2, we find chlorophyll \emph{a} concentrations of 0.07, 0.07,
+2.79, and 11.36, respectively. When managing for these various
 microcystin levels, exceeding these reported chlorophyll \emph{a}
 concentrations should be a trigger for further testing and possible
 management action.
@@ -222,27 +222,40 @@ specific kit) with a limited shelf life (typically one year) (James et
 al. 2011, Aranda-Rodriguez et al. 2015). Additionally, each technique
 requires nuanced understanding of the detection method (e.g., limit of
 detection, specific microcystin variants being measured, and sampling
-protocol). Fortunately, microcystin-LR has been shown to be associated
-with several other, more commonly measured and well understood
-components of water quality.
+protocol).
 
-Chlorophyll \emph{a} is a very commonly measured component of water
-quality that is also known to be associated with Microsystin-LR
-concentrations (Lee et al. 2000, Heisler et al. 2008, Paerl and Otten
-2013). Additionally, there are many rapid measurements for assessing
-chlorophyll \emph{a} levels \emph{in situ}. For instance, there are
-small or hand held flourometers that measure chlorohpyll \emph{a}. Given
-these facts, it might be possible to identify chlorophyll \emph{a}
-concentrations that would be associated with the various Microcystin-LR
-health advisory levels. Identifying these associations would provide
-another tool for water resource managers to help manage the threat to
-public health posed by cHABs and would be especially useful in the
-absence of microcystin-LR concentrations. Thus, the goal of this paper
-is to utilize the National Lakes Assessment (NLA) data and identify
-chlorophyll \emph{a} concentrations that are associated with higher
-probabilities of exceeding several microcystin-LR health advisory
-concentrations (USEPA 2009). So that others may repeat or adjust this
-analysis, the data, code, and this manuscript are freely available via
+Fortunately, microcystin-LR has been shown to be associated with several
+other, more commonly measured and well understood components of water
+quality that are readily assessed in the field. For instance, there are
+small or hand held fluorometers that measure chlorohpyll \emph{a}.
+Additionally, chlorophyll \emph{a} is a very commonly measured component
+of water quality that is also known to be positively associated with
+Microsystin-LR concentrations (Pip and Bowman 2014, Yuan et al. 2014).
+Yuan et. al (2014) explore these associations in detail and control for
+other related variables. In their analysis they find that total nitrogen
+and chlorophyll \emph{a} show the strongest association with
+microcystin. Furthermore, they identify chlorophyll\emph{a} and total
+nitrogen concentrations that are associated with exceeding 1 \(\mu\)g/L
+of microcystin. Given these facts, it should be possible to identify
+chlorophyll \emph{a} concentrations that would be associated with the
+new USEPA Microcystin-LR health advisory levels for drinking water.
+Identifying these associations would provide another tool for water
+resource managers to help manage the threat to public health posed by
+cHABs and would be especially useful in the absence of microcystin-LR
+concentrations.
+
+In this paper we build on past efforts and utilize the National Lakes
+Assessment (NLA) data and identify chlorophyll \emph{a} concentrations
+that are associated with higher probabilities of exceeding several
+microcystin-LR health advisory concentrations (Chorus and Bartram 1999,
+USEPA 2009, 2015). We add to past studies by exploring associations with
+newly announced advisory levels and by also applying a different method,
+conditional probability analysis. Utilizing different methods
+strengthens the evidence for suggested chlorophyll \emph{a} levels that
+are associated with increased risk of exceeding the health advisory
+levels as those levels are not predicated on a single analytical method.
+So that others may repeat or adjust this analysis, the data, code, and
+this manuscript are freely available via
 \href{https://github.com/USAPE/microcystinchla}{\url{https://github.com/USAPE/microcystinchla}}.
 
 \section{Methods}\label{methods}
@@ -251,8 +264,8 @@ analysis, the data, code, and this manuscript are freely available via
 
 We used the 2007 NLA water quality and microcystin-LR concentration data
 (USEPA 2009). These data represent a snapshot of water quality from the
-summer of 2007 and data on chlorophyll \emph{a} and microcystin-LR
-concentrations are available for lakes.
+summer of 2007 for the conterminous United States. Data on chlorophyll
+\emph{a} and microcystin-LR concentrations are available for lakes.
 
 \subsection{Conditional Probability
 Analysis}\label{conditional-probability-analysis}
@@ -265,40 +278,49 @@ levels (Paul and Munns 2011). Many levels have been suggested (Table
 concentrations in the NLA were rare. Only 1.16 \% of lakes sampled had a
 concentration greater than 10. Thus, for this analysis we focus on the
 microcystin concentrations that are better represented in the NLA data.
-These were 0.3, 1, 1.6, and 2 \(\mu\)g/L.
+These were the USEPA children's drinking water advisory level of 0.3
+\(\mu\)g/L (USEPA Child), the WHO drinking water advisory level of 1
+\(\mu\)g/L (WHO Drinking), the USEPA adult drinking water advisory level
+of 1.6 \(\mu\)g/L (USEPA Adult), and the WHO recreational, low
+probability of effect advisory level of 2 \(\mu\)g/L (WHO Recreational).
 
-A detailed discussion of CPA is beyond the scope of this paper; see Paul
-et al. (2005) and Hollister et al. (2008) for greater detail. For this
-analysis, we used CPA to examine how the conditional probability of
-exceeding one of the health advisory changes as chlorophyll \emph{a}
-increases in a lake. The 95\% confidence intervals were calculated from
-1000 bootstrapped samples. To identify chlorophyll \emph{a}
-concentrations of concern we used a 50\% conditional probability of
-exceeding each health advisory level and extracted the minimum
-chlorophyll \emph{a} concentration that was associated with an upper
-confidence level of 50\% or greater. As both microcystin-LR and
-chlorophyll \emph{a} values were highely skewed right, a log base 10
-transformation was used. Additional details of the specific
-implementation are available at
-\url{https://github.com/USEPA/microcystinchla}.
+Conditional probability analysis provides information about the
+probability of observing one event given another event has also occured.
+For this analysis, we used CPA to examine how the conditional
+probability of exceeding one of the health advisory changes as
+chlorophyll \emph{a} increases in a lake. We expect to find higher
+chlorohpyll \emph{a} concentrations to be associated with higher
+probabilities of exceeding the microcystin-LR health advisory levels. We
+also caclulated bootstrapped 95\% confidence intervals (CI) using 1000
+bootstrapped samples. Thus, to identify chlorophyll \emph{a}
+concentrations of concern we identfiy the value of the upper 95\% CI
+across a range of conditional probabilities of exceeding each health
+advisory level. As both microcystin-LR and chlorophyll \emph{a} values
+were highely skewed right, a log base 10 transformation was used.
+Additional details of the specific implementation are available at
+\url{https://github.com/USEPA/microcystinchla}. A more detailed
+discussion of CPA is beyond the scope of this paper, but see Paul et al.
+(2005) and Hollister et al. (2008) for greater detail.
 
 \section{Results}\label{results}
 
-In the 2007 NLA, microcystin-LR concentrations ranged from 0.05 to 225.
-Microcystin-LR concentrations of 0.05 \(\mu\)g/L represent the detection
-limits. Any value greater than that indicates the presence of
-microcystin-LR. Of those lakes with microcystin, the median
+In the 2007 NLA, microcystin-LR concentrations ranged from 0.05 to 225
+\(\mu\)g/L. Microcystin-LR concentrations of 0.05 \(\mu\)g/L represent
+the detection limits. Any value greater than that indicates the presence
+of microcystin-LR. Of those lakes with microcystin, the median
 concentration was 0.51 and the mean was 3.17. Of all lakes sampled, 21\%
-of lakes exceeded the USEPA childrens drinking water standard, 8.8\% of
-lakes exceeded the USEPA adult drinking water standard,11.7\% of lakes
-exceeded the WHO drinking water standard,and 7.3\% of lakes exceeded the
-WHO recreational standard. For chlorophyll \emph{a}, the range was 0.07
-to 936 \(\mu\)g/L. All lakes had reported chlorophyll \emph{a}
-concentrations that exceeded detection limits. The median concentration
-was 7.79 and the mean was 29.63. The associations between chlorophyll
-\emph{a} and the upper confidence interval with a conditional
-probability of 50\% were 23.68, 63.94, 84.96, and 97.49 for 0.3, 1.0,
-1.6 and 2.0 \(\mu\)g/L advisory levels, respectively (Table
+of lakes exceeded the USEPA Child level, 8.8\% of lakes exceeded the
+USEPA Adult level,11.7\% of lakes exceeded the WHO Drinking level,and
+7.3\% of lakes exceeded the WHO Recreational level. For chlorophyll
+\emph{a}, the range was 0.07 to 936 \(\mu\)g/L. All lakes had reported
+chlorophyll \emph{a} concentrations that exceeded detection limits. The
+median concentration was 7.79 \(\mu\)g/L and the mean was 29.63
+\(\mu\)g/L. The associations between chlorophyll \emph{a} and the upper
+confidence interval across a range of conditional probability values is
+shown in Table \ref{tab:mc_chla_table}. Specific chlorophyll \emph{a}
+that are associated with greater than even odds of exceeding the
+advisory levels were 0.07, 0.07, 2.79, and 11.36 for 0.3, 1.0, 1.6 and
+2.0 \(\mu\)g/L advisory levels, respectively (Table
 \ref{tab:mc_chla_table} \& Figure \ref{fig:multi_cp_plot}).
 
 \section{Discussion}\label{discussion}
@@ -317,18 +339,17 @@ health advisory levels increases as a function of chlorophyll \emph{a}
 concentration (Figure \ref{fig:multi_cp_plot}). We use this association
 to identify chlorophyll \emph{a} concentrations that are associated with
 greater than even odds of exceeding a given health advisory level (Table
-\ref{tab:mc_chla_table}). These represent 27.8\%, 11.9\%, 8.6\%, and
-7.9\% of sample lakes for the U.S EPA childrens drinking water, the WHO
-drinking water, the USEPA Adult drinking water, and the WHO recreational
-advisories, respecitvely.
+\ref{tab:mc_chla_table}). These represent 99.9\%, 99.9\%, 77\%, and
+43.8\% of sample lakes for the USEPA Child, the WHO Drinking, the USEPA
+Adult, and the WHO recreational levels, respecitvely.
 
 Furthermore, the chlorophyll \emph{a} cutoffs may be used to predict
 whether or not a lake exceeds the microcystin-LR health advisories.
 Doing so allows us to compare the accuracy of the prediction as well as
 evaluate false negatives. Total accuracy of the four cutoffs predicting
-microcystin-LR exceedances were 75\% for the USEPA children's advisory,
-86\% for the WHO drinking water advisory, 90\% for the USEPA adult
-advisory and, 90\% for the WHO regreational advisory (Tables
+microcystin-LR exceedances were 21\% for the USEPA children's advisory,
+12\% for the WHO drinking water advisory, 31\% for the USEPA adult
+advisory and, 61\% for the WHO regreational advisory (Tables
 \ref{tab:child_conmat_table}, \ref{tab:who_drink_conmat_table},
 \ref{tab:adult_conmat_table}, \& \ref{tab:who_rec_conmat_table}).
 However, total accuracy is only one part of the prediction performace
@@ -339,7 +360,7 @@ microcystin-LR exceedances, the error that should be avoided is
 predicting that no exceedance has occurred when in fact it has. In other
 words, we would like to avoid Type II errors and minimize the proportion
 of false negatives. For the four chlorophyll \emph{a} cut-offs we had a
-proportion of false negatives of 9\%, 7\%, 6\% and , 5\% for the U.S EPA
+proportion of false negatives of 0\%, 0\%, 0\% and , 1\% for the U.S EPA
 childrens drinking water, the WHO drinking water, the USEPA adult
 drinking water, and the WHO recreational advisories, respecitvely. In
 each case we miss less than 10\% of the lakes that are in fact exceeding
@@ -350,8 +371,8 @@ microcystin-LR advisory cut-off values. First, in the absence of
 microcystin-LR measurements, exceedence of the chlorophyll \emph{a}
 concentrations could be a trigger for further actions. Given that there
 is uncertainity around these chlorophyll \emph{a} cutoffs the best case
-scenario would be to monitor for chlorophyll and in the event of
-exceeding a target concentration take water samples and have those
+scenario would be to monitor for chlorophyll \emph{a} and in the event
+of exceeding a target concentration take water samples and have those
 samples tested in a lab for microcystin-LR.
 
 A second potential use is to identify possible bloom events from
@@ -375,6 +396,8 @@ proxy for the probability of exceeding a microcystin-LR health advisory
 level and provide better protection against adverse effects in both
 drinking and recreational use cases.
 
+\section{Acknowledgements}\label{acknowledgements}
+
 \newpage
 
 \section{Figures}\label{figures}
@@ -388,16 +411,18 @@ and microcystin-LR. \label{fig:chla_micro_scatter}}
 
 \newpage
 
+\begin{verbatim}
+## Loading required package: grid
+\end{verbatim}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{manuscript_files/figure-latex/epa_child_cp_plot-1.pdf}
 \caption{Conditional probability plots showing association between the
 probability of exceeding various microcystin-LR (MLR) health advisory
-Levels. A.) Plot for USEPA childrens drinking water advisory (0.3
-\(\mu\)g/L). B.) Plot for WHO drinking water advisory (1 \(\mu\)g/L).
-C.) Plot for USEPA adult drinking water advisory (1.6 \(\mu\)g/L). D.)
-Plot for WHO recreational advisory (2 \(\mu\)g/L).
-\label{fig:multi_cp_plot}}
+Levels. A.) Plot for USEPA Child (0.3 \(\mu\)g/L). B.) Plot for WHO
+Drinking (1 \(\mu\)g/L). C.) Plot for USEPA Adult (1.6 \(\mu\)g/L). D.)
+Plot for WHO Recreational (2 \(\mu\)g/L). \label{fig:multi_cp_plot}}
 \end{figure}
 
 \newpage
@@ -430,22 +455,29 @@ WHO & Recreational: Very High Prob. of Effect & \textgreater{}2000
 
 \newpage
 
-\begin{longtable}[c]{@{}llrr@{}}
+\begin{longtable}[c]{@{}rrrrr@{}}
 \caption{Chlorophyll \textit{a} concentrations that are associated with
 a 50\% probability of exceeding a microcystin-LR health advisory
 concentration. \label{tab:mc_chla_table}}\tabularnewline
 \toprule
-Source & Type & Microcystin & Chlorophyll\tabularnewline
+Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO
+Recreational\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-Source & Type & Microcystin & Chlorophyll\tabularnewline
+Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO
+Recreational\tabularnewline
 \midrule
 \endhead
-USEPA & Child Drinking Water Advisory & 0.3 & 23.68\tabularnewline
-WHO & Drinking Water Advisory & 1.0 & 63.94\tabularnewline
-USEPA & Adult Drinking Water & 1.6 & 84.96\tabularnewline
-WHO & Recreational: Low Prob. of Effect & 2.0 & 97.49\tabularnewline
+0.1 & 0.07 & 0.07 & 0.07 & 1.47\tabularnewline
+0.2 & 0.07 & 4.42 & 11.47 & 19.04\tabularnewline
+0.3 & 2.79 & 16.32 & 30.62 & 52.70\tabularnewline
+0.4 & 11.36 & 38.30 & 69.19 & 82.22\tabularnewline
+0.5 & 23.68 & 65.20 & 84.96 & 103.90\tabularnewline
+0.6 & 38.30 & 98.46 & 136.66 & 125.40\tabularnewline
+0.7 & 68.85 & 133.20 & 871.20 & 871.20\tabularnewline
+0.8 & 114.62 & 338.40 & 871.20 & 871.20\tabularnewline
+0.9 & 198.72 & 516.00 & 871.20 & 871.20\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -464,8 +496,8 @@ childrens drinking water advisory.
 & FALSE & TRUE\tabularnewline
 \midrule
 \endhead
-FALSE & 650 & 96\tabularnewline
-TRUE & 161 & 121\tabularnewline
+FALSE & 1 & 0\tabularnewline
+TRUE & 810 & 217\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -484,8 +516,8 @@ drinking water advisory.
 & FALSE & TRUE\tabularnewline
 \midrule
 \endhead
-FALSE & 835 & 75\tabularnewline
-TRUE & 72 & 46\tabularnewline
+FALSE & 1 & 0\tabularnewline
+TRUE & 906 & 121\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -503,8 +535,8 @@ drinking water advisory. \label{tab:adult_conmat_table}}\tabularnewline
 & FALSE & TRUE\tabularnewline
 \midrule
 \endhead
-FALSE & 887 & 57\tabularnewline
-TRUE & 50 & 34\tabularnewline
+FALSE & 234 & 4\tabularnewline
+TRUE & 703 & 87\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -523,8 +555,8 @@ recreational water advisory.
 & FALSE & TRUE\tabularnewline
 \midrule
 \endhead
-FALSE & 903 & 48\tabularnewline
-TRUE & 50 & 27\tabularnewline
+FALSE & 566 & 15\tabularnewline
+TRUE & 387 & 60\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -543,11 +575,6 @@ guide to their public health consequences, monitoring and management.
 HABHRCA. 2014. Harmful algal bloom and hypoxia research and control
 amendments act of 2014.
 
-Heisler, J., P. M. Glibert, J. M. Burkholder, D. M. Anderson, W.
-Cochlan, W. C. Dennison, Q. Dortch, C. J. Gobler, C. A. Heil, E.
-Humphries, and others. 2008. Eutrophication and harmful algal blooms: A
-scientific consensus. Harmful algae 8:3--13.
-
 Hollister, J. W., H. A. Walker, and J. F. Paul. 2008. CProb: A
 computational tool for conducting conditional probability analysis.
 Journal of environmental quality 37:2392--2396.
@@ -560,11 +587,6 @@ Jetoo, S., V. I. Grover, and G. Krantzberg. 2015. The toledo drinking
 water advisory: Suggested application of the water safety planning
 approach. Sustainability 7:9787--9808.
 
-Lee, S., M.-H. Jang, H.-S. Kim, B.-D. Yoon, and H.-M. Oh. 2000.
-Variation of microcystin content of microcystis aeruginosa relative to
-medium n: P ratio and growth stage. Journal of Applied Microbiology
-89:323--329.
-
 McElhiney, J., and L. A. Lawton. 2005. Detection of the cyanobacterial
 hepatotoxins microcystins. Toxicology and Applied Pharmacology
 203:219--230.
@@ -573,9 +595,6 @@ Miller, T. R., L. Beversdorf, S. D. Chaston, and K. D. McMahon. 2013.
 Spatiotemporal molecular analysis of cyanobacteria blooms reveals
 microcystis-aphanizomenon interactions. PloS one 8:e74933.
 
-Paerl, H. W., and T. G. Otten. 2013. Harmful cyanobacterial blooms:
-Causes, consequences, and controls. Microbial ecology 65:995--1010.
-
 Paul, J. F., and M. E. McDonald. 2005. Development of empirical,
 geographically specific water quality criteria: A conditional
 probability analysis approach 41:1211--1223.
@@ -583,6 +602,10 @@ probability analysis approach 41:1211--1223.
 Paul, J. F., and W. R. Munns. 2011. Probability surveys, conditional
 probability, and ecological risk assessment. Environmental Toxicology
 and Chemistry 30:1488--1495.
+
+Pip, E., and L. Bowman. 2014. Microcystin and algal chlorophyll in
+relation to nearshore nutrient concentrations in lake winnipeg, canada.
+Environment and Pollution 3:p36.
 
 Rinta-Kanto, J. M., E. A. Konopko, J. M. DeBruyn, R. A. Bourbonniere, G.
 L. Boyer, and S. W. Wilhelm. 2009. Lake erie microcystis: Relationship
@@ -601,6 +624,10 @@ Protection Agency Washington, DC.
 in drinking-water. background document for development of wHO guidelines
 for drinking-water quality. geneva, switzerland. World Health
 Organization, 2nd ed. Geneva.
+
+Yuan, L. L., A. I. Pollard, S. Pather, J. L. Oliver, and L. D'Anglada.
+2014. Managing microcystin: Identifying national-scale thresholds for
+total nitrogen and chlorophyll a. Freshwater Biology 59:1970--1981.
 
 Zurawell, R. W., H. Chen, J. M. Burke, and E. E. Prepas. 2005.
 Hepatotoxic cyanobacteria: A review of the biological importance of
