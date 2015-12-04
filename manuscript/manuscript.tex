@@ -264,11 +264,13 @@ this manuscript are freely available via
 \subsection{Data}\label{data}
 
 We used the 2007 NLA chlorophyll \emph{a} and microcystin-LR
-concentration data (USEPA 2009). These data represent a snapshot of
-water quality from the summer of 2007 for the conterminous United States
-and were collected as part of an ongoing probabilistic monitoring
-program (USEPA 2009). Data on chlorophyll \emph{a} and microcystin-LR
-concentrations are available for lakes.
+concentration data (USEPA 2009,
+\href{http://www2.epa.gov/national-aquatic-resource-surveys/national-lakes-assessment}{NLA}).
+These data represent a snapshot of water quality from the summer of 2007
+for the conterminous United States and were collected as part of an
+ongoing probabilistic monitoring program (USEPA 2009). Data on
+chlorophyll \emph{a} and microcystin-LR concentrations are available for
+lakes.
 
 \subsection{Conditional Probability
 Analysis}\label{conditional-probability-analysis}
@@ -298,9 +300,13 @@ also caclulated bootstrapped 95\% confidence intervals (CI) using 1000
 bootstrapped samples. Thus, to identify chlorophyll \emph{a}
 concentrations of concern we identfiy the value of the upper 95\% CI
 across a range of conditional probabilities of exceeding each health
-advisory level. As both microcystin-LR and chlorophyll \emph{a} values
-were highely skewed right, a log base 10 transformation was used.
-Additional details of the specific implementation are available at
+advisory level. Using the upper confidence limit to identify a threshold
+is justified as it ensures that a given threshold is unlikely to miss a
+microcystin exceedance.
+
+As both microcystin-LR and chlorophyll \emph{a} values were highely
+skewed right, a log base 10 transformation was used. Additional details
+of the specific implementation are available at
 \url{https://github.com/USEPA/microcystinchla}. A more detailed
 discussion of CPA is beyond the scope of this paper, but see Paul et al.
 (2005) and Hollister et al. (2008) for greater detail. Lastly, all
@@ -373,7 +379,10 @@ proportion of false negatives of 9\%, 8\%, 6\% and , 5\% for the U.S EPA
 childrens drinking water, the WHO drinking water, the USEPA adult
 drinking water, and the WHO recreational advisories, respectively. In
 each case we miss less than 10\% of the lakes that are in fact exceeding
-the microcystin-LR advisory.
+the microcystin-LR advisory. While this method performs well with regard
+to the false negative percentag, it is possible that is a relic of the
+NLA dataset and testing with additional data should be explore to
+further substatiate this result.
 
 There are numerous possible uses for the chlorophyll \emph{a} and
 microcystin-LR advisory cut-off values. First, in the absence of
@@ -406,6 +415,16 @@ health advisory level and provide better protection against adverse
 effects in both drinking and recreational use cases.
 
 \section{Acknowledgements}\label{acknowledgements}
+
+We would like to thank Anne Kuhn, Bryan Milstead, John Kiddon, Joe
+LiVolsi, Tim Gleason, and Wayne Munns for constructive reviews of this
+paper. This paper has not been subjected to Agency review. Therefore, it
+does not necessary reflect the views of the Agency. Mention of trade
+names or commercial products does not constitute endorsement or
+recommendation for use. This contribution is identified by the tracking
+number ORD-XXXXX of the Atlantic Ecology Division, Office of Research
+and Development, National Health and Environmental Effects Research
+Laboratory, US Environmental Protection Agency.
 
 \newpage
 
