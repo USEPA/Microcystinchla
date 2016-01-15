@@ -1,0 +1,54 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% For more detailed article preparation guidelines, please see:
+% http://f1000research.com/author-guidelines
+
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage{f1000_styles}
+
+\begin{document}
+
+%Still need to figure out how to get corresponding author on here.
+\title{\textit{F1000Research} $title$}
+$for(author)$
+\author[$author.affilnum$]{$author.name$}
+$endfor$
+$for(affiliation)$
+\affil[$affiliation.affilnum$]{$affilitation.affil$}
+$endfor$
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+
+$abstract%
+
+\end{abstract}
+
+\clearpage
+
+$body$
+
+$if(natbib)$
+$if(biblio-files)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$biblio-files$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
