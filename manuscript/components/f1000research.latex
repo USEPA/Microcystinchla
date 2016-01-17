@@ -4,7 +4,9 @@
 % http://f1000research.com/author-guidelines
 
 \documentclass[10pt,a4paper,twocolumn]{article}
-\usepackage{f1000_styles}
+\usepackage{components/f1000_styles}
+\usepackage{hyperref}
+\usepackage{longtable}
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -19,7 +21,7 @@ $endif$
 \begin{document}
 
 %Still need to figure out how to get corresponding author on here.
-\title{\textit{F1000Research} $title$}
+\title{\textit{$title$} }
 $for(author)$
 \author[$author.affilnum$]{$author.name$}
 $endfor$

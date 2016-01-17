@@ -26,7 +26,7 @@ fontsize: 11pt
 linenumbers: yes
 bibliography: components/manuscript.bib
 spacing: doublespacing
-abstract: no
+abstract: "Cyanobacteria harmful algal blooms (cHABs) are associated with a wide range of adverse health effects that stem mostly from the presence of cyanotoxins. To help protect against these impacts, several health advisory levels have been set for some toxins. In particular, one of the more common toxins, microcystin, has several advisory levels set for drinking water and recreational use. However, compared to other water quality measures, field measurements of microcystin are not commonly available due to cost and advanced understanding required to interpret results. Addressing these issues will take time and resources. Thus, there is utility in finding indicators of microcystin that are already widely available, can be estimated quickly and in situ, and used as a first defense against high levels of microcystin. Chlorophyll *a* is commonly measured, can be estimated *in situ*, and has been shown to be positively associated with microcystin. In this paper, we use this association to provide estimates of chlorophyll a concentrations that are indicative of a higher probability of exceeding select health advisory concentrations for microcystin-LR. Using the 2007 National Lakes Assessment and a conditional probability approach, we identify chlorophyll *a* concentrations that are more likely than not to be associated with an exceedance of a microcystin health advisory level. We look at the recent US EPA health advisories for drinking water as well as the World Health Organization levels for drinking water and recreational use and identify a range of chlorophyll *a* thresholds. A 50% chance of exceeding one of the specific advisory microcystin concentrations of 0.3, 1, 1.6, and 2 g/L is associatied with chlorophyll *a* concentration thresholds of 24.64, 65.6, 89.71, and 94.93, respectively. When managing for these various microcystin levels, exceeding these reported chlorophyll *a* concentrations should be a trigger for further testing and possible management action."
 ---
 
 <!--
@@ -193,17 +193,17 @@ fn_percent$who_rec<-round((who_rec_conmat[1,2])/
 
 ```
 
-
+<!--
 \singlespace
 
 \vspace{2mm}\hrule
 
-<!-- Abstract is being wrapped in latex here so that all analysis can be run in the chunk above and the results reproducibly referenced in the abstract. -->
+<!-- Abstract is being wrapped in latex here so that all analysis can be run in the chunk above and the results reproducibly referenced in the abstract. 
 Cyanobacteria harmful algal blooms (cHABs) are associated with a wide range of adverse health effects that stem mostly from the presence of cyanotoxins.  To help protect against these impacts, several health advisory levels have been set for some toxins.  In particular, one of the more common toxins, microcystin, has several advisory levels set for drinking water and recreational use.  However, compared to other water quality measures, field measurements of microcystin are not commonly available due to cost and advanced understanding required to interpret results.  Addressing these issues will take time and resources.  Thus, there is utility in finding indicators of microcystin that are already widely available, can be estimated quickly and *in situ*, and used as a first defense against high levels of microcystin.  Chlorophyll *a* is commonly measured, can be estimated *in situ*, and has been shown to be positively associated with microcystin.  In this paper, we use this association to provide estimates of chlorophyll *a* concentrations that are indicative of a higher probability of exceeding select health advisory concentrations for microcystin-LR.  Using the 2007 National Lakes Assessment and a conditional probability approach, we identify chlorophyll *a* concentrations that are more likely than not to be associated with an exceedance of a microcystin health advisory level.  We look at the recent US EPA health advisories for drinking water as well as the World Health Organization levels for drinking water and recreational use and identify a range of chlorophyll *a* thresholds.  A 50% chance of exceeding one of the specific advisory microcystin concentrations of 0.3, 1, 1.6, and 2 $\mu$g/L is associatied with chlorophyll *a* concentration thresholds of `r mc_chla[5,1]`, `r mc_chla[5,2]`, `r mc_chla[5,3]`, and `r mc_chla[5,4]`, respectively.  When managing for these various microcystin levels, exceeding these reported chlorophyll *a* concentrations should be a trigger for further testing and possible management action.   
 
 \vspace{3mm}\hrule
 \doublespace
-
+-->
 #Introduction
 
 Over the last decade, numerous events and legislative activities have raised the public awareness of harmful algal blooms [@jetoo2015toledo; @rinta2009lake; @HABHRCA2014]. In response the US Environmental Protection Agency (USEPA) has recently released suggested microcystin-LR (one of the more common toxins) concentrations that would trigger health advisories [@mcelhiney2005detection; @zurawell2005hepatotoxic; @usepa2015drinking].  Additionally, the World Health Organization (WHO) has proposed microcystin advisory levels for drinking water and a range of recreational risk levels [@world2003cyanobacterial; @chorus1999toxic].   While these levels and associated advisories are likely to help mitigate the impacts from harmful algal blooms, they are not without complications.  
@@ -326,7 +326,7 @@ mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration) %>%
   arrange(type_of_stnd)
 names(mc_conc_table)<-c("Source","Type","Concentration")
 #pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
-knitr::kable(mc_conc_table)
+knitr::kable(mc_conc_table,format="latex")
 ```
 
 \newpage
@@ -336,31 +336,31 @@ mc_chla_tbl <- data.frame(seq(0.1,0.9,0.1),mc_chla)
 names(mc_chla_tbl)<-c("Cond. Probability","USEPA Child", "WHO Drink", 
                       "USEPA Adult", "WHO Recreational")
 #pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
-knitr::kable(mc_chla_tbl)
+knitr::kable(mc_chla_tbl,format="latex")
 ```
 
 \newpage
 
 ```{r child_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the USEPA childrens drinking water advisory. \\label{tab:child_conmat_table}"}
-knitr::kable(child_conmat)
+knitr::kable(child_conmat,format="latex")
 ```
 
 \newpage
 
 ```{r who_drink_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the WHO drinking water advisory. \\label{tab:who_drink_conmat_table}"}
-knitr::kable(who_drink_conmat)
+knitr::kable(who_drink_conmat,format="latex")
 ```
 
 \newpage
 
 ```{r adult_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the USEPA adult drinking water advisory. \\label{tab:adult_conmat_table}"}
-knitr::kable(adult_conmat)
+knitr::kable(adult_conmat,format="latex")
 ```
 
 \newpage
 
 ```{r who_rec_conmat_table, results='asis', echo=FALSE, tab.cap="Confusion matrix comparing chlorophyll \\textit{a} predicted exceedences (rows) versus real exceedances (columns) for the WHO recreational water advisory. \\label{tab:who_rec_conmat_table}"}
-knitr::kable(who_rec_conmat)
+knitr::kable(who_rec_conmat,format="latex")
 ```
 
 \newpage

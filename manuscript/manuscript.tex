@@ -4,7 +4,9 @@
 % http://f1000research.com/author-guidelines
 
 \documentclass[10pt,a4paper,twocolumn]{article}
-\usepackage{f1000_styles}
+\usepackage{components/f1000_styles}
+\usepackage{hyperref}
+\usepackage{longtable}
 \bibliography{components/manuscript}
 
 \begin{document}
@@ -21,18 +23,6 @@ health advisory Concentrations}
 
 \begin{abstract}
 
-
-
-\end{abstract}
-
-\clearpage
-
-\singlespace
-
-\vspace{2mm}
-
-\hrule
-
 Cyanobacteria harmful algal blooms (cHABs) are associated with a wide
 range of adverse health effects that stem mostly from the presence of
 cyanotoxins. To help protect against these impacts, several health
@@ -43,11 +33,11 @@ quality measures, field measurements of microcystin are not commonly
 available due to cost and advanced understanding required to interpret
 results. Addressing these issues will take time and resources. Thus,
 there is utility in finding indicators of microcystin that are already
-widely available, can be estimated quickly and \emph{in situ}, and used
-as a first defense against high levels of microcystin. Chlorophyll
-\emph{a} is commonly measured, can be estimated \emph{in situ}, and has
-been shown to be positively associated with microcystin. In this paper,
-we use this association to provide estimates of chlorophyll \emph{a}
+widely available, can be estimated quickly and in situ, and used as a
+first defense against high levels of microcystin. Chlorophyll \emph{a}
+is commonly measured, can be estimated \emph{in situ}, and has been
+shown to be positively associated with microcystin. In this paper, we
+use this association to provide estimates of chlorophyll a
 concentrations that are indicative of a higher probability of exceeding
 select health advisory concentrations for microcystin-LR. Using the 2007
 National Lakes Assessment and a conditional probability approach, we
@@ -57,18 +47,15 @@ level. We look at the recent US EPA health advisories for drinking water
 as well as the World Health Organization levels for drinking water and
 recreational use and identify a range of chlorophyll \emph{a}
 thresholds. A 50\% chance of exceeding one of the specific advisory
-microcystin concentrations of 0.3, 1, 1.6, and 2 \(\mu\)g/L is
-associatied with chlorophyll \emph{a} concentration thresholds of 21.92,
-77.2, 84.96, and 105.84, respectively. When managing for these various
-microcystin levels, exceeding these reported chlorophyll \emph{a}
-concentrations should be a trigger for further testing and possible
-management action.
+microcystin concentrations of 0.3, 1, 1.6, and 2 g/L is associatied with
+chlorophyll \emph{a} concentration thresholds of 24.64, 65.6, 89.71, and
+94.93, respectively. When managing for these various microcystin levels,
+exceeding these reported chlorophyll \emph{a} concentrations should be a
+trigger for further testing and possible management action.
 
-\vspace{3mm}
+\end{abstract}
 
-\hrule
-
-\doublespace
+\clearpage
 
 \section{Introduction}\label{introduction}
 
@@ -326,140 +313,130 @@ Plot for WHO Recreational (2 \(\mu\)g/L). \label{fig:multi_cp_plot}}
 
 \section{Tables}\label{tables}
 
-\begin{longtable}[c]{@{}lll@{}}
-\caption{Various suggested microcystin-LR health advisory
-concentrations. \label{tab:microcystin_levels}}\tabularnewline
-\toprule
-Source & Type & Concentration\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-Source & Type & Concentration\tabularnewline
-\midrule
-\endhead
-USEPA & Adult Drinking Water Advisory & 1.6 \(\mu\)g/L\tabularnewline
-USEPA & Child Drinking Water Advisory & 0.3 \(\mu\)g/L\tabularnewline
-WHO & Drinking Water & 1 \(\mu\)g/L\tabularnewline
-WHO & Recreational: High Prob. of Effect & 20-2000
-\(\mu\)g/L\tabularnewline
-WHO & Recreational: Low Prob. of Effect & 2-4 \(\mu\)g/L\tabularnewline
-WHO & Recreational: Moderate Prob. of Effect & 10-20
-\(\mu\)g/L\tabularnewline
-WHO & Recreational: Very High Prob. of Effect & \textgreater{}2000
-\(\mu\)g/L\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{l|l|l}
+\hline
+Source & Type & Concentration\\
+\hline
+USEPA & Adult Drinking Water Advisory & 1.6 \$\textbackslash{}mu\$g/L\\
+\hline
+USEPA & Child Drinking Water Advisory & 0.3 \$\textbackslash{}mu\$g/L\\
+\hline
+WHO & Drinking Water & 1 \$\textbackslash{}mu\$g/L\\
+\hline
+WHO & Recreational: High Prob. of Effect & 20-2000 \$\textbackslash{}mu\$g/L\\
+\hline
+WHO & Recreational: Low Prob. of Effect & 2-4 \$\textbackslash{}mu\$g/L\\
+\hline
+WHO & Recreational: Moderate Prob. of Effect & 10-20 \$\textbackslash{}mu\$g/L\\
+\hline
+WHO & Recreational: Very High Prob. of Effect & >2000 \$\textbackslash{}mu\$g/L\\
+\hline
+\end{tabular}
+
+:Various suggested microcystin-LR health advisory concentrations.
+\label{tab:microcystin_levels}
 
 \newpage
 
-\begin{longtable}[c]{@{}rrrrr@{}}
-\caption{Chlorophyll \textit{a} concentrations that are associated with
-a 50\% probability of exceeding a microcystin-LR health advisory
-concentration. \label{tab:mc_chla_table}}\tabularnewline
-\toprule
-Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO
-Recreational\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO
-Recreational\tabularnewline
-\midrule
-\endhead
-0.1 & 0.07 & 0.07 & 0.07 & 1.17\tabularnewline
-0.2 & 0.07 & 4.48 & 10.67 & 18.24\tabularnewline
-0.3 & 2.78 & 17.49 & 31.59 & 50.26\tabularnewline
-0.4 & 9.97 & 38.73 & 69.19 & 76.80\tabularnewline
-0.5 & 21.92 & 77.20 & 84.96 & 105.84\tabularnewline
-0.6 & 38.73 & 103.20 & 133.20 & 228.24\tabularnewline
-0.7 & 63.94 & 138.24 & 244.80 & 871.20\tabularnewline
-0.8 & 113.14 & 326.88 & 326.88 & 871.20\tabularnewline
-0.9 & 166.63 & 516.00 & 871.20 & 871.20\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{r|r|r|r|r}
+\hline
+Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO Recreational\\
+\hline
+0.1 & 0.07 & 0.07 & 0.07 & 1.17\\
+\hline
+0.2 & 0.07 & 4.48 & 10.67 & 18.24\\
+\hline
+0.3 & 2.78 & 17.49 & 31.59 & 50.26\\
+\hline
+0.4 & 9.97 & 38.73 & 69.19 & 76.80\\
+\hline
+0.5 & 21.92 & 77.20 & 84.96 & 105.84\\
+\hline
+0.6 & 38.73 & 103.20 & 133.20 & 228.24\\
+\hline
+0.7 & 63.94 & 138.24 & 244.80 & 871.20\\
+\hline
+0.8 & 113.14 & 326.88 & 326.88 & 871.20\\
+\hline
+0.9 & 166.63 & 516.00 & 871.20 & 871.20\\
+\hline
+\end{tabular}
+
+:Chlorophyll \textit{a} concentrations that are associated with a 50\%
+probability of exceeding a microcystin-LR health advisory concentration.
+\label{tab:mc_chla_table}
 
 \newpage
 
-\begin{longtable}[c]{@{}lrrr@{}}
-\caption{Confusion matrix comparing chlorophyll \textit{a} predicted
-exceedences (rows) versus real exceedances (columns) for the USEPA
-childrens drinking water advisory.
-\label{tab:child_conmat_table}}\tabularnewline
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endhead
-Not Exceed & 638 & 93 & 731\tabularnewline
-Exceed & 173 & 124 & 297\tabularnewline
-Column Totals & 811 & 217 & 1028\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{l|r|r|r}
+\hline
+  & Not Exceed & Exceed & Row Totals\\
+\hline
+Not Exceed & 638 & 93 & 731\\
+\hline
+Exceed & 173 & 124 & 297\\
+\hline
+Column Totals & 811 & 217 & 1028\\
+\hline
+\end{tabular}
+
+:Confusion matrix comparing chlorophyll \textit{a} predicted exceedences
+(rows) versus real exceedances (columns) for the USEPA childrens
+drinking water advisory. \label{tab:child_conmat_table}
 
 \newpage
 
-\begin{longtable}[c]{@{}lrrr@{}}
-\caption{Confusion matrix comparing chlorophyll \textit{a} predicted
-exceedences (rows) versus real exceedances (columns) for the WHO
-drinking water advisory.
-\label{tab:who_drink_conmat_table}}\tabularnewline
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endhead
-Not Exceed & 850 & 82 & 932\tabularnewline
-Exceed & 57 & 39 & 96\tabularnewline
-Column Totals & 907 & 121 & 1028\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{l|r|r|r}
+\hline
+  & Not Exceed & Exceed & Row Totals\\
+\hline
+Not Exceed & 850 & 82 & 932\\
+\hline
+Exceed & 57 & 39 & 96\\
+\hline
+Column Totals & 907 & 121 & 1028\\
+\hline
+\end{tabular}
+
+:Confusion matrix comparing chlorophyll \textit{a} predicted exceedences
+(rows) versus real exceedances (columns) for the WHO drinking water
+advisory. \label{tab:who_drink_conmat_table}
 
 \newpage
 
-\begin{longtable}[c]{@{}lrrr@{}}
-\caption{Confusion matrix comparing chlorophyll \textit{a} predicted
-exceedences (rows) versus real exceedances (columns) for the USEPA adult
-drinking water advisory. \label{tab:adult_conmat_table}}\tabularnewline
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endhead
-Not Exceed & 887 & 57 & 944\tabularnewline
-Exceed & 50 & 34 & 84\tabularnewline
-Column Totals & 937 & 91 & 1028\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{l|r|r|r}
+\hline
+  & Not Exceed & Exceed & Row Totals\\
+\hline
+Not Exceed & 887 & 57 & 944\\
+\hline
+Exceed & 50 & 34 & 84\\
+\hline
+Column Totals & 937 & 91 & 1028\\
+\hline
+\end{tabular}
+
+:Confusion matrix comparing chlorophyll \textit{a} predicted exceedences
+(rows) versus real exceedances (columns) for the USEPA adult drinking
+water advisory. \label{tab:adult_conmat_table}
 
 \newpage
 
-\begin{longtable}[c]{@{}lrrr@{}}
-\caption{Confusion matrix comparing chlorophyll \textit{a} predicted
-exceedences (rows) versus real exceedances (columns) for the WHO
-recreational water advisory.
-\label{tab:who_rec_conmat_table}}\tabularnewline
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-& Not Exceed & Exceed & Row Totals\tabularnewline
-\midrule
-\endhead
-Not Exceed & 910 & 52 & 962\tabularnewline
-Exceed & 43 & 23 & 66\tabularnewline
-Column Totals & 953 & 75 & 1028\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{tabular}{l|r|r|r}
+\hline
+  & Not Exceed & Exceed & Row Totals\\
+\hline
+Not Exceed & 910 & 52 & 962\\
+\hline
+Exceed & 43 & 23 & 66\\
+\hline
+Column Totals & 953 & 75 & 1028\\
+\hline
+\end{tabular}
+
+:Confusion matrix comparing chlorophyll \textit{a} predicted exceedences
+(rows) versus real exceedances (columns) for the WHO recreational water
+advisory. \label{tab:who_rec_conmat_table}
 
 \newpage
 
