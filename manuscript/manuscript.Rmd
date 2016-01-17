@@ -20,7 +20,7 @@ output:
     template: components/f1000research.latex
   html_document: null
 capsize: normalsize
-csl: components/ecology.csl
+csl: components/plos.csl
 documentclass: article
 fontsize: 11pt
 linenumbers: yes

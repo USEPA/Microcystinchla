@@ -5,6 +5,16 @@
 
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage{f1000_styles}
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage{biblatex}
+$endif$
+$if(biblio-files)$
+\bibliography{$biblio-files$}
+$endif$
 
 \begin{document}
 
@@ -22,7 +32,7 @@ $endfor$
 
 \begin{abstract}
 
-$abstract%
+$abstract$
 
 \end{abstract}
 
