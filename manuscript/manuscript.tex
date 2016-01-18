@@ -1,27 +1,164 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% For more detailed article preparation guidelines, please see:
-% http://f1000research.com/author-guidelines
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Original default rstudio/pandoc latex file
+%% upated by @jhollist 09/15/2014
+%% inspired by @cboetting https://github.com/cboettig/template and
+%% @rmflight blog posts:
+%% http://rmflight.github.io/posts/2014/07/analyses_as_packages.html 
+%% http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html).  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[10pt,a4paper,twocolumn]{article}
-\usepackage{components/f1000_styles}
-\usepackage{hyperref}
-\usepackage{longtable}
-\bibliography{components/manuscript}
+\documentclass[11pt,]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage{graphicx}
+% Redefine \includegraphics so that, unless explicit options are
+% given, the image width will not exceed the width of the page.
+% Images get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\ScaleIfNeeded{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+{%
+ \catcode`\@=11\relax%
+ \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
+}%
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={Associations between chlorophyll a and various microcystin-LR health advisory Concentrations},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Changes borrowed from @cboettig, added by @jhollist 
+% A modified page layout 
+\textwidth 6.75in
+\oddsidemargin -0.15in
+\evensidemargin -0.15in
+\textheight 9in
+\topmargin -0.5in
+\usepackage{lineno} % add 
+  \linenumbers % turns line numbering on 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Packages and layout changes by @jhollist 09/15/2014
+\usepackage{ragged2e}
+\usepackage[font=normalsize]{caption}
+  \usepackage[doublespacing]{setspace}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\today}
+\lfoot{\thepage}
+%%Changed default abstract width and added lines
+\renewenvironment{abstract}{
+  \hfill\begin{minipage}{1\textwidth}
+  \rule{\textwidth}{1pt}\vspace{5pt}
+  \normalsize
+  \begin{justify}
+  \bfseries\abstractname\vspace{5pt}
+  \end{justify}}
+  {\par\noindent\rule{\textwidth}{1pt}\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Associations between chlorophyll \emph{a} and various microcystin-LR
+health advisory Concentrations}
+\author{
+Jeffrey W. Hollister
+Betty J. Kreakie
+}
+\date{}
 
 \begin{document}
+%%Edited by @jhollist 09/15/2014
+%%Adds title from YAML
+\begin{singlespace}
+\begin{center}
+\huge Associations between chlorophyll \emph{a} and various microcystin-LR
+health advisory Concentrations
+\end{center}
+%%Adds Author, correspond email asterisk, and affilnum from YAML
+\begin{center}
+\large
+Jeffrey W. Hollister \textsuperscript{*} \textsuperscript{1} 
+Betty J. Kreakie \textsuperscript{1} 
+\end{center}
+%%Adds affiliations from YAML
+\begin{justify}
+\footnotesize \emph{ 
+\\*
+\textsuperscript{1}US Environmental Protection Agency, Office of Research and Development,
+National Health and Environmental Effects Research Laboratory, Atlantic
+Ecology Division, 27 Tarzwell Drive Narragansett, RI, 02882, USA\\*
+}
+%%Adds corresponding author email(s) from YAML
+\newcounter{num}
+\setcounter{num}{1}
+\\[0.1cm]
+\footnotesize \emph{ 
+\ifnum\value{num}=1%
+\textsuperscript{*} corresponding author:
+\fi
+\href{mailto:hollister.jeff@epa.gov}{\nolinkurl{hollister.jeff@epa.gov}}
+\stepcounter{num}
+}
+\end{justify}
+%%Adds date from YAML
+\normalsize
 
-%Still need to figure out how to get corresponding author on here.
-\title{\textit{F1000Research} Associations between chlorophyll \emph{a} and various microcystin-LR
-health advisory Concentrations}
-\author[1]{Jeffrey W. Hollister}
-\author[1]{Betty J. Kreakie}
-\affil[1]{}
+\end{singlespace}
 
-\maketitle
-\thispagestyle{fancy}
 
-\begin{abstract}
+\singlespace
+
+\vspace{2mm}
+
+\hrule
 
 Cyanobacteria harmful algal blooms (cHABs) are associated with a wide
 range of adverse health effects that stem mostly from the presence of
@@ -33,11 +170,11 @@ quality measures, field measurements of microcystin are not commonly
 available due to cost and advanced understanding required to interpret
 results. Addressing these issues will take time and resources. Thus,
 there is utility in finding indicators of microcystin that are already
-widely available, can be estimated quickly and in situ, and used as a
-first defense against high levels of microcystin. Chlorophyll \emph{a}
-is commonly measured, can be estimated \emph{in situ}, and has been
-shown to be positively associated with microcystin. In this paper, we
-use this association to provide estimates of chlorophyll a
+widely available, can be estimated quickly and \emph{in situ}, and used
+as a first defense against high levels of microcystin. Chlorophyll
+\emph{a} is commonly measured, can be estimated \emph{in situ}, and has
+been shown to be positively associated with microcystin. In this paper,
+we use this association to provide estimates of chlorophyll \emph{a}
 concentrations that are indicative of a higher probability of exceeding
 select health advisory concentrations for microcystin-LR. Using the 2007
 National Lakes Assessment and a conditional probability approach, we
@@ -47,15 +184,18 @@ level. We look at the recent US EPA health advisories for drinking water
 as well as the World Health Organization levels for drinking water and
 recreational use and identify a range of chlorophyll \emph{a}
 thresholds. A 50\% chance of exceeding one of the specific advisory
-microcystin concentrations of 0.3, 1, 1.6, and 2 g/L is associatied with
-chlorophyll \emph{a} concentration thresholds of 24.64, 65.6, 89.71, and
-94.93, respectively. When managing for these various microcystin levels,
-exceeding these reported chlorophyll \emph{a} concentrations should be a
-trigger for further testing and possible management action.
+microcystin concentrations of 0.3, 1, 1.6, and 2 \(\mu\)g/L is
+associatied with chlorophyll \emph{a} concentration thresholds of 21.92,
+77.2, 84.96, and 105.84, respectively. When managing for these various
+microcystin levels, exceeding these reported chlorophyll \emph{a}
+concentrations should be a trigger for further testing and possible
+management action.
 
-\end{abstract}
+\vspace{3mm}
 
-\clearpage
+\hrule
+
+\doublespace
 
 \section{Introduction}\label{introduction}
 
