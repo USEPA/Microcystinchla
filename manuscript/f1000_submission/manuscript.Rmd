@@ -368,7 +368,7 @@ names(mc_conc_table)<-c("Source","Type","Concentration")
 #pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 #knitr::kable(mc_conc_table,format="latex")
 print(xtable::xtable(mc_conc_table,
-                     label="microcystin_levels",
+                     label="tab:microcystin_levels",
                      caption="Various suggested microcystin-LR health advisory 
                      concentrations from the USEPA and World Health Organization."), 
       include.rownames=FALSE, comment = FALSE,caption.placement = "top",
@@ -383,7 +383,7 @@ names(mc_chla_tbl)<-c("Cond. Probability","USEPA Child", "WHO Drink",
 #pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 #knitr::kable(mc_chla_tbl,format="latex")
 print(xtable::xtable(mc_chla_tbl,
-                     label="mc_chla_table",
+                     label="tab:mc_chla_table",
                      caption="Chlorophyll \\textit{a} concentrations that are 
                      associated with a 50% probability of exceeding a 
                      microcystin-LR health advisory concentration."),
@@ -394,7 +394,7 @@ print(xtable::xtable(mc_chla_tbl,
 ```{r child_conmat_table, results='asis', echo=FALSE}
 #knitr::kable(child_conmat,format="latex")
 print(xtable::xtable(child_conmat,
-                     label="child_conmat_table",
+                     label="tab:child_conmat_table",
                      caption="Confusion matrix comparing chlorophyll \\textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the USEPA childrens drinking water advisory."),
@@ -405,7 +405,7 @@ print(xtable::xtable(child_conmat,
 ```{r who_drink_conmat_table, results='asis', echo=FALSE}
 #knitr::kable(who_drink_conmat,format="latex")
 print(xtable::xtable(who_drink_conmat,
-                     label="who_drink_conmat_table",
+                     label="tab:who_drink_conmat_table",
                      caption="Confusion matrix comparing chlorophyll \\textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the WHO drinking water advisory."),
@@ -416,7 +416,7 @@ print(xtable::xtable(who_drink_conmat,
 ```{r adult_conmat_table, results='asis', echo=FALSE}
 #knitr::kable(adult_conmat,format="latex")
 print(xtable::xtable(adult_conmat,
-                     label="adult_conmat_table",
+                     label="tab:adult_conmat_table",
                      caption="Confusion matrix comparing chlorophyll \\textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the USEPA adult drinking water advisory."),
@@ -427,7 +427,7 @@ print(xtable::xtable(adult_conmat,
 ```{r who_rec_conmat_table, results='asis', echo=FALSE}
 #knitr::kable(who_rec_conmat,format="latex")
 print(xtable::xtable(who_rec_conmat,
-                     label="who_rec_conmat_table",
+                     label="tab:who_rec_conmat_table",
                      caption="Confusion matrix comparing chlorophyll \\textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the WHO recreational water advisory."),
