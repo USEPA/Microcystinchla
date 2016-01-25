@@ -126,7 +126,7 @@ concentration data {[}13{]}. These data represent a snapshot of water
 quality from the summer of 2007 for the conterminous United States and
 were collected as part of an ongoing probabilistic monitoring program
 {[}13{]}. Data on chlorophyll \emph{a} and microcystin-LR concentrations
-are available for lakes.
+are available for 1028 lakes.
 
 \subsection{Analytical Methods}\label{analytical-methods}
 
@@ -201,7 +201,7 @@ for 0.3, 1.0, 1.6, and 2.0 \(\mu\)g/L advisory levels, respectively
 
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{hollister_microcystin_fig2.jpg}
+\includegraphics[width=0.4\textwidth]{hollister_microcystin_fig1.jpg}
 \caption{\label{fig:multi_cp_plot}Conditional probability plots showing association between the probability of exceeding various microcystin-LR (MLR) health advisory Levels. A.) Plot for USEPA Child (0.3 $\mu$g/L). B.) Plot for WHO Drinking (1 $\mu$g/L). C.) Plot for USEPA Adult (1.6 $\mu$g/L). D.) Plot for WHO Recreational (2 $\mu$g/L).  }
 \end{figure}
 
@@ -305,27 +305,25 @@ Laboratory, US Environmental Protection Agency.
 \section{Tables}\label{tables}
 
 \begin{table}[ht]
-\centering
 \caption{Various suggested microcystin-LR health advisory 
-                     concentrations.} 
+                     concentrations from the USEPA and World Health Organization.} 
 \label{microcystin_levels}
 \begin{tabular}{lll}
   \hline
 Source & Type & Concentration \\ 
   \hline
-USEPA & Adult Drinking Water Advisory & 1.6 \$mu\$g/L \\ 
-  USEPA & Child Drinking Water Advisory & 0.3 \$mu\$g/L \\ 
-  WHO & Drinking Water & 1 \$mu\$g/L \\ 
-  WHO & Recreational: High Prob. of Effect & 20-2000 \$mu\$g/L \\ 
-  WHO & Recreational: Low Prob. of Effect & 2-4 \$mu\$g/L \\ 
-  WHO & Recreational: Moderate Prob. of Effect & 10-20 \$mu\$g/L \\ 
-  WHO & Recreational: Very High Prob. of Effect & $>$2000 \$mu\$g/L \\ 
+USEPA & Adult Drinking Water Advisory & 1.6 $\mu$g/L \\ 
+  USEPA & Child Drinking Water Advisory & 0.3 $\mu$g/L \\ 
+  WHO & Drinking Water & 1 $\mu$g/L \\ 
+  WHO & Recreational: High Prob. of Effect & 20-2000 $\mu$g/L \\ 
+  WHO & Recreational: Low Prob. of Effect & 2-4 $\mu$g/L \\ 
+  WHO & Recreational: Moderate Prob. of Effect & 10-20 $\mu$g/L \\ 
+  WHO & Recreational: Very High Prob. of Effect & >2000 $\mu$g/L \\ 
    \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
 \caption{Chlorophyll \textit{a} concentrations that are 
                      associated with a 50% probability of exceeding a 
                      microcystin-LR health advisory concentration.} 
@@ -348,74 +346,69 @@ Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO Recreational \\
 \end{table}
 
 \begin{table}[ht]
-\centering
 \caption{Confusion matrix comparing chlorophyll \textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the USEPA childrens drinking water advisory.} 
 \label{child_conmat_table}
-\begin{tabular}{rrr}
+\begin{tabular}{rrrr}
   \hline
-Not Exceed & Exceed & Row Totals \\ 
+ & Not Exceed & Exceed & Row Totals \\ 
   \hline
-649 &  96 & 745 \\ 
-  162 & 121 & 283 \\ 
-  811 & 217 & 1028 \\ 
+Not Exceed & 649 &  96 & 745 \\ 
+  Exceed & 162 & 121 & 283 \\ 
+  Column Totals & 811 & 217 & 1028 \\ 
    \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
 \caption{Confusion matrix comparing chlorophyll \textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the WHO drinking water advisory.} 
 \label{who_drink_conmat_table}
-\begin{tabular}{rrr}
+\begin{tabular}{rrrr}
   \hline
-Not Exceed & Exceed & Row Totals \\ 
+ & Not Exceed & Exceed & Row Totals \\ 
   \hline
-839 &  77 & 916 \\ 
-   68 &  44 & 112 \\ 
-  907 & 121 & 1028 \\ 
+Not Exceed & 839 &  77 & 916 \\ 
+  Exceed &  68 &  44 & 112 \\ 
+  Column Totals & 907 & 121 & 1028 \\ 
    \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
 \caption{Confusion matrix comparing chlorophyll \textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the USEPA adult drinking water advisory.} 
 \label{adult_conmat_table}
-\begin{tabular}{rrr}
+\begin{tabular}{rrrr}
   \hline
-Not Exceed & Exceed & Row Totals \\ 
+ & Not Exceed & Exceed & Row Totals \\ 
   \hline
-883 &  57 & 940 \\ 
-   54 &  34 &  88 \\ 
-  937 &  91 & 1028 \\ 
+Not Exceed & 883 &  57 & 940 \\ 
+  Exceed &  54 &  34 &  88 \\ 
+  Column Totals & 937 &  91 & 1028 \\ 
    \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
 \caption{Confusion matrix comparing chlorophyll \textit{a} 
                      predicted exceedences (rows) versus real exceedances 
                      (columns) for the WHO recreational water advisory.} 
 \label{who_rec_conmat_table}
-\begin{tabular}{rrr}
+\begin{tabular}{rrrr}
   \hline
-Not Exceed & Exceed & Row Totals \\ 
+ & Not Exceed & Exceed & Row Totals \\ 
   \hline
-910 &  52 & 962 \\ 
-   43 &  23 &  66 \\ 
-  953 &  75 & 1028 \\ 
+Not Exceed & 910 &  52 & 962 \\ 
+  Exceed &  43 &  23 &  66 \\ 
+  Column Totals & 953 &  75 & 1028 \\ 
    \hline
 \end{tabular}
 \end{table}
 
-\newpage
 \twocolumn
 
 \section*{References}\label{references}
@@ -430,8 +423,8 @@ al. (2009) Lake erie microcystis: Relationship between microcystin
 production, dynamics of genotypes and environmental parameters in a
 large lake. Harmful Algae 8: 665--673.
 
-3. HABHRCA (2014) Harmful algal bloom and hypoxia research and control
-amendments act of 2014. Available:
+3. Bloom HA, Research H, Act CA (2014) Harmful Algal Bloom and Hypoxia
+Research and Control Amendments Act of 2014. (S. 1254). Available:
 \url{https://www.congress.gov/113/bills/s1254/BILLS-113s1254enr.pdf}.
 
 4. McElhiney J, Lawton LA (2005) Detection of the cyanobacterial
@@ -444,16 +437,17 @@ freshwater environments. Journal of Toxicology and Environmental Health,
 Part B 8: 1--37.
 
 6. USEPA (2015) Drinking water health advisory for the cyanobacterial
-microcystin toxins. ePA-820R15100. Available:
+microcystin toxins. EPA-820-R-15100. Available:
 \url{http://www2.epa.gov/sites/production/files/2015-06/documents/microcystins-report-2015.pdf}.
 
-7. Organization WH (2003) Cyanobacterial toxins: Microcystin-lR in
-drinking-water. background document for development of wHO guidelines
-for drinking-water quality. geneva, switzerland. World Health
-Organization, 2nd ed. Geneva.
+7. World Health Organization (2003) Cyanobacterial toxins:
+Microcystin-LR in drinking-water. Background document for development of
+WHO guidelines for drinking-water quality. Geneva, Switzerland. World
+Health Organization, 2nd ed. Geneva.
 
 8. Chorus EI, Bartram J (1999) Toxic cyanobacteria in water: A guide to
-their public health consequences, monitoring and management.
+their public health consequences, monitoring and management. World
+Health Organization.
 
 9. James R, Gregg A, Dindal A, McKernan J (2011) Environmental
 technology verification report: Abraxis microcystin test kits. Online
@@ -464,7 +458,7 @@ of three field test kits to detect microcystins from a public health
 perspective. Harmful Algae 42: 34--42.
 
 11. Pip E, Bowman L (2014) Microcystin and algal chlorophyll in relation
-to nearshore nutrient concentrations in lake winnipeg, canada.
+to nearshore nutrient concentrations in Lake Winnipeg, Canada.
 Environment and Pollution 3: p36.
 
 12. Yuan LL, Pollard AI, Pather S, Oliver JL, D'Anglada L (2014)
@@ -472,7 +466,7 @@ Managing microcystin: Identifying national-scale thresholds for total
 nitrogen and chlorophyll a. Freshwater Biology 59: 1970--1981.
 
 13. USEPA (2009) National lakes assessment: A collaborative survey of
-the nation's lakes. ePA 841-r-09-001.
+the nation's lakes. EPA 841-R-09-001.
 
 14. Paul JF, Munns WR (2011) Probability surveys, conditional
 probability, and ecological risk assessment. Environmental Toxicology
@@ -480,11 +474,12 @@ and Chemistry 30: 1488--1495.
 
 15. Paul JF, McDonald ME (2005) Development of empirical, geographically
 specific water quality criteria: A conditional probability analysis
-approach. 41: 1211--1223.
+approach. Journal of the American Water Resources Association 41:
+1211--1223.
 
 16. Hollister JW, Walker HA, Paul JF (2008) CProb: A computational tool
 for conducting conditional probability analysis. Journal of
-environmental quality 37: 2392--2396.
+Environmental Quality 37: 2392--2396.
 
 17. Miller TR, Beversdorf L, Chaston SD, McMahon KD (2013)
 Spatiotemporal molecular analysis of cyanobacteria blooms reveals
