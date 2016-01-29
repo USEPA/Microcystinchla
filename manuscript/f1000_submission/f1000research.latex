@@ -39,8 +39,8 @@ $abstract$
 \end{abstract}
 
 $if(keywords)$
-\textbf{Keywords:}
-$for(keyword)$
+\textbf{Keywords: }
+$for(keywords)$
 $keywords.keyword$;
 $endfor$
 $endif$
