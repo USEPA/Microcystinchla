@@ -329,21 +329,32 @@ A second potential use is to identify past bloom events from historical data.  A
 
 Lastly, using chlorophyll *a* is not meant as a replacement for testing of microcystin-LR or other toxins.  It should be used when other, direct measurements of cyanotoxins are not available.  In those cases, which are likely to be common at least in the near future, using a more ubiquitous measurement, such as chlorophyll *a* will provide a reasonable proxy for the probability of exceeding a microcystin-LR health advisory level and provide better protection against adverse effects in both drinking and recreational use cases. 
 
+
 #Software and Data Availability
-Data and Latest Source Code: [https://github.com/USEPA/microcystinchla](https://github.com/USEPA/microcystinchla)
 
-Archived data and source code at time of publication: []()
+Data and Latest Source Code:
+[https://github.com/USEPA/microcystinchla](https://github.com/USEPA/microcystinchla)
 
-License: Creative Commons Zero 1.0: [http://creativecommons.org/publicdomain/zero/1.0/](http://creativecommons.org/publicdomain/zero/1.0/)
+Archived data and source code at time of publication: [http://dx.doi.org/10.5281/zenodo.45317](http://dx.doi.org/10.5281/zenodo.45317)
+
+License: 
+Creative Commons Zero 1.0: [http://creativecommons.org/publicdomain/zero/1.0/](http://creativecommons.org/publicdomain/zero/1.0/)
+
 
 #Author Contributions
+
 JH and BK conceived of and conducted the analysis.  Both authors reviewed the results and contributed to writing the manuscript.  
 
+
 #Competing Interests
+
 No competing interests were disclosed.
 
+
 #Grant Information
+
 The author(s) declared that no grants were involved in supporting this work.
+
 
 #Acknowledgements
 
