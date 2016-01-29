@@ -58,6 +58,8 @@ further testing and possible management action.
 
 \end{abstract}
 
+\textbf{Keywords:}
+
 \clearpage
 
 \section{Introduction}\label{introduction}
@@ -127,7 +129,10 @@ concentration data {[}13{]}. These data represent a snapshot of water
 quality from the summer of 2007 for the conterminous United States and
 were collected as part of an ongoing probabilistic monitoring program
 {[}13{]}. Data on chlorophyll \emph{a} and microcystin-LR concentrations
-are available for 1028 lakes.
+are available for 1028 lakes. These data are available for download from
+the
+\href{http://www.epa.gov/national-aquatic-resource-surveys/data-national-aquatic-resource-surveys}{National
+Lake Assessment Data Site}
 
 \subsection{Analytical Methods}\label{analytical-methods}
 
@@ -144,7 +149,7 @@ level of 0.3 \(\mu\)g/L (USEPA Child), the WHO drinking water advisory
 level of 1 \(\mu\)g/L (WHO Drinking), the USEPA adult drinking water
 advisory level of 1.6 \(\mu\)g/L (USEPA Adult), and the WHO
 recreational, low probability of effect advisory level of 2 \(\mu\)g/L
-(WHO Recreational).
+(WHO Recreational) {[}6--8{]}.
 
 Conditional probability analysis provides information about the
 probability of observing one event given another event has also occured.
@@ -195,10 +200,11 @@ detection limits. The median concentration was 7.79 \(\mu\)g/L and the
 mean was 29.63 \(\mu\)g/L. The associations between chlorophyll \emph{a}
 and the upper confidence interval across a range of conditional
 probability values are shown in Table \ref{tab:mc_chla_table}. Specific
-chlorophyll \emph{a} that are associated with greater than even odds of
-exceeding the advisory levels were 0.07, 0.07, 2.98, and 10.67\(\mu\)g/L
-for 0.3, 1.0, 1.6, and 2.0 \(\mu\)g/L advisory levels, respectively
-(Table \ref{tab:mc_chla_table} \& Figure \ref{fig:multi_cp_plot}).
+chlorophyll \emph{a} concentrations that are associated with greater
+than even odds of exceeding the advisory levels were 0.07, 0.07, 2.98,
+and 10.67\(\mu\)g/L for 0.3, 1.0, 1.6, and 2.0 \(\mu\)g/L advisory
+levels, respectively (Table \ref{tab:mc_chla_table} \& Figure
+\ref{fig:multi_cp_plot}).
 
 \begin{figure}
 \centering
@@ -288,6 +294,31 @@ ubiquitous measurement, such as chlorophyll \emph{a} will provide a
 reasonable proxy for the probability of exceeding a microcystin-LR
 health advisory level and provide better protection against adverse
 effects in both drinking and recreational use cases.
+
+\section{Software and Data
+Availability}\label{software-and-data-availability}
+
+Data and Latest Source Code:
+\href{https://github.com/USEPA/microcystinchla}{\url{https://github.com/USEPA/microcystinchla}}
+
+Archived data and source code at time of publication: \href{}{}
+
+License: Creative Commons Zero 1.0:
+\href{http://creativecommons.org/publicdomain/zero/1.0/}{\url{http://creativecommons.org/publicdomain/zero/1.0/}}
+
+\section{Author Contributions}\label{author-contributions}
+
+JH and BK conceived of and conducted the analysis. Both authors reviewed
+the results and contributed to writing the manuscript.
+
+\section{Competing Interests}\label{competing-interests}
+
+No competing interests were disclosed.
+
+\section{Grant Information}\label{grant-information}
+
+The author(s) declared that no grants were involved in supporting this
+work.
 
 \section{Acknowledgements}\label{acknowledgements}
 
@@ -424,8 +455,9 @@ al. (2009) Lake erie microcystis: Relationship between microcystin
 production, dynamics of genotypes and environmental parameters in a
 large lake. Harmful Algae 8: 665--673.
 
-3. Bloom HA, Research H, Act CA (2014) Harmful Algal Bloom and Hypoxia
-Research and Control Amendments Act of 2014. (S. 1254). Available:
+3. Harmful Algal Bloom and Hypoxia Research and Control Amendments Act
+(2014) Harmful Algal Bloom and Hypoxia Research and Control Amendments
+Act of 2014. (S. 1254). Available:
 \url{https://www.congress.gov/113/bills/s1254/BILLS-113s1254enr.pdf}.
 
 4. McElhiney J, Lawton LA (2005) Detection of the cyanobacterial

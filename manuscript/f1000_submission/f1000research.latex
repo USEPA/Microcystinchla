@@ -38,6 +38,13 @@ $abstract$
 
 \end{abstract}
 
+$if(keywords)$
+\textbf{Keywords:}
+$for(keyword)$
+$keywords.keyword$;
+$endfor$
+$endif$
+
 \clearpage
 
 $body$
