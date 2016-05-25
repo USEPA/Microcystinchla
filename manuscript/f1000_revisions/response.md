@@ -3,8 +3,6 @@
 ## Spatial/Regional Heterogeneity in Chlorophyll/Microcystin realtionship
 We agree that there are likely regional differences and would like to account for this; however, sample sizes for each region vary (67 to 155) and are relatively small.  The resulting conditional probability analysis would have very wide confidence intervals.  Thus, comparison between regions would be difficult and inferring a pattern would not be possible.  We have added additional text in the discussion (second to last paragraph)  that raises this issue.  Additionally, we have added the Beaver et al. reference in this discussion.
 
-- Also mentioned in marion review
-
 ## Specific Edits
 
 ### P3
@@ -42,7 +40,7 @@ We agree that there are likely regional differences and would like to account fo
 - Change: “The associations between chlorophyll a and the upper confidence interval”, To: “The association between chlorophyll a and the upper confidence interval”
     - **Response:**  
    
-- Figure 2 should first be presented in the Results section.
+- Figure 2 should first be (Figure \ref{fig:chla_micro_scatter})presented in the Results section.
     - **Response:**  
     
 - Change: “This is the case as the probability of exceeding each of the four tested health advisory levels increases as a”, To: “Indeed, the probability of exceeding each of the four tested health advisory levels increased as a”
@@ -62,8 +60,8 @@ Were these samples paired (collected at the same time from the same locale) or a
     - **Response:**  We agree and have added some additional wording to the Data section indicating that the samples are taken at the same time.
  
 ## Improved discussion needed on alternative indicators for cHABs and cyanotoxins not assessed in the NLA: 
-Brief mention is given to phycocyanin (one study), and the additional language (about phycocyanin not always being available for measure and when measured, it is for only measuring pigment and not toxins) is equally relevant for chl a. The same in vivo handheld fluorometers and continuous monitoring solutions available for chl a are now widely available for phycocyanin, often at the same cost as a rapid measure for chl a. Phycocyanin, like chl a, does not measure toxin either, but phycocyanin in many studies has outperformed chl a, and in some studies it has not (especially when toxin concentration is low). Historical records on PC are likely not as great as chlorophyll a. Overall, several studies on this topic have been produced in the last two to four years (see Zamyadi and Dorner’s work), with one study using phycocyanin to predict non-alcoholic liver disease presuming a relationship with cyanotoxins (Zhang et al. 2015)
-    - **Response:**  
+Brief mention is given to phycocyanin (one study), and the additional language (about phycocyanin not always beiThese blooms are expected to increase in frequecy and severity due to the impacts of climate change ng available for measure and when measured, it is for only measuring pigment and not toxins) is equally relevant for chl a. The same in vivo handheld fluorometers and continuous monitoring solutions available for chl a are now widely available for phycocyanin, often at the same cost as a rapid measure for chl a. Phycocyanin, like chl a, does not measure toxin either, but phycocyanin in many studies has outperformed chl a, and in some studies it has not (especially when toxin concentration is low). Historical records on PC are likely not as great as chlorophyll a. Overall, several studies on this topic have been produced in the last two to four years (see Zamyadi and Dorner’s work), with one study using phycocyanin to predict non-alcoholic liver disease presuming a relationship with cyanotoxins (Zhang et al. 2015)
+    - **Response:**  We agree that phycocyanin is more closely linked to microcystin than is chl *a*.  Our paragraph mentioning phycocyanin was confusing and did suggest that chl *a* had a stronger association.  Wording of that paragraph has been changed and the Ahn et al paper was added as reference.  We feel that further discussion of phycocyanin, while important, is beyond the scope of our paper with its focus on chlorophyll.
  
 ## Consideration desired on region-specific criteria or limitations of national recommendations for chl a: 
 With nearly 30% of the lakes in the temperate plains being coded as poor for chlorophyll a in the 2007 NLA, what impact would these conditional probabilities have on these lakes? Should the lake managers in this region be monitoring continuously all the time? What are the mean/median chlorophyll a  levels for this part of the U.S? Regional variability may be really important and did the conditional probability approach take this into consideration or can it take it into consideration? Is there a way to evaluate if there are significant regional effects in the U.S? For nutrient standards in the U.S. and macroinvertebrate assessments, EPA has had to issue region-specific guidelines/criteria, etc. for some parameters.
@@ -71,41 +69,41 @@ With nearly 30% of the lakes in the temperate plains being coded as poor for chl
  
 ## Greater discussion needed on limitations of NLA and need for model validation/future studies: 
 The paper fails to address the limitations of the NLA – as a reader, I’m not aware of the limitations. I have much respect for the NLA, but I do have questions regarding the number of samples for each lake. Furthermore, a statement or two discussing the need to validate modeled data may be worthwhile. Is there a way to see if the probabilities actually align with the accuracy and type II error rates predicted by the conditional probability approach?
-    - **Response:**  
+    - **Response:**  We added a paragraph to the discussions about validation and the single sample limitations of the NLA.
  
 ## Specific Edits
 
 ### Abstract-Specific Comments: 
-- Near the bottom of the abstracnla_fieldopst, the units seem quite high for microcystins (g/L) rather than micrograms/L. The micro Greek symbol (mu) may have been lost during uploading.
-    - **Response:**  
+- Near the bottom of the abstract, the units seem quite high for microcystins (g/L) rather than micrograms/L. The micro Greek symbol (mu) may have been lost during uploading.
+    - **Response:** Oops!  Looks like it did occur during upload.  Have double checked the final for the proper units.
   
 ### Results Comments: 
 - In discussing the lake exceedances of the various recommended levels by EPA, the addition of ‘drinking water’ is appropriate in my opinion. Although it is mentioned earlier in the methods, further providing the information in the results is helpful to a novice reader or a person just becoming familiar with drinking water regulations and guidelines, as the U.S. EPA child level may be presumed by a reader to be a level for recreation in a lake rather than a level associated with finished drinking water after water treatment. 
-    - **Response:**  
+    - **Response:**  Added this in.
  
 - “All lakes had reported chl a concentrations that exceeded detection limits” Does this mean that some were over range? Or  does this mean that “All lakes had detectable levels of chl a”
-    - **Response:**  
+    - **Response:** Changed wording to: All lakes had detectable levels of ... 
   
 ### Discussion Comments: 
 - The wedge pattern in figure 2 is not apparent in figure 2, however, the logic makes sense and is supported visually by the conditional probability plots in fig 1. If figure 2 could have two lines of best fit (similar to the way some researchers do for funnel plots on publication bias papers), it may be easier to see the wedge shape. 
-    - **Response:**  
+    - **Response:**  Agreed that the wedge is not pronounced.  We have changed the wording to better describe the pattern.  Also, we disagree with the lines of best fit as those would then imply some sort of linear (presumably) pattern that we are not actually highlighting.  Additionally the added lines would then require discussion and would detract from the focus on conditional probability.
  
 # Wilson Response
 
 ## I think the authors need to more broadly consider the existing literature and describe how their findings relate to and build from past studies. Below, I provide some related studies that the authors might want to consider. 
-    - **Response:**  
+    - **Response:**  First thanks for the fantastic list of refs!  Having it linked with this publication is a resource in and of itself.  We have looked at those carefully and have added several: including Ahn et al, Beaver et al, Yuan and Pollard, and Marion et al.  We have not added signficantly to the background on this paper because our goal was to keep this research communication short and focused on on the chl and microcystin relationship.   
  
 ## Based on the 2007 National Lakes Assessment report, roughly two-thirds of the waterbodies reported no detectable microcystin (detection limit = 0.05 ug/L) despite covering a huge range of chlorophyll concentrations.  And, Fig 2 suggests that a large number of sites had barely detectable concentration of microcystin across a wide range of chlorophyll.  It is not clear from the text how the authors dealt with waterbodies with undetectable or barely detectable microcystin concentrations.
     - **Response:**  We have added some text to the Data section indicating how we deal with the detection limit.  We feel it is important to keep these values in the analysis as removing them would inflate our confidence around the conditional probabilities.  We hope this is clearer in our revision.
  
 ## Presenting histograms of chlorophyll and microcystin concentrations for the study lakes would be useful. 
-    - **Response:**  
+    - **Response:**  We have chosen to present the distribution information in text and present for both chlorophyll and microcystin the range, mean, and median.  Figure 2 also indicates the distribution of both.  Lastly, the data are availble via [code from the GitHub repository](https://github.com/USEPA/Microcystinchla/blob/master/R/get_nla.R).
  
 ## I am not an expert on conditional probability analysis. Based on the authors’ text (second paragraph in Analytical Methods section), it appears that this analysis considers multiple events over time. If their dataset includes single measurements in a waterbody, I don’t understand where the temporal component comes into the analysis. Again, I could be totally misunderstanding how this analysis works and should probably read the relevant references the authors provided. 
-    - **Response:**  
+    - **Response:**  We have added some additional text in the methods about the NLA as well as in the Discussion on NLA limitations.  In short, this is not a temporal analysis and is based on a single snap shot.
 
 ## Based on increasing error in the conditional probability plots as chlorophyll increases, the reported chlorophyll thresholds should not include significant digits (i.e., ± 0.1) but instead be whole numbers.
-    - **Response:**  
+    - **Response:**  Done. NEED TO DO
 
 ## I would organize the information in table 1 by either concentration (low to high) or advisory type (drinking or recreational) and concentration (low to high). It might also be useful to include the number of lakes represented in each category based on microcystin. 
     - **Response:**  
