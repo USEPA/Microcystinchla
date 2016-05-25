@@ -7,7 +7,7 @@
 
 plot_scatter<-function(df,xvar,yvar,cat=NULL,pt_col=1,...){
   options(scipen=5)
-  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]],pt_col=1)
+  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]],pt_col=pt_col)
   if(!is.null(cat)){
     xdf<-data.frame(xdf,pt_col=df[[cat]])
   }
