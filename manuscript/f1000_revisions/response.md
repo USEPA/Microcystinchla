@@ -1,11 +1,8 @@
 #Taranu Response
 
 ## Spatial/Regional Heterogeneity in Chlorophyll/Microcystin realtionship
-- Is this an issue?  
-    - CPA per region
-    - add colors to scatterplot or faceted plots
-- Add in some text and Beaver reference 
-    - Beaver J, Manis E, Loftin K, Graham J, Pollard A, Mitchell R: Land use patterns, ecoregion, and microcystin relationships in U.S. lakes and reservoirs: A preliminary evaluation. Harmful Algae. 2014; 36: 57-62
+We agree that there are likely regional differences and would like to account for this; however, sample sizes for each region vary (67 to 155) and are relatively small.  The resulting conditional probability analysis would have very wide confidence intervals.  Thus, comparison between regions would be difficult and inferring a pattern would not be possible.  We have added additional text in the discussion (second to last paragraph)  that raises this issue.  Additionally, we have added the Beaver et al. reference in this discussion.
+
 - Also mentioned in marion review
 
 ## Specific Edits
@@ -58,11 +55,11 @@
 
 ## Additional discussion needed in methods related to the National Lakes Assessment:
 The readership may not be aware of the U.S. NLA performed in 2007. The author(s) should clarify where samples were collected (nearshore or from the surface in the deeper waters). NLA chlorophyll a samples were take from the profundal zone rather than the littoral zone. The readership may also be interested in how many chl a samples were collected from each lake. Where were the microcystin-LR samples collected?
-    - **Response:**  
+    - **Response:**  We agree that additional information was needed describing the NLA.  We have added this to the first paragraph on the Data section.
 
 ## Additional discussion needed on how the data were organized for data analysis:
 Were these samples paired (collected at the same time from the same locale) or are these some type of aggregated value over a lake season? Describing this in the methods will really help for understanding the importance of this work. Paired results (MC-LR and Chl a from the same day) are much more impactful for demonstrating the rapid advantage of chl a compated to using results that are a seasonal average indicating that the hypereutrophic and eutrophic lakes (ones with the highest chl a) are also the ones that are most likely to have a cyanoHAB event sometime during the year.
-    - **Response:**  
+    - **Response:**  We agree and have added some additional wording to the Data section indicating that the samples are taken at the same time.
  
 ## Improved discussion needed on alternative indicators for cHABs and cyanotoxins not assessed in the NLA: 
 Brief mention is given to phycocyanin (one study), and the additional language (about phycocyanin not always being available for measure and when measured, it is for only measuring pigment and not toxins) is equally relevant for chl a. The same in vivo handheld fluorometers and continuous monitoring solutions available for chl a are now widely available for phycocyanin, often at the same cost as a rapid measure for chl a. Phycocyanin, like chl a, does not measure toxin either, but phycocyanin in many studies has outperformed chl a, and in some studies it has not (especially when toxin concentration is low). Historical records on PC are likely not as great as chlorophyll a. Overall, several studies on this topic have been produced in the last two to four years (see Zamyadi and Dorner’s work), with one study using phycocyanin to predict non-alcoholic liver disease presuming a relationship with cyanotoxins (Zhang et al. 2015)
@@ -70,7 +67,7 @@ Brief mention is given to phycocyanin (one study), and the additional language (
  
 ## Consideration desired on region-specific criteria or limitations of national recommendations for chl a: 
 With nearly 30% of the lakes in the temperate plains being coded as poor for chlorophyll a in the 2007 NLA, what impact would these conditional probabilities have on these lakes? Should the lake managers in this region be monitoring continuously all the time? What are the mean/median chlorophyll a  levels for this part of the U.S? Regional variability may be really important and did the conditional probability approach take this into consideration or can it take it into consideration? Is there a way to evaluate if there are significant regional effects in the U.S? For nutrient standards in the U.S. and macroinvertebrate assessments, EPA has had to issue region-specific guidelines/criteria, etc. for some parameters.
-    - **Response:**  
+    - **Response:**  We agree that there are likely regional differences and would like to account for this; however, sample sizes for each region vary (67 to 155) and are relatively small.  The resulting conditional probability analysis would have very wide confidence intervals.  Thus, comparison between regions would be difficult and inferring a pattern would not be possible.  We have added additional text in the discussion (second to last paragraph)  that raises this issue.  Additionally, we have added the Beaver et al. reference in this discussion.
  
 ## Greater discussion needed on limitations of NLA and need for model validation/future studies: 
 The paper fails to address the limitations of the NLA – as a reader, I’m not aware of the limitations. I have much respect for the NLA, but I do have questions regarding the number of samples for each lake. Furthermore, a statement or two discussing the need to validate modeled data may be worthwhile. Is there a way to see if the probabilities actually align with the accuracy and type II error rates predicted by the conditional probability approach?
@@ -79,7 +76,7 @@ The paper fails to address the limitations of the NLA – as a reader, I’m not
 ## Specific Edits
 
 ### Abstract-Specific Comments: 
-- Near the bottom of the abstract, the units seem quite high for microcystins (g/L) rather than micrograms/L. The micro Greek symbol (mu) may have been lost during uploading.
+- Near the bottom of the abstracnla_fieldopst, the units seem quite high for microcystins (g/L) rather than micrograms/L. The micro Greek symbol (mu) may have been lost during uploading.
     - **Response:**  
   
 ### Results Comments: 
@@ -99,7 +96,7 @@ The paper fails to address the limitations of the NLA – as a reader, I’m not
     - **Response:**  
  
 ## Based on the 2007 National Lakes Assessment report, roughly two-thirds of the waterbodies reported no detectable microcystin (detection limit = 0.05 ug/L) despite covering a huge range of chlorophyll concentrations.  And, Fig 2 suggests that a large number of sites had barely detectable concentration of microcystin across a wide range of chlorophyll.  It is not clear from the text how the authors dealt with waterbodies with undetectable or barely detectable microcystin concentrations.
-    - **Response:**  
+    - **Response:**  We have added some text to the Data section indicating how we deal with the detection limit.  We feel it is important to keep these values in the analysis as removing them would inflate our confidence around the conditional probabilities.  We hope this is clearer in our revision.
  
 ## Presenting histograms of chlorophyll and microcystin concentrations for the study lakes would be useful. 
     - **Response:**  
@@ -120,10 +117,10 @@ The paper fails to address the limitations of the NLA – as a reader, I’m not
     - **Response:**  
 
 ## I am confused about the data collected and available for the 2007 National Lakes Assessment. For example, I organized this dataset in July 2010 and found that 1158 lakes were sampled once (1152 of these lakes included data for both chlorophyll and microcystin) and 95 of the 1158 originally sampled lakes were sampled a second time in 2007. Yuan et al. 2014 (Freshwater Biology) used data for 1077 sampled lakes. The current study (as well as the National Lakes Assessment website and report) describes data for 1028 lakes. Clarity about these discrepancies is not necessarily the authors’ job, but it would be good to understand why the differences exist across these datasets. Also, for this study, how were data used for lakes sampled twice in 2007?  
-    - **Response:**  
+    - **Response:** We share your confusion!  There are many "types" of samples included with the raw NLA data.  For this analysis, we only used the probability samples (i.e. no reference samples) and only used the first visit to a lake.  Additionally, lakes that had no data reported for either chl or microsystin were not included.  As noted, this results in 1028 samples
 
 ## Although all of the National Lakes Assessment data are publicly available, the authors should provide the dataset that they used for this study. 
-    - **Response:**  
+    - **Response:** Code to access the data is available from [USEPA/microcysinchla](https://github.com/USEPA/microcystinchla).  This is listed in the "Data and software availability" section.
 
 
 ## Specific Edits:

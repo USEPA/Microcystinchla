@@ -9,7 +9,9 @@
 #' @examples
 #' nla_dat <- get_nla("http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Recreational_ConditionEstimates_20091123.csv")
 get_nla<-function(data_url){
-  dat <- read.csv(data_url) %>%
+  x <- tempfile()
+  download.file(data_url,x)
+  dat <- read.csv(x) %>%
     filter(VISIT_NO == 1) %>%
     filter(SITE_TYPE == "PROB_Lake") %>%
     select(SITE_ID,LAT_DD,LON_DD,ST,EPA_REG,WSA_ECO3,WSA_ECO9,LAKE_ORIGIN,CHLA,
