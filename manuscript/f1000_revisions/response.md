@@ -103,10 +103,10 @@ The paper fails to address the limitations of the NLA – as a reader, I’m not
     - **Response:**  We have added some additional text in the methods about the NLA as well as in the Discussion on NLA limitations.  In short, this is not a temporal analysis and is based on a single snap shot.
 
 ## Based on increasing error in the conditional probability plots as chlorophyll increases, the reported chlorophyll thresholds should not include significant digits (i.e., ± 0.1) but instead be whole numbers.
-    - **Response:**  Done. NEED TO DO
+    - **Response:**  Done. NEED TO DO on table already in overleaf
 
 ## I would organize the information in table 1 by either concentration (low to high) or advisory type (drinking or recreational) and concentration (low to high). It might also be useful to include the number of lakes represented in each category based on microcystin. 
-    - **Response:**  
+    - **Response:** Done.  Need to do directly on table in overleaf
 
 ## In table 2, I would add the specific microcystin concentration target under each advisory type to avoid having to look back at table 1 for these data.
     - **Response:**  

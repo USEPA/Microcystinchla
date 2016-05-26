@@ -63,7 +63,7 @@ knit_hooks$set(tab.cap = function(before, options, envir) {
                   if(!before) { 
                     paste('\n\n:', options$tab.cap, sep='') 
                   }
-                })https://github.com/USEPA/Microcystinchla/blob/master/R/get_nla.R
+                })
 default_output_hook = knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   if (is.null(options$tab.cap) == FALSE) {
@@ -132,12 +132,18 @@ who_rec <- NULL
 cps<- seq(0.1,0.9,0.1)
 for(i in 1:9){
   epa_child[i] <- get_chla(epa_child_cp,cps[i])[1]
+  if(epa_child[i]>0.1){epa_child[i]<-round(epa_child[i])}
   who_drink[i] <- get_chla(who_drink_cp,cps[i])[1]
+  if(who_drink[i]>0.1){who_drink[i]<-round(who_drink[i])}
   epa_adult[i] <- get_chla(epa_adult_cp,cps[i])[1]
+  if(epa_adult[i]>0.1){epa_adult[i]<-round(epa_adult[i])}
   who_rec[i] <- get_chla(who_rec_low1_cp,cps[i])[1]
+  if(who_rec[i]>0.1){who_rec[i]<-round(who_rec[i])}
 }
-mc_chla<-cbind(epa_child,who_drink,epa_adult,who_rec)
-mc_chla_rnd <- mc_chla[mc_chla>0.1]
+
+mc_chla<-cbind(as.character(epa_child),as.character(who_drink),
+               as.character(epa_adult),as.character(who_rec))
+
 #Agreement Tables
 child_conmat<-conmat_to_df(table(chla=nla_dat$CHLA>=mc_chla[5,1],
                                  mcsyt=nla_dat$MCYST_TL_UGL>=0.3))
@@ -320,6 +326,7 @@ concentration <- c("2-4 $\\mu$g/L",
                    "1 $\\mu$g/L",
                    "0.3 $\\mu$g/L",
                    "1.6 $\\mu$g/L")
+order <- c(4,5,6,7,2,1,3)
 #note <- c("Low probability of adverse health effects",
 #          "Moderate probability of adverse health effects",
 #          "High probability of adverse health effects, These higher #concentrations typically only seen in visible scums/algal mats",
@@ -327,8 +334,9 @@ concentration <- c("2-4 $\\mu$g/L",
 #          "",
 #          "Children younger than school age",
 #          "Individuals School age and older")
-mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration) %>%
-  arrange(type_of_stnd)
+mc_conc_table <- data.frame(source_of_stnd, type_of_stnd, concentration,order) %>%
+  arrange(order) %>%
+  select(source_of_stnd,type_of_stnd,concentration)
 names(mc_conc_table)<-c("Source","Type","Concentration")
 #pandoc.table(mc_conc_table,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 knitr::kable(mc_conc_table)#,format="latex")
@@ -338,8 +346,7 @@ knitr::kable(mc_conc_table)#,format="latex")
 
 ```{r mc_chla_table, results='asis', echo=FALSE, tab.cap="Chlorophyll \\textit{a} concentrations that are associated with a 50% probability of exceeding a microcystin health advisory concentration. \\label{tab:mc_chla_table}"}
 mc_chla_tbl <- data.frame(seq(0.1,0.9,0.1),mc_chla)
-names(mc_chla_tbl)<-c("Cond. Probability","USEPA Child", "WHO Drink", 
-                      "USEPA Adult", "WHO Recreational")
+names(mc_chla_tbl)<-c("Cond. Probability","USEPA Child (0.3 $\\mu$g/L)", "WHO Drink (1 $\\mu$g/L)", "USEPA Adult (1.6 $\\mu$g/L)", "WHO Recreational (2 $\\mu$g/L) ")
 #pandoc.table(mc_chla_tbl,justify = "left" ,split.table = 120, split.cells  = c(20,20,20))
 knitr::kable(mc_chla_tbl)#,format="latex")
 ```
