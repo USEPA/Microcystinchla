@@ -7,47 +7,47 @@ We agree that there are likely regional differences and would like to account fo
 
 ### P3
 - Change: “Yuan et al. (2014) explore these associations in detail and control for other related variables. In their analysis they find that total [...]”, To: “Recently, Yuan et al. (2014) explored these associations in detail and controlled for other related variables and found that total [...]”
-    - **Response:**  
+    - **Response:**  Changed
    
 - Change: “Given these facts, it should be possible to identify chlorophyll a concentrations that would be associated with the [...]”, To:  “These findings suggest that chlorophyll a concentrations could also track the [...]”
-    - **Response:**  
+    - **Response:** Changed
    
 - Change: “Identifying these associations would provide another tool for [...]”, To: “Identifying this association would provide an important tool for [...]”
-    - **Response:**  
+    - **Response:** Changed
    
 - Change: “We add to past studies by exploring associations with newly announced advisory [...]”, To: “We build on past studies by exploring associations with the newly announced advisory [...]”
-    - **Response:**  
+    - **Response:**  Changed
    
 ### P4
 - Change: “Thus, to identify chlorophyll a concentrations of concern we identify the value [...]”, To: “Thus, to identify chlorophyll a concentrations of concern we identified the value [...]”
-    - **Response:**  
+    - **Response:**  Changed
    
 - Change: “were highly skewed right,”, To: “were highly right skewed,”
-    - **Response:**  
+    - **Response:** Changed 
    
 - Change: “Lastly, we assess the ability of”, To: “Lastly, we assessed the ability of”
-    - **Response:**  
+    - **Response:** Changed
    
 - Change: “We use error matrices and calculate total accuracy”, To: “We used error matrices and calculate total accuracy”
-    - **Response:**  
+    - **Response:** Changed
    
 - Change: “For chlorophyll a, the range was”, To: “Chlorophyll a ranged from”
-    - **Response:**  
+    - **Response:** Changed 
   
 - Please specify that this chlorophyll a range corresponds to a range from oligotrophic to hypereutrophic lakes.
-    - **Response:**  
+    - **Response:**  Changed
    
 - Change: “The associations between chlorophyll a and the upper confidence interval”, To: “The association between chlorophyll a and the upper confidence interval”
-    - **Response:**  
+    - **Response:** Changed 
    
 - Figure 2 should first be (Figure \ref{fig:chla_micro_scatter})presented in the Results section.
-    - **Response:**  
+    - **Response:** We did not changes this as we fill Figure 2 is not presenting results of our analysis but justifying the approach as is a better fit to be introduced in the Discussion.
     
 - Change: “This is the case as the probability of exceeding each of the four tested health advisory levels increases as a”, To: “Indeed, the probability of exceeding each of the four tested health advisory levels increased as a”
-    - **Response:**  
+    - **Response:** Changed
     
 - Change: “We used this association to identify chlorophyll a concentrations that are associated”, To: “We used this association to identify chlorophyll a concentrations that were associated” 
-    - **Response:**  
+    - **Response:** Changed
 
 #Marion Response
 
@@ -106,24 +106,24 @@ The paper fails to address the limitations of the NLA – as a reader, I’m not
     - **Response:**  Done. NEED TO DO on table already in overleaf
 
 ## I would organize the information in table 1 by either concentration (low to high) or advisory type (drinking or recreational) and concentration (low to high). It might also be useful to include the number of lakes represented in each category based on microcystin. 
-    - **Response:** Done.  Need to do directly on table in overleaf
+    - **Response:** Table  re-orderd based on concentration.  Number of lakes (as percentage) included in text.  Need to do directly on table in overleaf.
 
 ## In table 2, I would add the specific microcystin concentration target under each advisory type to avoid having to look back at table 1 for these data.
-    - **Response:**  
+    - **Response:**  Done.  Need to transfer to overleaf.
 
 ## Most waterbodies lacked microcystin and Figure 2 clearly shows that there are a huge number of waterbodies across a large chlorophyll range that apparently had microcystin concentrations at the detection limit of 0.05 ug/L. I am concerned about the microcystin data at the detection limit. They appear to be false positives. I agree with the authors who acknowledged that high chlorophyll is not always a good predictor of high microcystin. What should be done for those waterbodies with high concentrations of chlorophyll but that had no or barely detectable microcystin?
-    - **Response:**  
+    - **Response:** We added some discussion about this in the last paragraph of the Data section.  We feel that these should be left in as removing them would erroneously inflate our confidence intervals and impact the conditional probabilities.  Essentially these are lakes with very low microcystin but widely varying chlorophyll values.   
 
 ## I am confused about the data collected and available for the 2007 National Lakes Assessment. For example, I organized this dataset in July 2010 and found that 1158 lakes were sampled once (1152 of these lakes included data for both chlorophyll and microcystin) and 95 of the 1158 originally sampled lakes were sampled a second time in 2007. Yuan et al. 2014 (Freshwater Biology) used data for 1077 sampled lakes. The current study (as well as the National Lakes Assessment website and report) describes data for 1028 lakes. Clarity about these discrepancies is not necessarily the authors’ job, but it would be good to understand why the differences exist across these datasets. Also, for this study, how were data used for lakes sampled twice in 2007?  
     - **Response:** We share your confusion!  There are many "types" of samples included with the raw NLA data.  For this analysis, we only used the probability samples (i.e. no reference samples) and only used the first visit to a lake.  Additionally, lakes that had no data reported for either chl or microsystin were not included.  As noted, this results in 1028 samples
 
 ## Although all of the National Lakes Assessment data are publicly available, the authors should provide the dataset that they used for this study. 
-    - **Response:** Code to access the data is available from [USEPA/microcysinchla](https://github.com/USEPA/microcystinchla).  This is listed in the "Data and software availability" section.
+    - **Response:** Code to access the data is available from [USEPA/microcysinchla](https://github.com/USEPA/microcystinchla).  We have also added in a static .csv file to this repository of the data used for our analysis. This is listed in the "Data and software availability" section.
 
 
 ## Specific Edits:
 
 ### Title and Abstract: 
 - For clarity, the authors might consider replacing “various” with “World Health Organization and U.S. Environmental Protection Agency”. 
-    - **Response:**  
+    - **Response:**  As this has already been indexed, we thought it best to limit the edits to the title.  
  
