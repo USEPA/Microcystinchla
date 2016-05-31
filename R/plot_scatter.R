@@ -7,13 +7,13 @@
 
 plot_scatter<-function(df,xvar,yvar,cat=NULL,pt_col=1,...){
   options(scipen=5)
-  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]],pt_col=1)
+  xdf<-data.frame(xvar=df[[xvar]],yvar=df[[yvar]],pt_col=pt_col)
   if(!is.null(cat)){
     xdf<-data.frame(xdf,pt_col=df[[cat]])
   }
   xdf<-xdf[complete.cases(xdf),]
   x <- ggplot(xdf,aes(xvar,yvar))+
-    geom_point(size=3) +
+    geom_point(size=3,aes(color = pt_col)) +
     theme_bw()+
     theme(text = element_text(family="sans"),
           axis.title.x = element_text(family="sans",vjust = -0.5, size = 14),
