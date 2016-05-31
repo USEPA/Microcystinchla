@@ -1,0 +1,35 @@
+---
+title: "NLA and Microcystin"
+author: "Jeff W. Hollister"
+date: "3/1/2016"
+output: pdf_document
+---
+
+Review of some numbers from the 2007 NLA data on microcystin.
+
+```{r get_data}
+nla_url <- "http://www2.epa.gov/sites/production/files/2014-10/nla2007_recreational_conditionestimates_20091123.csv"
+nla_dat <- read.csv(nla_url)
+```
+
+The raw dataset from the `nla_url` has `r nrow(nla_dat)` rows and `r ncol(nla_dat)`.
+
+Some filtering of this data is required.  For our analyses we prefer to use the probabilistic draw in case we want to use the weighted values.  Do this we need to only use PROB_Lakes and the first visit.
+
+```{r filter_prob}
+library(dplyr)
+nla_dat <- nla_dat %>%
+  filter(SITE_TYPE == "PROB_Lake") %>%
+  filter(VISIT_NO == 1) %>%
+  select(SITE_ID, CHLA, MCYST_TL_UGL)
+```
+
+Filtering this out results in `r nrow(nla_dat)` rows and `r ncol(nla_dat)`.
+
+From this we can see how many lakes had microcystin present.
+
+```{r counts}
+sum(nla_dat$MCYST_TL_UGL > 0.05)
+sum(nla_dat$MCYST_TL_UGL > 0.05)/nrow(nla_dat)
+```
+

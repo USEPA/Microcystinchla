@@ -206,9 +206,9 @@ mean was 29.63 \(\mu\)g/L. The associations between chlorophyll \emph{a}
 and the upper confidence interval across a range of conditional
 probability values are shown in Table \ref{tab:mc_chla_table}. Specific
 chlorophyll \emph{a} concentrations that are associated with greater
-than even odds of exceeding the advisory levels were 0.07, 0.07, 2.98,
-and 10.67\(\mu\)g/L for 0.3, 1.0, 1.6, and 2.0 \(\mu\)g/L advisory
-levels, respectively (Table \ref{tab:mc_chla_table} \& Figure
+than even odds of exceeding the advisory levels were 23.36, 62.64,
+83.52, and 103.9\(\mu\)g/L for 0.3, 1.0, 1.6, and 2.0 \(\mu\)g/L
+advisory levels, respectively (Table \ref{tab:mc_chla_table} \& Figure
 \ref{fig:multi_cp_plot}).
 
 \begin{figure}
@@ -221,8 +221,8 @@ The chlorophyll \emph{a} cutoffs may be used to predict whether or not a
 lake exceeds the microcystin-LR health advisories. Doing so allows us to
 compare the accuracy of the prediction as well as evaluate false
 negatives. Total accuracy of the four cutoffs predicting microcystin-LR
-exceedances were 19\% for the USEPA children's advisory, 21\% for the
-WHO drinking water advisory, 22\% for the USEPA adult advisory, and 23\%
+exceedances were 75\% for the USEPA children's advisory, 86\% for the
+WHO drinking water advisory, 89\% for the USEPA adult advisory, and 91\%
 for the WHO regreational advisory (Tables \ref{tab:child_conmat_table},
 \ref{tab:who_drink_conmat_table}, \ref{tab:adult_conmat_table}, \&
 \ref{tab:who_rec_conmat_table}). However, total accuracy is only one
@@ -233,7 +233,7 @@ microcystin-LR exceedances, the error that should be avoided is
 predicting that no exceedance has occurred when in fact it has. In other
 words, we would like to avoid Type II errors and minimize the proportion
 of false negatives. For the four chlorophyll \emph{a} cut-offs we had a
-proportion of false negatives of 2\%, 2\%, 1\%, and 1\% for the USEPA
+proportion of false negatives of 9\%, 7\%, 6\%, and 5\% for the USEPA
 children's, the WHO drinking water, the USEPA adult, and the WHO
 recreational advisories, respectively. In each case we missed less than
 10\% of the lakes that in fact exceeded the microcystin-LR advisory.
@@ -266,8 +266,8 @@ a range of probabilities of exceeding a given health advisory level
 (Table \ref{tab:mc_chla_table}). For the purposes of this discussion we
 focus on a conditional probability of 50\% or greater (i.e., greater
 than even odds to exceed a health advisory level). The 50\% conditional
-probability chlorophyll \emph{a} thresholds represents 27.9\%, 11.3\%,
-9\%, and 6.9\% of sample lakes for the USEPA Child, the WHO Drinking,
+probability chlorophyll \emph{a} thresholds represents 27.9\%, 12.1\%,
+9\%, and 7.3\% of sample lakes for the USEPA Child, the WHO Drinking,
 the USEPA Adult, and the WHO recreational levels, respecitvely.
 
 There are numerous possible uses for the chlorophyll \emph{a} and
@@ -370,15 +370,15 @@ USEPA & Adult Drinking Water Advisory & 1.6 $\mu$g/L \\
   \hline
 Cond. Probability & USEPA Child & WHO Drink & USEPA Adult & WHO Recreational \\ 
   \hline
-0.10 & 0.07 & 0.07 & 0.07 & 1.22 \\ 
-  0.20 & 0.07 & 4.43 & 11.80 & 20.00 \\ 
-  0.30 & 2.98 & 20.43 & 31.40 & 53.64 \\ 
-  0.40 & 10.67 & 42.24 & 66.96 & 82.22 \\ 
-  0.50 & 23.36 & 66.96 & 83.52 & 105.84 \\ 
-  0.60 & 38.30 & 103.20 & 133.20 & 155.52 \\ 
-  0.70 & 65.60 & 166.63 & 871.20 & 216.00 \\ 
-  0.80 & 117.50 & 338.40 & 871.20 & 871.20 \\ 
-  0.90 & 167.04 & 516.00 & 871.20 & 871.20 \\ 
+0.10 & 0.07 & 0.07 & 0.07 & 1.65 \\ 
+  0.20 & 0.07 & 4.30 & 9.52 & 20.52 \\ 
+  0.30 & 2.91 & 18.72 & 25.76 & 53.64 \\ 
+  0.40 & 10.88 & 38.02 & 65.60 & 82.22 \\ 
+  0.50 & 23.36 & 62.64 & 83.52 & 103.90 \\ 
+  0.60 & 39.80 & 94.93 & 114.62 & 155.52 \\ 
+  0.70 & 65.60 & 125.40 & 273.60 & 871.20 \\ 
+  0.80 & 125.28 & 314.61 & 871.20 & 871.20 \\ 
+  0.90 & 197.00 & 516.00 & 871.20 & 871.20 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -408,8 +408,8 @@ Not Exceed & 649 &  96 & 745 \\
   \hline
  & Not Exceed & Exceed & Row Totals \\ 
   \hline
-Not Exceed & 839 &  77 & 916 \\ 
-  Exceed &  68 &  44 & 112 \\ 
+Not Exceed & 833 &  75 & 908 \\ 
+  Exceed &  74 &  46 & 120 \\ 
   Column Totals & 907 & 121 & 1028 \\ 
    \hline
 \end{tabular}
@@ -440,8 +440,8 @@ Not Exceed & 883 &  57 & 940 \\
   \hline
  & Not Exceed & Exceed & Row Totals \\ 
   \hline
-Not Exceed & 910 &  52 & 962 \\ 
-  Exceed &  43 &  23 &  66 \\ 
+Not Exceed & 908 &  50 & 958 \\ 
+  Exceed &  45 &  25 &  70 \\ 
   Column Totals & 953 &  75 & 1028 \\ 
    \hline
 \end{tabular}

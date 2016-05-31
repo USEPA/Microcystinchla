@@ -82,6 +82,8 @@ knit_hooks$set(output = function(x, options) {
   } else
     default_output_hook(x,options)
 })
+
+set.seed(2042016)
 ```
 
 ```{r analysis , include=FALSE, echo=FALSE, cache=TRUE}
@@ -184,23 +186,23 @@ row.names(who_rec_conmat)<-c("Not Exceed","Exceed","Column Totals")
 
 total_accuracy<-NULL
 total_accuracy$epa_child<-round((child_conmat[1,1]+child_conmat[2,2])/
-  sum(child_conmat),2)
+  sum(child_conmat[1:2,1:2]),2)
 total_accuracy$who_drink<-round((who_drink_conmat[1,1]+who_drink_conmat[2,2])/
-  sum(who_drink_conmat),2)
+  sum(who_drink_conmat[1:2,1:2]),2)
 total_accuracy$epa_adult<-round((adult_conmat[1,1]+adult_conmat[2,2])/
-  sum(adult_conmat),2)
+  sum(adult_conmat[1:2,1:2]),2)
 total_accuracy$who_rec<-round((who_rec_conmat[1,1]+who_rec_conmat[2,2])/
-  sum(who_rec_conmat),2)
+  sum(who_rec_conmat[1:2,1:2]),2)
 
 fn_percent<-NULL
 fn_percent$epa_child<-round((child_conmat[1,2])/
-  sum(child_conmat),2)
+  sum(child_conmat[1:2,1:2]),2)
 fn_percent$who_drink<-round((who_drink_conmat[1,2])/
-  sum(who_drink_conmat),2)
+  sum(who_drink_conmat[1:2,1:2]),2)
 fn_percent$epa_adult<-round((adult_conmat[1,2])/
-  sum(adult_conmat),2)
+  sum(adult_conmat[1:2,1:2]),2)
 fn_percent$who_rec<-round((who_rec_conmat[1,2])/
-  sum(who_rec_conmat),2)
+  sum(who_rec_conmat[1:2,1:2]),2)
 
 ```
 
@@ -250,7 +252,7 @@ Lastly, we assess the ability of these chlorophyll *a* thresholds to predict mic
 
 #Results
 
-In the 2007 NLA, microcystin-LR concentrations ranged from `r min(nla_dat$MCYST_TL_UGL,na.rm=T)` to `r max(nla_dat$MCYST_TL_UGL, na.rm=T)` $\mu$g/L.  Microcystin-LR concentrations of 0.05 $\mu$g/L represent the detection limits.  Any value greater than that indicates the presence of microcystin-LR.  Of those lakes with microcystin, the median concentration was `r round(median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)`$\mu$g/L and the mean was `r round(mean(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)`$\mu$g/L.  Of all lakes sampled, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=0.3])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA Child level, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1.6])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA Adult level, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO Drinking level, and `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=2])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO Recreational level. For chlorophyll *a*, the range was `r min(nla_dat$CHLA,na.rm=T)` to `r max(nla_dat$CHLA, na.rm=T)` $\mu$g/L.  All lakes had reported chlorophyll *a* concentrations that exceeded detection limits.  The median concentration was `r median(nla_dat$CHLA,na.rm=T)` $\mu$g/L and the mean was `r round(mean(nla_dat$CHLA,na.rm=T),2)` $\mu$g/L.  The associations between chlorophyll *a* and the upper confidence interval across a range of conditional probability values are shown in Table \ref{tab:mc_chla_table}.  Specific chlorophyll *a* concentrations that are associated with greater than even odds of exceeding the advisory levels were `r mc_chla[1]`, `r mc_chla[2]`, `r mc_chla[3]`, and `r mc_chla[4]`$\mu$g/L for 0.3, 1.0, 1.6, and 2.0 $\mu$g/L advisory levels, respectively (Table \ref{tab:mc_chla_table} & Figure \ref{fig:multi_cp_plot}).   
+In the 2007 NLA, microcystin-LR concentrations ranged from `r min(nla_dat$MCYST_TL_UGL,na.rm=T)` to `r max(nla_dat$MCYST_TL_UGL, na.rm=T)` $\mu$g/L.  Microcystin-LR concentrations of 0.05 $\mu$g/L represent the detection limits.  Any value greater than that indicates the presence of microcystin-LR.  Of those lakes with microcystin, the median concentration was `r round(median(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)`$\mu$g/L and the mean was `r round(mean(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>0.05],na.rm=T), 2)`$\mu$g/L.  Of all lakes sampled, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=0.3])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA Child level, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1.6])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the USEPA Adult level, `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=1])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO Drinking level, and `r round(100*(length(nla_dat$MCYST_TL_UGL[nla_dat$MCYST_TL_UGL>=2])/length(nla_dat$MCYST_TL_UGL)),1)`% of lakes exceeded the WHO Recreational level. For chlorophyll *a*, the range was `r min(nla_dat$CHLA,na.rm=T)` to `r max(nla_dat$CHLA, na.rm=T)` $\mu$g/L.  All lakes had reported chlorophyll *a* concentrations that exceeded detection limits.  The median concentration was `r median(nla_dat$CHLA,na.rm=T)` $\mu$g/L and the mean was `r round(mean(nla_dat$CHLA,na.rm=T),2)` $\mu$g/L.  The associations between chlorophyll *a* and the upper confidence interval across a range of conditional probability values are shown in Table \ref{tab:mc_chla_table}.  Specific chlorophyll *a* concentrations that are associated with greater than even odds of exceeding the advisory levels were `r mc_chla[5,1]`, `r mc_chla[5,2]`, `r mc_chla[5,3]`, and `r mc_chla[5,4]`$\mu$g/L for 0.3, 1.0, 1.6, and 2.0 $\mu$g/L advisory levels, respectively (Table \ref{tab:mc_chla_table} & Figure \ref{fig:multi_cp_plot}).   
 
 ```{r epa_child_cp_plot, echo=FALSE, fig.width=6, fig.cap="",warning=FALSE,message=FALSE}
 jpeg(filename = "hollister_microcystin_fig1.jpg",

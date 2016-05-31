@@ -1,10 +1,4 @@
 base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 microcystinchla
 viridis
 dplyr
@@ -12,5 +6,4 @@ magrittr
 pander
 knitr
 e1071
-grid
 autocrop
