@@ -92,7 +92,7 @@ knit_hooks$set(output = function(x, options) {
 ################################################################################
 # Data Prep
 ################################################################################
-data_url<-"http://www2.epa.gov/sites/production/files/2014-10/nla2007_recreational_conditionestimates_20091123.csv"
+data_url<-"https://www2.epa.gov/sites/production/files/2014-10/nla2007_recreational_conditionestimates_20091123.csv"
 nla_dat <- get_nla(data_url)
 nla_dat <- mutate(nla_dat,log_chla = log10(CHLA),log_micro = log10(MCYST_TL_UGL))
 
