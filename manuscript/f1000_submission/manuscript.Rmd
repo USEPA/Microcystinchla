@@ -337,7 +337,7 @@ Lastly, using chlorophyll *a* is not meant as a replacement for testing of micro
 Data and Latest Source Code:
 [https://github.com/USEPA/microcystinchla](https://github.com/USEPA/microcystinchla)
 
-Archived data and source code at time of publication: [http://dx.doi.org/10.5281/zenodo.45317](http://dx.doi.org/10.5281/zenodo.45317)
+Archived data and source code at time of publication: [https://doi.org/10.5281/zenodo.45317](https://doi.org/10.5281/zenodo.45317)
 
 License: 
 Creative Commons Zero 1.0: [http://creativecommons.org/publicdomain/zero/1.0/](http://creativecommons.org/publicdomain/zero/1.0/)
