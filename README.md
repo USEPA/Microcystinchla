@@ -6,4 +6,4 @@ Hollister JW and Kreakie BJ. Associations between chlorophyll a and various micr
 [(doi: 10.12688/f1000research.7955.2)](https://f1000research.com/articles/5-151/v2)
 
 Archived Source:
-http://dx.doi.org/10.5281/zenodo.55273
+https://doi.org/10.5281/zenodo.55273
